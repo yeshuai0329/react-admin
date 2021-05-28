@@ -1,0 +1,149 @@
+{
+  "initial": {
+
+    "locale": "EN_US",
+    "menuConfig": {
+    "hasSider": true,
+    "hasTopMenu": true,
+    "collapsed": true,
+    "theme": "dark",
+    "hasBreadcrumb": true
+    }
+  },
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin",
+      "userInfo": {
+        "Avatar": "https://img2.woyaogexing.com/2021/05/12/3f053a742ae44b9ebe05d20d281d4515!400x400.jpeg",
+        "token": "ABCDEFG"
+      },
+      "authMenu": [
+        {
+          "menuDefaultName": "首页",
+          "menuNameId": "pages.menu.home",
+          "menuId": 1,
+          "menuPId": "",
+          "menuType": 2,
+          "path": "/home",
+          "Ppath": "",
+          "icon": "HomeOutlined",
+          "auth": true,
+          "component": "home"
+        },
+        {
+          "menuDefaultName": "DashBoard",
+          "menuNameId": "pages.menu.dashboard",
+          "menuId": 2,
+          "menuPId": "",
+          "menuType": 1,
+          "path": "/dashboard",
+          "Ppath": "",
+          "icon": "DashboardOutlined",
+          "auth": true,
+          "component": "",
+          "children": [
+            {
+            "menuDefaultName": "分析页",
+            "menuNameId": "pages.menu.dashboard.analysis",
+            "menuId": 3,
+            "menuPId": 2,
+            "menuType": 2,
+            "path": "/dashboard/analysis",
+            "Ppath": "/dashboard",
+            "icon": "PieChartOutlined",
+            "auth": true,
+            "component": "analysis"
+            },
+            {
+            "menuDefaultName": "监控页",
+            "menuNameId": "pages.menu.dashboard.monitor",
+            "menuId": 4,
+            "menuPId": 2,
+            "menuType": 2,
+            "path": "/dashboard/monitor",
+            "Ppath": "/dashboard",
+            "icon": "DesktopOutlined",
+            "auth": true,
+            "component": "monitor"
+            }
+          ]
+        },
+        {
+          "menuDefaultName": "权限管理",
+          "menuNameId": "pages.menu.auth",
+          "menuId": 5,
+          "menuPId": "",
+          "menuType": 1,
+          "path": "/auth",
+          "Ppath": "",
+          "icon": "FolderOpenFilled",
+          "auth": true,
+          "component": "",
+          "children": [
+            {
+              "menuDefaultName": "角色管理",
+              "menuNameId": "pages.menu.auth.rolesmanage",
+              "menuId": 6,
+              "menuPId": 5,
+              "menuType": 2,
+              "path": "/auth/rolesmanage",
+              "Ppath": "/auth",
+              "icon": "UsergroupAddOutlined",
+              "auth": true,
+              "component": "rolesmanage"
+            },
+            {
+              "menuDefaultName": "账号管理",
+              "menuNameId": "pages.menu.auth.accountsmanage",
+              "menuId": 7,
+              "menuPId": 5,
+              "menuType": 2,
+              "path": "/auth/accountsmanage",
+              "Ppath": "/auth",
+              "icon": "AccountBookOutlined",
+              "auth": true,
+              "component": "accountsmanage"
+            }
+          ]
+        },
+        {
+          "menuDefaultName": "系统管理",
+          "menuNameId": "pages.menu.system",
+          "menuId": 9,
+          "menuPId": "",
+          "menuType": 1,
+          "path": "/system",
+          "Ppath": "",
+          "icon": "SettingFilled",
+          "auth": true,
+          "component": "",
+          "children":[
+            {
+              "menuDefaultName": "系统配置",
+              "menuNameId": "pages.menu.system.systemconfig",
+              "menuId": 10,
+              "menuPId": 9,
+              "menuType": 1,
+              "path": "/system/systemconfig",
+              "Ppath": "/system",
+              "icon": "LayoutFilled",
+              "auth": true,
+              "component": "systemconfig"
+            }
+          ]
+        }
+      ],
+      "authButton": [
+        "HOME_ADD",
+        "HOME_EDIT",
+        "HOME_DEL",
+        "ROLES_ADD",
+        "ROLES_EDIT",
+        "ROLES_DEL",
+        "ROLES_EXPORT"
+      ]
+    }
+  ]
+}

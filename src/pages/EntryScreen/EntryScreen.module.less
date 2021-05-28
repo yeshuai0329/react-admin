@@ -1,0 +1,46 @@
+.EntryScreen {
+  width: 100%;
+  height: 100%;
+  background: url(../../assets/images/entryScreenBG.svg);
+  display: flex;
+  justify-content: center;
+  position: relative;
+  &-content {
+    margin-top: -48px;
+    width: 328px;
+    &__header {
+      margin: 150px 0 40px;
+      & > h1 {
+        font-size: 28px;
+        font-weight: 600;
+        text-align: center;
+        line-height: 64px;
+      }
+      & > p {
+        text-align: center;
+        color: rgba(0,0,0,.45);
+      }
+    }
+    &__card {
+      height: 272px;
+      .EntryScreen-card__loginTitle, .EntryScreen-card__registerTitle {
+        display: inline-block;
+        width: 100px;
+        height: 100%;
+        text-align: center;
+      }
+    }
+    &__otherLogin {
+      font-size: 20px;
+      & span:hover {
+        cursor: pointer;
+        color: #1890ff;
+      }
+    }
+  }
+  &-toggleLang {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+  }
+}
