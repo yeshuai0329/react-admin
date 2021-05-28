@@ -3,7 +3,6 @@
 ​		`R-Boot` 是基于 `create-react-app` 封装的一款脚手架，用于快速搭建 react 中后台项目，内置了国际化解决方案{自己研究的} 权限路由方案，按钮粒度权限解决方案，提炼了经典的中后台业务模型。
 
 
-
 ## 二、目录结构
 ```html
 ├── __json__server           #模拟后台请求的mock服务器
@@ -52,10 +51,23 @@
 ├── README.md                # 项目介绍文件README
 └── tsconfig.json            # ts配置文件
 ```
+## 三、启动项目
+1.  首先下载项目依赖
+```
+$ npm i
+```
+2.  再跑起来`json-server`,提供数据服务
+```
+$ npm run json-server
+```
+3.  然后`npm run start`,启动项目
+
+```
+$ npm run start
+```
 
 
-
-## 三、项目依赖
+## 四、项目依赖
 
 - react 17  -  中后台项目选型使用 react 框架
 - react-hooks  -  使用最新的官方推荐的最新的hooks写法
@@ -69,7 +81,7 @@
 - axios  -  使用axios网络库，请求数据
 - antd  -  使用antd组件库快速开发
 
-## 四、功能
+## 五、功能
 
 - 菜单、路由权限
   - 从服务端获取路由信息
