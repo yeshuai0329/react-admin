@@ -6,24 +6,37 @@
 
 ## 二、目录结构
 ```html
+├── __json__server           #模拟后台请求的mock服务器
 ├── public
-│   └── index.html           # 入口html文件
 │   └── favicon.png          # Favicon
+│   └── index.html           # 入口html文件
 ├── src
 │   ├── api                  # 后台接口服务
+│   ├── appAuthority         # 项目控制权限相关
+│   │   └── AppConfig              # 全局App控制
+│   │   └── AppProviders           # App组件包裹组件
+│   │   └── AuthButton             # 全局权限按钮
+│   │   └── AuthRoute              # 全局权限路由,token过期,跳转登录页
 │   ├── assets               # 本地静态资源
 │   │   └── images                 # 全局图片资源
-│   ├── authortiy            # 全局权限设置
-│   │   └── AuthButton             # 权限按钮组件
 │   ├── components           # 业务通用组件
-│   │   └── AppProviders           # App组件包裹组件
+│   │   └── AdvancedSearch         # Form高级搜索
+│   │   └── AdvancedTable          # Table高级表格
+│   │   └── BreadCrumbPro          # 面包屑
+│   │   └── Copyright              # footer
+│   │   └── CustomLogo             # logo
+│   │   └── CustomMenu             # 自定义菜单
 │   │   └── LangMessage            # 全局国际化语言组件
 │   ├── config               # 全局配置文件
 │   │   └── config.ts              # 全局配置文件
 │   ├── layouts              # 通用布局
 │   ├── locales              # 国际化资源
 │   ├── pages                # 业务页面入口和常用模板
+│   │   └── EntryScreen             # 登录注册界面
 │   ├── routers              # 全局路由组件配置
+│   │   └── AsyncComponent          # 异步加载组件
+│   │   └── userDynamicRouters      # 动态路由匹配文件
+│   ├── service              # 组件逻辑处理
 │   ├── store                # 全局状态共享store
 │   ├── styles               # 全局样式
 │   ├── typings              # 全局TS声明文件
@@ -59,15 +72,22 @@
 ## 四、功能
 
 - 菜单、路由权限
+  - 从服务端获取路由信息
+  - 路由信息包含auth字段;
+    - auth===ture,则用户对该路由具有可视权限,渲染此菜单和路由;
+    - auth===false,则用户对该路由不具有可视权限,并且不会渲染此菜单和该路由;
 
 - 按钮权限
 
-  - 设计AuthButton组件，实现颗粒度按钮权限控制。
+  - 基于Antd Button设计AuthButton组件，实现颗粒度按钮权限控制。
+    - 增加 auth 属性, 用户菜单权限数组包含 auth 属性对应的值,则显示此按钮
+    - 增加 customtype 属性, 增加Antd Button 按钮的样式  sucess|warning|error|info
 
 - 语言国际化
 
   - 结合redux思想，根据redux状态共享，开发语言国际化模块。
   - 设计LangMessage组件，获取redux中的语言数据。
   - 设计ToggleLang组件，做全局国际化语言切换。
+  - 利用localStorage对语言状态做持久化
 
 
