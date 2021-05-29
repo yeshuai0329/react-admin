@@ -22,7 +22,7 @@ const CustomMenu: React.FC<IProps> = (props) => {
   const { menuList, siderMenuIshHasLogo, mode, ...remainProps } = props
 
   const localtion = useLocation()
-  const [selectedKeys, setSelectedKeys] = React.useState(['/home'])
+  const [selectedKeys, setSelectedKeys] = React.useState<string[]>([])
   const [openKeys, setOpenKeys] = React.useState<string[]>([])
 
   React.useEffect(() => {
@@ -95,8 +95,6 @@ const CustomMenu: React.FC<IProps> = (props) => {
   }
   /**
    * @description: 设置选中高亮的key
-   * @param {any} param1
-   * @return {*}
    */
   const onSelect = ({ selectedKeys }:any) => {
     setSelectedKeys(selectedKeys)
@@ -104,31 +102,28 @@ const CustomMenu: React.FC<IProps> = (props) => {
 
   /**
    * @description: 设置展开的key
-   * @param {any} openKeys
-   * @return {*}
    */
   const onOpenChange = (openKeys: any) => {
     setOpenKeys(openKeys)
   }
-
   return (
-    <Menu
-      openKeys={openKeys}
-      selectedKeys={selectedKeys}
-      onSelect={onSelect}
-      onOpenChange={onOpenChange}
-      mode={mode}
-      {...remainProps}
-    >
-      {
-        mode !== 'horizontal' && siderMenuIshHasLogo
-          ? <CustomLogo />
-          : null
-      }
-      {
-        createMenu(menuList)
-      }
-    </Menu>
+      <Menu
+        openKeys={openKeys}
+        selectedKeys={selectedKeys}
+        onSelect={onSelect}
+        onOpenChange={onOpenChange}
+        mode={mode}
+        {...remainProps}
+      >
+        {
+          mode !== 'horizontal' && siderMenuIshHasLogo
+            ? <CustomLogo />
+            : null
+        }
+        {
+          createMenu(menuList)
+        }
+      </Menu>
   )
 }
 

@@ -8,3 +8,12 @@ export const loginApi = (params:{username: string, password: string}) => {
     params
   })
 }
+
+// 获取用户权限信息
+export const getAuthInfoApi = (params:{token: string}) => {
+  return request({
+    url: 'http://localhost:8000/authInfo',
+    method: 'get',
+    params
+  })
+}

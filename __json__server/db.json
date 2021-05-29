@@ -1,25 +1,17 @@
 {
-  "initial": {
-
-    "locale": "EN_US",
-    "menuConfig": {
-    "hasSider": true,
-    "hasTopMenu": true,
-    "collapsed": true,
-    "theme": "dark",
-    "hasBreadcrumb": true
-    }
-  },
   "users": [
     {
       "id": 1,
       "username": "admin",
       "password": "admin",
-      "userInfo": {
-        "Avatar": "https://img2.woyaogexing.com/2021/05/12/3f053a742ae44b9ebe05d20d281d4515!400x400.jpeg",
-        "token": "ABCDEFG"
-      },
-      "authMenu": [
+      "Avatar": "https://img2.woyaogexing.com/2021/05/12/3f053a742ae44b9ebe05d20d281d4515!400x400.jpeg",
+      "token": "ABCDEFG"
+    }
+  ],
+  "authInfo": [
+    {
+      "token":"ABCDEFG",
+      "authMenu":[
         {
           "menuDefaultName": "首页",
           "menuNameId": "pages.menu.home",
@@ -105,6 +97,18 @@
               "icon": "AccountBookOutlined",
               "auth": true,
               "component": "accountsmanage"
+            },
+            {
+              "menuDefaultName": "菜单管理",
+              "menuNameId": "pages.menu.auth.menusmanage",
+              "menuId": 8,
+              "menuPId": 5,
+              "menuType": 2,
+              "path": "/auth/menusmanage",
+              "Ppath": "/auth",
+              "icon": "MenuOutlined",
+              "auth": true,
+              "component": "menusmanage"
             }
           ]
         },
