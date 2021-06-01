@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useEffect, useState } from 'react'
 import { Avatar, Dropdown, Space, Menu } from 'antd'
 import { UserOutlined, SettingOutlined, LogoutOutlined } from '@ant-design/icons'
 import style from 'layouts/LayoutHeader/LayoutHeader.module.less'
@@ -9,7 +9,17 @@ import { useLogout } from 'service/EntryScreen/EntryScreenHoooks'
 const cx = classNames.bind(style)
 
 const Personal: React.FC = (): ReactElement => {
+  const [userName, setUserName] = useState('R-Boot')
+  const [avatar, setAvatar] = useState('')
+
+  useEffect(() => {
+    const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}')
+    setUserName(userInfo.username || 'R-Boot')
+    setAvatar(userInfo.Avatar)
+  }, [])
+
   const { logout } = useLogout()
+
   const menu = (
     <Menu>
       <Menu.Item icon={<UserOutlined />} ><LangMessage id='' defaultText={'个人中心'}/></Menu.Item>
@@ -23,8 +33,8 @@ const Personal: React.FC = (): ReactElement => {
   return (
     <Dropdown className={cx('layoutHeader-headerRight__personal')} overlay={menu} placement="bottomLeft">
       <Space>
-        <Avatar size={24} icon={<UserOutlined />} />
-          adminadmin
+        <Avatar size={24} src={avatar}/>
+          {userName}
       </Space>
     </Dropdown>
   )
