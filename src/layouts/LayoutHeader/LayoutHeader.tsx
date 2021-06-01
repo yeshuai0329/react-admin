@@ -45,10 +45,6 @@ const LayoutHeader = (props: ILayoutHeaderProps): ReactElement => {
         reduxConfig.breadCrumbIsHas
           ? <BreadCrumbPro
               className={cx('layoutHeader-breadcrumbPro')}
-              BreadcrumbList={[
-                { menuNameId: '权限管理', menuDefaultName: '权限管理' },
-                { menuNameId: '角色管理', menuDefaultName: '角色管理' }
-              ]}
             />
           : null
       }

@@ -28,7 +28,7 @@ const CustomMenu: React.FC<IProps> = (props) => {
   React.useEffect(() => {
     setSelectedKeys([localtion.pathname])
     setOpenKeys(findAllParent(menuList, localtion.pathname))
-  }, [])
+  }, [localtion])
 
   /**
  * @description: 查找localtion.pathname的所有父级

@@ -3,58 +3,49 @@ import { Breadcrumb, Space } from 'antd'
 import * as Icon from '@ant-design/icons'
 import { BreadcrumbItem } from 'typings/breadcrumbItem/breadcrumbItem'
 import { LangMessage } from 'components/LangMessage/LangMessage'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 
 type BreadcrumbProps = React.ComponentProps<typeof Breadcrumb>
 
-interface IProps extends BreadcrumbProps{
-  BreadcrumbList: BreadcrumbItem[]
-}
+const BreadCrumbPro: React.FC<BreadcrumbProps> = (props): ReactElement => {
+  const localtion = useLocation()
+  const [breadCrumbList, setBreadCrumbList] = React.useState<BreadcrumbItem[]>([])
 
-const BreadCrumbPro: React.FC<IProps> = (props): ReactElement => {
-  const { BreadcrumbList, ...remainProps } = props
-  const [menusList, setMenusList] = React.useState([])
   React.useEffect(() => {
-    console.log(`obj1`, familyTree(JSON.parse(localStorage.getItem('authMenu') || '[]'), '/system/systemconfig')
-    )
-    setMenusList(JSON.parse(localStorage.getItem('authMenu') || '[]'))
-  }, [])
+    const path = localtion.pathname
+    const authMenu = JSON.parse(localStorage.getItem('authMenu') || '[]')
+    const list = findAllFather(authMenu, path).reverse()
+    setBreadCrumbList(list)
+  }, [localtion])
+
   /**
    * @description: 根据传入的路由 过滤面包屑路径
-   * @param {any} menuList
-   * @param {string} path
-   * @return {*}
    */
-  const familyTree = (arr1:any, path: string) => {
-    const temp: any = []
-    var forFn = function (arr: any, path: string) {
-      for (var i = 0; i < arr.length; i++) {
-        var item = arr[i]
-        if (item.path === path) {
-          temp.push(item)
-          forFn(arr1, item.parentId)
-          break
-        } else {
-          if (item.children) {
-            forFn(item.children, path)
-          }
+  const findAllFather = (authMenu: any[], path:string) => {
+    for (const i in authMenu) {
+      if (authMenu[i].path === path) {
+        // 查询到就返回该数组对象
+        return [authMenu[i]]
+      }
+      if (authMenu[i].children) {
+        const node:any = findAllFather(authMenu[i].children, path)
+        if (node !== undefined) {
+          // 查询到把父节点连起来
+          return node.concat(authMenu[i])
         }
       }
     }
-    forFn(arr1, path)
-    return temp
   }
-
   return (
-    <Breadcrumb {...remainProps}>
+    <Breadcrumb {...props}>
       {
-        menusList && menusList.map((item: any, index: number) => {
+        breadCrumbList && breadCrumbList.map((item: any, index: number) => {
           // @ts-ignore
           const iconfont = item.icon ? React.createElement(Icon[item.icon]) : ''
           return (
             <Breadcrumb.Item key={index}>
               {
-                item.path
+                item.path && item.menuType !== 1
                   ? (
                       <NavLink to={item.path}>
                         <Space>

@@ -24,7 +24,7 @@ const LayoutContent: React.FC = (): ReactElement => {
           {
             routerList && routerList.map((router: any) => {
               return (
-                <AuthRoute key={router.path} {...router} />
+                <AuthRoute key={router.path} {...router} exact/>
               )
             })
           }
