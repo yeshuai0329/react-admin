@@ -13,7 +13,7 @@ const LayoutSiderMenu: React.FC<IProps> = (props): ReactElement => {
 
   return (
     <CustomMenu
-      siderMenuIshHasLogo={reduxConfig.siderMenuIshHasLogo}
+      MenuIshHasLogo={reduxConfig.siderMenuIshHasLogo}
       menuList={list}
       mode='inline'
       theme={reduxConfig.siderMenuTheme}

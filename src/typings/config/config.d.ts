@@ -3,7 +3,7 @@ import { obj } from "typings/typings"
 type TLocale = 'zh_CN' | 'en_US'
 type TTheme = 'dark' | 'light' | undefined
 
-export interface TConfig extends obj {
+export interface TConfig extends obj{
   // 默认国际化语言配置
   locale: TLocale,
   // 是否有侧边菜单
@@ -16,6 +16,11 @@ export interface TConfig extends obj {
   siderMenuIshHasLogo: boolean,
   // 是否有顶部菜单
   topMenuIsHas?: boolean,
+  // 顶部菜单颜色
+  topMenuTheme: TTheme,
+  // 顶部菜单是否有logo
+  topMenuIsHasLogo: boolean,
   // 是否有顶部面包屑
-  breadCrumbIsHas?: boolean
+  breadCrumbIsHas?: boolean,
+
 }

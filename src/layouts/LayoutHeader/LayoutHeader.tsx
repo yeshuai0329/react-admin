@@ -4,7 +4,6 @@ import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons'
 import style from 'layouts/LayoutHeader/LayoutHeader.module.less'
 import classNames from 'classnames/bind'
 import { TConfig } from 'typings/config/config'
-import LayoutTopMenu from '../LayoutSider/LayoutTopMenu'
 import HeaderRight from './HeaderRight/HeaderRight'
 import BreadCrumbPro from 'components/BreadCrumbPro/BreadCrumbPro'
 import { SET_COLLAPSED } from 'store/actionTypes/configActionType'
@@ -34,12 +33,6 @@ const LayoutHeader = (props: ILayoutHeaderProps): ReactElement => {
           : null
       }
 
-      {/* 控制顶部菜单是否存在 */}
-      {
-        reduxConfig.topMenuIsHas
-          ? <LayoutTopMenu />
-          : null
-      }
       {/* 控制面包屑是否存在 */}
       {
         reduxConfig.breadCrumbIsHas

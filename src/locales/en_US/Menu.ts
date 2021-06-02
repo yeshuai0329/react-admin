@@ -6,6 +6,7 @@ export default {
   'pages.menu.auth': 'AuthManage',
   'pages.menu.auth.rolesmanage': 'RolesManage',
   'pages.menu.auth.accountsmanage': 'AccountsManage',
+  'pages.menu.auth.menusmanage': 'MenuManage',
   'pages.menu.system': 'SystemManage',
   'pages.menu.system.systemconfig': 'SystemConfig'
 }

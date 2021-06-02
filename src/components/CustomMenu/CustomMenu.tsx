@@ -11,6 +11,7 @@ type PropsMenu = React.ComponentProps<typeof Menu>
 interface IProps extends PropsMenu {
   menuList: any[],
   siderMenuIshHasLogo?: boolean,
+  MenuIshHasLogo: boolean
 }
 
 /**
@@ -19,7 +20,7 @@ interface IProps extends PropsMenu {
  * @return {*}
  */
 const CustomMenu: React.FC<IProps> = (props) => {
-  const { menuList, siderMenuIshHasLogo, mode, ...remainProps } = props
+  const { menuList, siderMenuIshHasLogo, MenuIshHasLogo, mode, ...remainProps } = props
 
   const localtion = useLocation()
   const [selectedKeys, setSelectedKeys] = React.useState<string[]>([])
@@ -116,7 +117,7 @@ const CustomMenu: React.FC<IProps> = (props) => {
         {...remainProps}
       >
         {
-          mode !== 'horizontal' && siderMenuIshHasLogo
+          MenuIshHasLogo
             ? <CustomLogo />
             : null
         }

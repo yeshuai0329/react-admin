@@ -19,6 +19,10 @@ const config: TConfig = {
   // |||||||||||||||||||||||||||
   // 是否有顶部菜单
   topMenuIsHas: false,
+  // 顶部菜单颜色
+  topMenuTheme: 'light',
+  // 顶部菜单是否有logo
+  topMenuIsHasLogo: false,
   // |||||||||||||||||||||||||||
   // ||||||| 顶部面包屑相关 ||||||
   // |||||||||||||||||||||||||||

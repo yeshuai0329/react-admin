@@ -129,7 +129,7 @@
               "menuNameId": "pages.menu.system.systemconfig",
               "menuId": 10,
               "menuPId": 9,
-              "menuType": 1,
+              "menuType": 2,
               "path": "/system/systemconfig",
               "Ppath": "/system",
               "icon": "LayoutFilled",

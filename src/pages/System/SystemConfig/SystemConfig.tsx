@@ -4,6 +4,7 @@ import { Row, Col, Card } from 'antd'
 import { connect } from 'react-redux'
 import { TConfig } from 'typings/config/config'
 import SiderMenuConfig from './components/SiderMenuConfig/SiderMenuConfig'
+import TopMenuConfig from './components/TopMenuConfig/TopMenuConfig'
 
 interface IProps {
   reduxConfig: TConfig,
@@ -22,7 +23,7 @@ const SystemConfig: React.FC<IProps> = (props): ReactElement => {
         </Card>
       </Col>
       <Col span={12}>
-        <Card title='侧边菜单设置'>
+        <Card title='侧边菜单设置' style={{ minHeight: 400 }}>
           <SiderMenuConfig
             reduxConfig={reduxConfig}
             reduxSetConfig={reduxSetConfig}
@@ -30,21 +31,11 @@ const SystemConfig: React.FC<IProps> = (props): ReactElement => {
         </Card>
       </Col>
       <Col span={12}>
-        <Card title='顶部菜单设置'>
-          <SiderMenuConfig
+        <Card title='Config设置'style={{ minHeight: 400 }}>
+          <TopMenuConfig
             reduxConfig={reduxConfig}
             reduxSetConfig={reduxSetConfig}
           />
-        </Card>
-      </Col>
-      <Col span={12}>
-        <Card title='Header设置'>
-
-        </Card>
-      </Col>
-      <Col span={12}>
-        <Card title='Config设置'>
-
         </Card>
       </Col>
     </Row>

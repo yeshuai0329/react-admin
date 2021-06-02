@@ -6,6 +6,7 @@ export default {
   'pages.menu.auth': '权限管理',
   'pages.menu.auth.rolesmanage': '角色管理',
   'pages.menu.auth.accountsmanage': '账号管理',
+  'pages.menu.auth.menusmanage': '菜单管理',
   'pages.menu.system': '系统管理',
   'pages.menu.system.systemconfig': '系统配置'
 }

@@ -2,48 +2,53 @@
 import React from 'react'
 import { ISiderMenuConfig } from "typings/System/SystemConfig/SystemConfig"
 import {
-  SET_SIDER_MENU_IS_HAS,
-  SET_SIDER_MENU_THEME,
-  SET_SIDER_MENU_IS_HAS_LOGO
+  SET_TOP_MENU_IS_HAS,
+  SET_TOP_MENU_IS_HAS_LOGO,
+  SET_BREADCRUMB_IS_HAS
 } from 'store/actionTypes/configActionType'
-import { Row, Col, Switch, Select } from 'antd'
+import { Row, Col, Switch } from 'antd'
 import { TConfig } from 'typings/config/config'
 
 interface IProps {
   reduxConfig: TConfig,
   reduxSetConfig: (type: string, payload: string | boolean) => void
 }
-const SiderMenuConfig: React.FC<IProps> = (props) => {
+const TopMenuConfig: React.FC<IProps> = (props) => {
   const { reduxConfig, reduxSetConfig } = props
 
   const SiderMenuConfigs: ISiderMenuConfig[] = [
     {
-      label: '侧边菜单',
-      value: 'siderMenuIsHas',
-      type: SET_SIDER_MENU_IS_HAS
+      label: '顶部菜单',
+      value: 'topMenuIsHas',
+      type: SET_TOP_MENU_IS_HAS
     },
     {
-      label: '侧边菜单Logo',
-      value: 'siderMenuIshHasLogo',
-      type: SET_SIDER_MENU_IS_HAS_LOGO
+      label: '顶部菜单Logo',
+      value: 'topMenuIsHasLogo',
+      type: SET_TOP_MENU_IS_HAS_LOGO
     },
     {
-      label: '侧边菜单颜色',
-      value: 'siderMenuTheme',
-      type: SET_SIDER_MENU_THEME,
-      render: function siderMenuThemeRender() {
-        return (
-          <Select
-            style={{ width: 120 }}
-            value={reduxConfig.siderMenuTheme}
-            onChange={(val) => { reduxSetConfig(SET_SIDER_MENU_THEME, val) }}
-          >
-            <Select.Option value={'dark'}>dark</Select.Option>
-            <Select.Option value={'light'}>light</Select.Option>
-          </Select>
-        )
-      }
+      label: '顶部面包屑',
+      value: 'breadCrumbIsHas',
+      type: SET_BREADCRUMB_IS_HAS
     }
+    // {
+    //   label: '顶部菜单颜色',
+    //   value: 'topMenuTheme',
+    //   type: SET_TOP_MENU_THEME,
+    //   render: function siderMenuThemeRender() {
+    //     return (
+    //       <Select
+    //         style={{ width: 120 }}
+    //         value={reduxConfig.topMenuTheme}
+    //         onChange={(val) => { reduxSetConfig(SET_TOP_MENU_THEME, val) }}
+    //       >
+    //         <Select.Option value={'dark'}>dark</Select.Option>
+    //         <Select.Option value={'light'}>light</Select.Option>
+    //       </Select>
+    //     )
+    //   }
+    // }
   ]
 
   return (
@@ -79,4 +84,4 @@ const SiderMenuConfig: React.FC<IProps> = (props) => {
   )
 }
 
-export default SiderMenuConfig
+export default TopMenuConfig

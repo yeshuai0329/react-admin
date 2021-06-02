@@ -7,6 +7,8 @@ import {
   SET_SIDER_MENU_THEME,
   SET_SIDER_MENU_IS_HAS_LOGO,
   SET_TOP_MENU_IS_HAS,
+  SET_TOP_MENU_IS_HAS_LOGO,
+  SET_TOP_MENU_THEME,
   SET_BREADCRUMB_IS_HAS
 } from 'store/actionTypes/configActionType'
 // 默认的配置
@@ -23,6 +25,10 @@ const defaultConfig = {
   siderMenuIshHasLogo: true,
   // 是否有顶部菜单
   topMenuIsHas: false,
+  // 顶部菜单颜色
+  topMenuTheme: 'light',
+  // 顶部菜单是否有logo
+  topMenuIsHasLogo: false,
   // 是否有顶部面包屑
   breadCrumbIsHas: true
 }
@@ -72,6 +78,18 @@ export default (state = defaultState, { type, payload }: IAction) => {
   // 是否有顶部菜单
   if (type === SET_TOP_MENU_IS_HAS) {
     newState.topMenuIsHas = payload
+    localStorage.setItem('userLocalStorageConfig', JSON.stringify(newState))
+    return newState
+  }
+  // 顶部菜单是否有logo
+  if (type === SET_TOP_MENU_IS_HAS_LOGO) {
+    newState.topMenuIsHasLogo = payload
+    localStorage.setItem('userLocalStorageConfig', JSON.stringify(newState))
+    return newState
+  }
+  // 顶部菜单颜色
+  if (type === SET_TOP_MENU_THEME) {
+    newState.topMenuTheme = payload
     localStorage.setItem('userLocalStorageConfig', JSON.stringify(newState))
     return newState
   }
