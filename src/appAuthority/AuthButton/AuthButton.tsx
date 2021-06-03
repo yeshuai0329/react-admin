@@ -1,7 +1,7 @@
-import React, { ReactElement, useEffect, useState } from 'react'
+import React, { ReactElement } from 'react'
 import style from './AuthButton.module.less'
 import classNames from 'classnames/bind'
-import { Button } from 'antd'
+import { Button, ButtonProps } from 'antd'
 
 const cx = classNames.bind(style)
 
@@ -14,30 +14,21 @@ export type AuthButtonType = 'HOME_ADD'
  | 'ROLES_EXPORT'
 
 export type CustomType = 'default' | 'success' | 'danger' | 'warning' | 'info'
-type ButtonProps = React.ComponentProps<typeof Button>
 
-interface IButtonProps extends ButtonProps {
-  auth?: AuthButtonType,
+export interface IButtonProps extends ButtonProps {
+  auth: AuthButtonType,
   customtype?: CustomType
 }
 
-const ButtonAuth = (props: IButtonProps): ReactElement | null => {
+const AuthButton = (props: IButtonProps): ReactElement | null => {
   const { auth, customtype, ...remainProps } = props
-  const [isShow, setIsShow] = useState(false)
-  useEffect(() => {
-    const userAuthButtonType: string[] = JSON.parse(localStorage.getItem('authButton') || '[]')
-    if (auth) {
-      const bool = userAuthButtonType.includes(auth)
-      setIsShow(bool)
-    } else {
-      setIsShow(true)
-    }
-  }, [])
+  const userAuthButtonType: string[] = JSON.parse(localStorage.getItem('authButton') || '[]')
+  const bool = userAuthButtonType.includes(auth)
   return (
-    isShow
+    bool
       ? <Button className={cx(`custom-${customtype}`)} {...remainProps}>{props.children}</Button>
       : null
   )
 }
 
-export default ButtonAuth
+export default AuthButton

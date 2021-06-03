@@ -2,10 +2,17 @@
   min-width: 1000px;
   height: 100%;
   background: #f0f2f5;
-  padding-top: 16px;
-  &-content {
-    margin: 0 16px 16px;
-    min-height: calc(100% - 108px);
-    // background: #FFF;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  &-route {
+    flex: 1;
+  }
+  &-Copyright　{
+    height: 80px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

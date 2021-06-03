@@ -19,7 +19,7 @@ const LayoutContent: React.FC = (): ReactElement => {
 
   return (
     <div className={cx('LayoutContent')}>
-      <div className={cx('LayoutContent-content')}>
+      <div className={cx('LayoutContent-route')}>
         <Switch>
           {
             routerList && routerList.map((router: any) => {
@@ -32,7 +32,9 @@ const LayoutContent: React.FC = (): ReactElement => {
           <AuthRoute path={'*'} component={NotFind} />
         </Switch>
       </div>
-      <Copyright/>
+      <div className={cx('LayoutContent-Copyright')}>
+        <Copyright />
+      </div>
     </div>
   )
 }

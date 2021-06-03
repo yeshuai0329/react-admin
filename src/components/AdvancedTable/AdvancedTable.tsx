@@ -1,12 +1,9 @@
 import React, { ReactElement } from 'react'
-import { Col, Row, Space, Table, TableProps as AntdTableProps, Alert } from 'antd'
-import AuthButton, { AuthButtonType, CustomType } from 'appAuthority/AuthButton/AuthButton'
+import { Space, Table, TableProps as AntdTableProps, Alert } from 'antd'
+import AuthButton, { IButtonProps } from 'appAuthority/AuthButton/AuthButton'
 import ColumnsConfig from './_components/ColumnsConfig/ColumnsConfig'
-export interface AuthAction {
+export interface AuthAction extends IButtonProps {
   name: string,
-  icon?: React.ReactElement,
-  auth?: AuthButtonType,
-  customtype?: CustomType
   onClick: () => void
 }
 
@@ -30,44 +27,37 @@ const AdvancedTable = <RecordType extends object = any>(props: IAdvancedTablePro
     })
     setPickColumns(result)
   }
+
   return (
-    <Row gutter={[0, 8]}>
-      <Col span={24} style={{ textAlign: 'end' }}>
-        <Space>
-          {
-            authActions && authActions.map((item: any, index: number) => {
-              return (
-                <AuthButton
-                  key={index}
-                  auth={item.auth}
-                  customtype={item.customtype}
-                  onClick={item.onClick}
-                >
-                  {item.icon}{item.name}
-                </AuthButton>
-              )
-            })
-          }
-          {
-            canConfig
-              ? <ColumnsConfig
-                  columns={columns}
-                  changePickColumns={changePickColumns}
-                />
-              : null
-          }
-        </Space>
-      </Col>
-      <Col span={24}>
-        <Alert message="Informational Notes" type="info" showIcon closable/>
-      </Col>
-      <Col span={24}>
-        <Table<RecordType>
-          columns={pickColumns}
-          {...mainProps}
-        />
-      </Col>
-    </Row>
+    <Space direction='vertical' style={{ width: '100%', marginTop: '16px' }}>
+      <Space>
+        {
+          authActions && authActions.map((item: any, index: number) => {
+            return (
+              <AuthButton
+                key={index}
+                {...item}
+              >
+                {item.name}
+              </AuthButton>
+            )
+          })
+        }
+        {
+          canConfig
+            ? <ColumnsConfig
+                columns={columns}
+                changePickColumns={changePickColumns}
+              />
+            : null
+        }
+      </Space>
+      <Alert message="Informational Notes" type="info" showIcon closable/>
+      <Table
+        columns={pickColumns}
+        {...mainProps}
+      />
+    </Space>
   )
 }
 

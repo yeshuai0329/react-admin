@@ -1,7 +1,8 @@
-import React, { ReactElement, Fragment, useState } from 'react'
+import React, { ReactElement, Fragment, useState, Key, useMemo } from 'react'
 import AdvancedTable, { AuthAction } from 'components/AdvancedTable/AdvancedTable'
 import { ColumnType } from 'antd/lib/table'
 import { Modal, Switch } from 'antd'
+import AuthButton from 'appAuthority/AuthButton/AuthButton'
 import {
   PlusOutlined,
   DeleteOutlined,
@@ -17,9 +18,15 @@ interface RolesRecord {
   rolesStatus: number,
   createBy: number,
 }
+interface IRolesTable {
+  toggleModalVisibleMethod: (visible: boolean, title?: string | undefined, record?: RolesRecord | undefined) => void
 
-const RolesTable: React.FC = (): ReactElement => {
-  const [canConfig] = useState(true)
+}
+const RolesTable: React.FC<IRolesTable> = (props): ReactElement => {
+  const { toggleModalVisibleMethod } = props
+
+  const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([])
+  const [selectedRows, setSelectedRows] = useState<RolesRecord[]>([])
 
   const editRoleStatus = (val: boolean, record: RolesRecord) => {
     Modal.confirm({
@@ -28,19 +35,19 @@ const RolesTable: React.FC = (): ReactElement => {
       okText: '确认',
       cancelText: '取消',
       onOk: () => {
-        console.log(`obj`, record)
+        console.log(`obj`, 11)
       }
     })
   }
 
-  const authActions: AuthAction[] = [
+  const authActions: AuthAction[] = useMemo(() => [
     {
       name: '新建',
       auth: 'ROLES_ADD',
       customtype: 'default',
       icon: <PlusOutlined />,
       onClick: () => {
-        console.log(`obj`, 11111111111111)
+        toggleModalVisibleMethod(true, '创建角色配置')
       }
     },
     {
@@ -48,17 +55,19 @@ const RolesTable: React.FC = (): ReactElement => {
       auth: 'ROLES_DEL',
       customtype: 'danger',
       icon: <DeleteOutlined />,
+      disabled: selectedRowKeys.length === 0,
       onClick: () => {
         console.log(`obj`, 222222222222222)
       }
     },
     {
-      name: '修改',
+      name: '编辑',
       auth: 'ROLES_EDIT',
       customtype: 'warning',
       icon: <EditOutlined />,
+      disabled: selectedRowKeys.length !== 1,
       onClick: () => {
-        console.log(`obj`, 333333333333333)
+        toggleModalVisibleMethod(true, '编辑角色配置', selectedRows[0])
       }
     },
     {
@@ -70,7 +79,7 @@ const RolesTable: React.FC = (): ReactElement => {
         console.log(`obj`, 444444444444444)
       }
     }
-  ]
+  ], [selectedRowKeys])
 
   const columns: ColumnType<RolesRecord>[] = [
     {
@@ -111,8 +120,27 @@ const RolesTable: React.FC = (): ReactElement => {
     {
       title: '操作',
       dataIndex: 'operation',
-      align: 'center'
-
+      align: 'center',
+      render: function operationRender(value: any, record: RolesRecord, index: number) {
+        return (
+          <Fragment>
+            <AuthButton
+              type='link'
+              auth='ROLES_EDIT'
+              onClick={() => { toggleModalVisibleMethod(true, '编辑角色配置', record) }}
+            >
+              <EditOutlined />编辑
+            </AuthButton>
+            <AuthButton
+              danger
+              type='link'
+              auth='ROLES_DEL'
+            >
+              <DeleteOutlined />删除
+            </AuthButton>
+          </Fragment>
+        )
+      }
     }
   ]
 
@@ -128,21 +156,22 @@ const RolesTable: React.FC = (): ReactElement => {
     })
   }
 
-  const title = () => {
-    return (
-      <h2>角色列表</h2>
-    )
-  }
-
   return (
     <AdvancedTable
-      title={title}
-      canConfig={canConfig}
+      title={() => <h2>角色列表</h2>}
+      canConfig={true}
       authActions={authActions}
       columns={columns}
       dataSource={tableList}
       rowKey={(record) => {
         return `${record.rolesOrder}`
+      }}
+      rowSelection={{
+        selectedRowKeys,
+        onChange: (selectedRowKeys: React.Key[], selectedRows: RolesRecord[]) => {
+          setSelectedRowKeys(selectedRowKeys)
+          setSelectedRows(selectedRows)
+        }
       }}
     />
   )
