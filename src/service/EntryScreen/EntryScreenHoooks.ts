@@ -2,7 +2,7 @@ import { message } from 'antd'
 import { loginApi, getAuthInfoApi } from 'api/EntryScreenApi/EntryScreenApi'
 import Cookies from 'js-cookie'
 import { useHistory } from 'react-router'
-import { authRouter } from 'routers/userDynamicRouters'
+import { filterAuthRoutes } from 'routers/userDynamicRouters'
 export interface ILogin {
   username: string,
   password: string
@@ -49,7 +49,7 @@ export const useLogin = () => {
       const { data } = await getAuthInfoApi({ token: userInfo.token })
       console.log(data[0])
       if (data[0].authMenu) {
-        localStorage.setItem('authMenu', JSON.stringify(authRouter(data[0].authMenu)))
+        localStorage.setItem('authMenu', JSON.stringify(filterAuthRoutes(data[0].authMenu)))
         localStorage.setItem('authButton', JSON.stringify(data[0].authButton))
       } else {
         message.error('权限信息获取失败,请联系管理员!')

@@ -1,6 +1,6 @@
 import React, { ReactElement, Fragment, useState, Key, useMemo } from 'react'
 import AdvancedTable, { AuthAction } from 'components/AdvancedTable/AdvancedTable'
-import { ColumnType } from 'antd/lib/table'
+import Table, { ColumnType } from 'antd/lib/table'
 import { Modal, Switch } from 'antd'
 import AuthButton from 'appAuthority/AuthButton/AuthButton'
 import {
@@ -10,6 +10,7 @@ import {
   VerticalAlignBottomOutlined,
   ExclamationCircleOutlined
 } from '@ant-design/icons'
+import { ExpandableConfig, TableRowSelection } from 'antd/lib/table/interface'
 
 interface RolesRecord {
   rolesOrder: number,
@@ -17,6 +18,7 @@ interface RolesRecord {
   authCharacter: string,
   rolesStatus: number,
   createBy: number,
+  description?: string
 }
 interface IRolesTable {
   toggleModalVisibleMethod: (visible: boolean, title?: string | undefined, record?: RolesRecord | undefined) => void
@@ -152,10 +154,33 @@ const RolesTable: React.FC<IRolesTable> = (props): ReactElement => {
       rolesName: `超级管理员${i}`,
       authCharacter: `admin${i}`,
       rolesStatus: 1,
-      createBy: 2021
+      createBy: 2021,
+      description: 'My name is Jim Green, I am 42 years old, living in London No. 1 Lake Park.'
     })
   }
 
+  const rowSelection: TableRowSelection<RolesRecord> | undefined = {
+    selectedRowKeys,
+    fixed: true,
+    onChange: (selectedRowKeys: React.Key[], selectedRows: RolesRecord[]) => {
+      setSelectedRowKeys(selectedRowKeys)
+      setSelectedRows(selectedRows)
+    },
+    columnWidth: 48,
+    selections: [
+      Table.SELECTION_ALL,
+      Table.SELECTION_INVERT,
+      Table.SELECTION_NONE
+    ],
+    type: 'checkbox'
+  }
+
+  const expandable: ExpandableConfig<RolesRecord> | undefined = {
+    fixed: 'left',
+    expandedRowRender: function expandedRowRender(record: RolesRecord) {
+      return <p style={{ margin: 0 }}>{record.description}</p>
+    }
+  }
   return (
     <AdvancedTable
       title={() => <h2>角色列表</h2>}
@@ -166,13 +191,9 @@ const RolesTable: React.FC<IRolesTable> = (props): ReactElement => {
       rowKey={(record) => {
         return `${record.rolesOrder}`
       }}
-      rowSelection={{
-        selectedRowKeys,
-        onChange: (selectedRowKeys: React.Key[], selectedRows: RolesRecord[]) => {
-          setSelectedRowKeys(selectedRowKeys)
-          setSelectedRows(selectedRows)
-        }
-      }}
+      rowSelection={rowSelection}
+      expandable={expandable}
+      scroll={{ x: 'max-content' }}
     />
   )
 }

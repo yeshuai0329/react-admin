@@ -1,5 +1,5 @@
 import React, { ReactElement, useMemo, useState, Fragment } from 'react'
-import AdvancedSearch from 'components/AdvancedSearch/AdvancedSearch'
+import AdvancedSearch, { SearchFormItem } from 'components/AdvancedSearch/AdvancedSearch'
 import RolesTable from './components/RolesTable/RolesTable'
 import RolesModal from './components/RolesModal/RolesModal'
 import { RolesRecord } from 'typings/AuthManage/RolesManage/RolseManage.d'
@@ -19,7 +19,7 @@ const RolesManage: React.FC = (): ReactElement => {
     setRowList((record))
   }
 
-  const formList = useMemo(() => {
+  const formList: SearchFormItem[] = useMemo(() => {
     return [
       {
         name: 'roleName',

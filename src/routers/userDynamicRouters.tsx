@@ -21,30 +21,37 @@ const LoadingComponent = () => {
  * @description: 本地所有路由信息映射
  */
 const allAuthRouter:{[key:string]: any} = {
+  // 首页
   home: Loadable({
     loader: () => import(/* webpackChunkName: "Home" */'pages/Home/Home'),
     loading: LoadingComponent
   }),
+  // 分析页
   analysis: Loadable({
     loader: () => import(/* webpackChunkName: "Analysis" */'pages/Dashbord/Analysis/Analysis'),
     loading: LoadingComponent
   }),
+  // 监控页面
   monitor: Loadable({
     loader: () => import(/* webpackChunkName: "Monitor" */'pages/Dashbord/Monitor/Monitor'),
     loading: LoadingComponent
   }),
+  // 角色管理
   rolesmanage: Loadable({
     loader: () => import(/* webpackChunkName: "RolesManage" */'pages/AuthManage/RolesManage/RolesManage'),
     loading: LoadingComponent
   }),
+  // 账户管理
   accountsmanage: Loadable({
     loader: () => import(/* webpackChunkName: "AccountsManage" */'pages/AuthManage/AccountsManage/AccountsManage'),
     loading: LoadingComponent
   }),
+  // 菜单管理
   menusmanage: Loadable({
     loader: () => import(/* webpackChunkName: "MenusManage" */'pages/AuthManage/MenusManage/MenusManage'),
     loading: LoadingComponent
   }),
+  // 系统配置
   systemconfig: Loadable({
     loader: () => import(/* webpackChunkName: "MenusManage" */'pages/System/SystemConfig/SystemConfig'),
     loading: LoadingComponent
@@ -77,11 +84,11 @@ export const userDynamicRouters = (rightRouters: any) => {
  * @param {*}
  * @return {*}
  */
-export const authRouter = (authMenu: any[]): any => {
+export const filterAuthRoutes = (authMenu: any[]): any => {
   const newArr = authMenu.filter((menu: any) => menu.auth)
   return newArr.map((item: any) => {
     if (item.children && item.children.length) {
-      item.children = authRouter(item.children)
+      item.children = filterAuthRoutes(item.children)
     }
     return item
   })

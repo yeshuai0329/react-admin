@@ -2,7 +2,8 @@
 const {
   override,
   addLessLoader,
-  fixBabelImports
+  fixBabelImports,
+  removeModuleScopePlugin
 } = require('customize-cra')
 
 module.exports = override(
@@ -17,5 +18,7 @@ module.exports = override(
     libraryName: 'antd',
     libraryDirectory: 'es',
     style: 'css' // 自动打包相关的样式 默认为 style:'css'
-  })
+  }),
+  removeModuleScopePlugin()
+
 )
