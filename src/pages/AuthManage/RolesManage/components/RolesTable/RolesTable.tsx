@@ -2,7 +2,7 @@ import React, { ReactElement, Fragment, useState, Key, useMemo } from 'react'
 import AdvancedTable, { AuthAction } from 'components/AdvancedTable/AdvancedTable'
 import Table, { ColumnType } from 'antd/lib/table'
 import { Modal, Switch } from 'antd'
-import AuthButton from 'appAuthority/AuthButton/AuthButton'
+import AuthButton from 'components/AuthButton/AuthButton'
 import {
   PlusOutlined,
   DeleteOutlined,
@@ -87,17 +87,21 @@ const RolesTable: React.FC<IRolesTable> = (props): ReactElement => {
     {
       title: '角色编号',
       dataIndex: 'rolesOrder',
-      align: 'center'
+      align: 'center',
+      width: 200,
+      fixed: 'left'
     },
     {
       title: '角色名称',
       dataIndex: 'rolesName',
-      align: 'center'
+      align: 'center',
+      width: 200
     },
     {
       title: '权限字符',
       dataIndex: 'authCharacter',
-      align: 'center'
+      align: 'center',
+      width: 200
     },
     {
       title: '角色状态',
@@ -112,12 +116,14 @@ const RolesTable: React.FC<IRolesTable> = (props): ReactElement => {
             onClick={(val) => { editRoleStatus(val, record) }}
           />
         )
-      }
+      },
+      width: 200
     },
     {
       title: '创建时间',
       dataIndex: 'createBy',
-      align: 'center'
+      align: 'center',
+      width: 200
     },
     {
       title: '操作',
@@ -142,7 +148,9 @@ const RolesTable: React.FC<IRolesTable> = (props): ReactElement => {
             </AuthButton>
           </Fragment>
         )
-      }
+      },
+      width: 200,
+      fixed: 'right'
     }
   ]
 

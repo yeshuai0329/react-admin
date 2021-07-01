@@ -3,7 +3,7 @@ import zhCN from 'antd/lib/locale/zh_CN'
 import { ConfigProvider } from 'antd'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import InitialProvider from 'appAuthority/AppProviders/InitialProvider'
+import InitialProvider from 'components/AppProviders/InitialProvider'
 import store from 'store/store'
 
 const AppProviders: React.FC = (props): ReactElement => {

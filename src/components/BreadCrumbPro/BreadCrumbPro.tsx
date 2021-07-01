@@ -14,7 +14,7 @@ const BreadCrumbPro: React.FC<BreadcrumbProps> = (props): ReactElement => {
   React.useEffect(() => {
     const path = localtion.pathname
     const authMenu = JSON.parse(localStorage.getItem('authMenu') || '[]')
-    const list = findAllFather(authMenu, path).reverse()
+    const list = findAllFather(authMenu, path)?.reverse()
     setBreadCrumbList(list)
   }, [localtion])
 

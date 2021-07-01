@@ -22,9 +22,9 @@ interface AdvancedSearchProps {
 const AdvancedSearch = forwardRef(function fnRef(props: AdvancedSearchProps, ref) {
   const { formList, onSearch } = props
 
-  const [form] = Form.useForm()
   const [isOpen, setIsOpen] = useState(false)
   const [count, setCount] = useState(4)
+  const [form] = Form.useForm()
 
   const reset = () => {
     form.resetFields()

@@ -1,4 +1,4 @@
-import AppProviders from 'appAuthority/AppProviders/AppProviders'
+import AppProviders from 'components/AppProviders/AppProviders'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import 'utils/styles/reset.less'

@@ -11,14 +11,13 @@
 │   └── index.html           # 入口html文件
 ├── src
 │   ├── api                  # 后台接口服务
-│   ├── appAuthority         # 项目控制权限相关
+│   ├── assets               # 本地静态资源
+│   │   └── images                 # 全局图片资源
+│   ├── components           # 业务通用组件
 │   │   └── AppConfig              # 全局App控制
 │   │   └── AppProviders           # App组件包裹组件
 │   │   └── AuthButton             # 全局权限按钮
 │   │   └── AuthRoute              # 全局权限路由,token过期,跳转登录页
-│   ├── assets               # 本地静态资源
-│   │   └── images                 # 全局图片资源
-│   ├── components           # 业务通用组件
 │   │   └── AdvancedSearch         # Form高级搜索
 │   │   └── AdvancedTable          # Table高级表格
 │   │   └── BreadCrumbPro          # 面包屑
