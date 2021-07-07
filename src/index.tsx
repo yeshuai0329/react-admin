@@ -8,6 +8,10 @@ import EntryScreen from 'pages/EntryScreen/EntryScreen'
 import { Redirect, Route, Switch } from 'react-router-dom'
 import Cookies from 'js-cookie'
 
+// 数据mock
+const { mockXHR } = require('../Mock')
+mockXHR()
+
 ReactDOM.render(
   <AppProviders>
     <Switch>

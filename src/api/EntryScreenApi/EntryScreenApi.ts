@@ -1,19 +1,20 @@
 import request from '../request'
 
+const baseUrl = process.env.REACT_APP_BASEURL
 // 登录接口
-export const loginApi = (params:{username: string, password: string}) => {
+export const loginApi = (data:{username: string, password: string}) => {
   return request({
-    url: 'http://localhost:8000/users',
-    method: 'get',
-    params
+    url: `${baseUrl}/api/v1/user/login`,
+    method: 'post',
+    data
   })
 }
 
 // 获取用户权限信息
-export const getAuthInfoApi = (params:{token: string}) => {
+export const getAuthInfoApi = (data:{token: string}) => {
   return request({
-    url: 'http://localhost:8000/authInfo',
-    method: 'get',
-    params
+    url: `${baseUrl}/api/v1/user/authinfo`,
+    method: 'post',
+    data
   })
 }

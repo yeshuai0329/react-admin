@@ -19,7 +19,7 @@ const Login: React.FC<IProps> = (props) => {
      <Form
       name="normal_login"
       className={"login-form"}
-      initialValues={{ remember: true }}
+      initialValues={{ username: 'admin', password: 'admin' }}
       onFinish={onFinish}
     >
       <QueueAnim type="left">

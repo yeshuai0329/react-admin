@@ -22,10 +22,11 @@ export interface IButtonProps extends ButtonProps {
 
 const AuthButton = (props: IButtonProps): ReactElement | null => {
   const { auth, customtype, ...remainProps } = props
-  const userAuthButtonType: string[] = JSON.parse(localStorage.getItem('authButton') || '[]')
-  const bool = userAuthButtonType.includes(auth)
+  const userAuthButtonType: {id:string, authName: string}[] = JSON.parse(localStorage.getItem('authButton') || '[]')
+
+  const bool = userAuthButtonType.filter(item => item.authName === auth)
   return (
-    bool
+    bool.length > 0
       ? <Button className={cx(`custom-${customtype}`)} {...remainProps}>{props.children}</Button>
       : null
   )
