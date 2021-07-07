@@ -55,15 +55,13 @@
 ```
 $ npm i
 ```
-2.  再跑起来`json-server`,提供数据服务
+2.  启动mock环境数据
 ```
-$ npm run json-server
+$ npm run start:mock
+&
+$ yarn start:mock
 ```
-3.  然后`npm run start`,启动项目
-
-```
-$ npm run start
-```
+3.  具体脚本命令 ---> package.json
 
 
 ## 四、项目依赖
@@ -79,7 +77,10 @@ $ npm run start
 - less  -  使用less作为css预处理器语言
 - axios  -  使用axios网络库，请求数据
 - antd  -  使用antd组件库快速开发
+- mock  -  使用mock 模拟数据开发
+- loadable  -  使用loadable 切割代码
 
+...
 ## 五、功能
 
 - 菜单、路由权限
