@@ -1,16 +1,12 @@
 import AppProviders from 'components/AppProviders/AppProviders'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import 'utils/styles/reset.less'
-import 'utils/styles/globalAntd.module.less'
+import './styles/reset.less'
+import './styles/globalAntd.module.less'
 import App from './pages/App'
 import EntryScreen from 'pages/EntryScreen/EntryScreen'
 import { Redirect, Route, Switch } from 'react-router-dom'
 import Cookies from 'js-cookie'
-
-// 数据mock
-const { mockXHR } = require('../Mock')
-mockXHR()
 
 ReactDOM.render(
   <AppProviders>
