@@ -30,7 +30,6 @@ const AdvancedSearch = forwardRef(function fnRef(props: AdvancedSearchProps, ref
 
   const onFinish = () => {
     form.validateFields().then(res => {
-      console.log(`res`, res)
       onSearch(res)
     })
   }
@@ -42,7 +41,6 @@ const AdvancedSearch = forwardRef(function fnRef(props: AdvancedSearchProps, ref
   })
 
   const toggle = () => {
-    console.log(`isOpen`, isOpen)
     if (!isOpen) {
       setCount(formList.length)
     } else {

@@ -10,12 +10,19 @@ import {
   ExclamationCircleOutlined
 } from '@ant-design/icons'
 import { useAccountColumns } from 'service/AuthManage/AccountsManage/columnsHook'
-import { AccountRecord, titleMap, IAccountTable } from 'typings/AuthManage/AccountsManage/AccountsManage.d'
+import { AccountRecord, titleMap, IAccountTable, accountStatusMap } from 'typings/AuthManage/AccountsManage/AccountsManage.d'
 import { useRowSelection, useExpandable } from 'publicHooks/publicTableHooks/publicTableHooks'
 import { ColumnsType } from 'antd/lib/table/interface'
 
 const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
-  const { tableList, toggleModalVisibleMethod } = props
+  const {
+    tableList,
+    toggleModalVisibleMethod,
+    paging,
+    pageTotal,
+    changePage
+  } = props
+  console.log(`paging`, paging)
   // 表格选择配置选项
   const { selectedRowKeys, rowSelection, selectedRows } = useRowSelection<AccountRecord>()
   // 表格展开配置选项
@@ -70,8 +77,8 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
     return (
       <Switch
         checked={!!record.accountsStatus}
-        checkedChildren="启用"
-        unCheckedChildren="禁用"
+        checkedChildren={accountStatusMap.find(item => item.value === '1')?.label}
+        unCheckedChildren={accountStatusMap.find(item => item.value === '0')?.label}
         onClick={(val) => { editAccountStatus(val, record) }}
       />
     )
@@ -127,7 +134,12 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
       expandable={expandable}
       scroll={{ x: 'max-content' }}
       pagination={{
-        position: ['bottomCenter']
+        showSizeChanger: true,
+        showQuickJumper: true,
+        total: pageTotal,
+        showTotal: (total) => `共 ${total} 条`,
+        position: ['bottomCenter'],
+        onChange: changePage
       }}
     />
   )

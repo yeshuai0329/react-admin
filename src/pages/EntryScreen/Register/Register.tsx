@@ -13,7 +13,7 @@ const Register: React.FC<IProps> = (props) => {
   // 获取验证码按钮点击以后置灰/显示倒计时状态
   const [pCodeButtonDisabled, setPCodeButtonDisabled] = React.useState(false)
   const onFinish = (values: any) => {
-    console.log('Received values of form: ', values)
+    console.log('values: ', values)
   }
 
   const getPCodeButton = (): void => {

@@ -49,7 +49,6 @@ export const useLogin = () => {
     const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}')
     if (userInfo.token) {
       const { data } = await getAuthInfoApi({ token: userInfo.token })
-      console.log(data)
       if (data.code === 200 && data.data.authMenu) {
         localStorage.setItem('authMenu', JSON.stringify(filterAuthRoutes(data.data.authMenu)))
         localStorage.setItem('authButton', JSON.stringify(data.data.authButton))

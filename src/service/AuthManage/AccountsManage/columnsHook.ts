@@ -1,6 +1,6 @@
 import React from 'react'
 import { ColumnsType } from 'antd/lib/table'
-import { AccountRecord } from 'typings/AuthManage/AccountsManage/AccountsManage.d'
+import { AccountRecord, departmentMap } from 'typings/AuthManage/AccountsManage/AccountsManage.d'
 import { useCommonColumns } from 'publicHooks/publicTableHooks/publicTableHooks'
 
 interface IOptions {
@@ -14,7 +14,15 @@ export const useAccountColumns = (options: IOptions) : ColumnsType<AccountRecord
     { title: '编号', dataIndex: 'accountsOrder', align: 'center', width: 100, fixed: 'left' },
     { title: '登录账号', dataIndex: 'loginAccount', align: 'center', width: 200 },
     { title: '账号密码', dataIndex: 'accountPassword', align: 'center', width: 200 },
-    { title: '所属部门', dataIndex: 'department', align: 'center', width: 200 },
+    {
+      title: '所属部门',
+      dataIndex: 'department',
+      align: 'center',
+      width: 200,
+      render: function (value:string) {
+        return departmentMap.find(item => item.value === value)?.label
+      }
+    },
     {
       title: '账号状态',
       dataIndex: 'accountsStatus',
