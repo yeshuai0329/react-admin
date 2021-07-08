@@ -9,22 +9,20 @@ import {
   VerticalAlignBottomOutlined,
   ExclamationCircleOutlined
 } from '@ant-design/icons'
-import { tableColumsFn } from 'service/AuthManage/AccountsManage/columnsHook'
-import { ColumnsType } from 'antd/lib/table/interface'
+import { useAccountColumns } from 'service/AuthManage/AccountsManage/columnsHook'
 import { AccountRecord, titleMap, IAccountTable } from 'typings/AuthManage/AccountsManage/AccountsManage.d'
-import { useRowSelection, useExpandable } from 'hooks/publicTableHooks/publicTableHooks'
+import { useRowSelection, useExpandable } from 'publicHooks/publicTableHooks/publicTableHooks'
+import { ColumnsType } from 'antd/lib/table/interface'
 
 const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
   const { toggleModalVisibleMethod } = props
   // 表格选择配置选项
   const { selectedRowKeys, rowSelection, selectedRows } = useRowSelection<AccountRecord>()
-
   // 表格展开配置选项
   const expandedRowRender = (record: AccountRecord) => {
     return <p style={{ margin: 0 }}>{record.description}</p>
   }
   const expandable = useExpandable<AccountRecord>(expandedRowRender)
-
   // 表格操作按钮配置项
   const authActions: AuthAction[] = useMemo(() => [
     {
@@ -100,7 +98,7 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
     )
   }
   // 可展示列
-  const columns :ColumnsType<AccountRecord> = tableColumsFn({
+  const columns :ColumnsType<AccountRecord> = useAccountColumns({
     accountsStatusRender,
     operationRender
   })
@@ -126,8 +124,6 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
     Modal.confirm({
       icon: <ExclamationCircleOutlined />,
       content: <Fragment>{val ? `确定启用 ${record.loginAccount} 账号 ?` : `确定禁用 ${record.loginAccount} 账号 ?`}</Fragment>,
-      okText: '确认',
-      cancelText: '取消',
       onOk: () => {
         console.log(`obj`, 11)
       }

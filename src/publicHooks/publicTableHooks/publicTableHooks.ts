@@ -3,13 +3,13 @@ import { Table } from 'antd'
 import { ColumnsType, ExpandableConfig, TableRowSelection } from 'antd/lib/table/interface'
 import moment from 'moment'
 
+/**
+ * @description 表格选择行配置项
+ */
 export const useRowSelection = <T>() => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([])
   const [selectedRows, setSelectedRows] = useState<T[]>([])
 
-  /**
-   * @description 表格选择行配置项
-   */
   const rowSelection: TableRowSelection<T> | undefined = {
     selectedRowKeys,
     fixed: true,
@@ -17,7 +17,7 @@ export const useRowSelection = <T>() => {
       setSelectedRowKeys(selectedRowKeys)
       setSelectedRows(selectedRows)
     },
-    columnWidth: 48,
+    columnWidth: 64,
     selections: [
       Table.SELECTION_ALL,
       Table.SELECTION_INVERT,
@@ -44,22 +44,16 @@ export const useExpandable = <T>(expandedRowRender?: any) => {
   return expandable
 }
 
+/**
+ * 公共表格列
+ */
 export const useCommonColumns = <T>() => {
-  /**
-   * 创建时间渲染函数
-   * @param value 当前列的值
-   * @param record 当前行的行数据
-   * @returns
-   */
+  // 创建时间渲染函数
   const renderCreateTime = (value: number) => {
     return moment(value).format('YYYY-MM-DD HH:mm:ss')
   }
-  /**
-     * 更新时间渲染函数
-     * @param value 当前列的值
-     * @param record 当前行的行数据
-     * @returns
-     */
+
+  // 更新时间渲染函数
   const renderUpdateTime = (value: number) => {
     return moment(value).format('YYYY-MM-DD HH:mm:ss')
   }
