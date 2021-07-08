@@ -178,7 +178,11 @@ module.exports = [
               { id: '21', authName: "ROLES_ADD" },
               { id: '22', authName: "ROLES_EDIT" },
               { id: '23', authName: "ROLES_DEL" },
-              { id: '24', authName: "ROLES_EXPORT" }
+              { id: '24', authName: "ROLES_EXPORT" },
+              { id: '31', authName: "ACCOUNT_ADD" },
+              { id: '32', authName: "ACCOUNT_EDIT" },
+              { id: '33', authName: "ACCOUNT_DEL" },
+              { id: '34', authName: "ACCOUNT_EXPORT" }
             ]
           }
         }

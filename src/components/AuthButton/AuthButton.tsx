@@ -12,6 +12,10 @@ export type AuthButtonType = 'HOME_ADD'
  | 'ROLES_EDIT'
  | 'ROLES_DEL'
  | 'ROLES_EXPORT'
+ | 'ACCOUNT_ADD'
+ | 'ACCOUNT_EDIT'
+ | 'ACCOUNT_DEL'
+ | 'ACCOUNT_EXPORT'
 
 export type CustomType = 'default' | 'success' | 'danger' | 'warning' | 'info'
 
