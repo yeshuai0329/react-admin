@@ -2,9 +2,11 @@ var Mock = require('mockjs')
 const { param2Obj } = require('./utils')
 
 const user = require('./user')
+const accountManage = require('./accountManage')
 
 const mocks = [
-  ...user
+  ...user,
+  ...accountManage
 ]
 
 // for front mock

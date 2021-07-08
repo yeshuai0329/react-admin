@@ -21,6 +21,7 @@ export const titleMap: {[key:string]: string} = {
 
 interface IAccountTable {
   toggleModalVisibleMethod: (visible: boolean, title?: string | undefined, record?: AccountRecord | undefined) => void
+  tableList: AccountRecord[] | never[]
 }
 
 // 账号管理模态框

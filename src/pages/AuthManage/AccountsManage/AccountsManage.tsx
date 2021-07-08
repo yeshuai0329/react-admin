@@ -1,8 +1,9 @@
-import React, { ReactElement, useMemo, useState, Fragment } from 'react'
+import React, { ReactElement, useMemo, useState, Fragment, useEffect } from 'react'
 import AdvancedSearch, { SearchFormItem } from 'components/AdvancedSearch/AdvancedSearch'
 import AccountTable from './components/AccountTable/AccountTable'
 import AccountModal from './components/AccountModal/AccountModal'
 import { AccountRecord, titleMap } from 'typings/AuthManage/AccountsManage/AccountsManage.d'
+import { accountQueryApi } from 'api/AccountsManage/AccountsManage'
 
 const RolesManage: React.FC = (): ReactElement => {
   // 模态框的标题
@@ -11,6 +12,10 @@ const RolesManage: React.FC = (): ReactElement => {
   const [modalVisible, setModalVisible] = useState<boolean>(false)
   // 表格编辑按钮被点击获取到的行数据
   const [rowList, setRowList] = useState<AccountRecord>()
+  // 高级搜索查询参数
+  const [searchData, setSearchData] = useState({ account: 850360 })
+  // 高级搜索查询参数
+  const [tableList, setTableList] = useState<AccountRecord[] | never[]>([])
 
   // 打开模态框方法
   const toggleModalVisibleMethod = (visible: boolean, title?: string, record?: AccountRecord) => {
@@ -36,8 +41,20 @@ const RolesManage: React.FC = (): ReactElement => {
     ]
   }, [])
 
-  const onSearch = () => {
+  const onSearch = (params: any) => {
+    setSearchData(params)
+  }
 
+  useEffect(() => {
+    accountQueryMethod()
+  }, [])
+  // 查询接口
+  const accountQueryMethod = async () => {
+    const { data } = await accountQueryApi(searchData)
+    console.log(`data`, data)
+    if (data.code === 200) {
+      setTableList(data.data)
+    }
   }
 
   return (
@@ -49,6 +66,7 @@ const RolesManage: React.FC = (): ReactElement => {
 
       <AccountTable
         toggleModalVisibleMethod={toggleModalVisibleMethod}
+        tableList={tableList}
       />
 
       <AccountModal

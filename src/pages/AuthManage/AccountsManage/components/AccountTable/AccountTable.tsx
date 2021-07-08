@@ -15,7 +15,7 @@ import { useRowSelection, useExpandable } from 'publicHooks/publicTableHooks/pub
 import { ColumnsType } from 'antd/lib/table/interface'
 
 const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
-  const { toggleModalVisibleMethod } = props
+  const { tableList, toggleModalVisibleMethod } = props
   // 表格选择配置选项
   const { selectedRowKeys, rowSelection, selectedRows } = useRowSelection<AccountRecord>()
   // 表格展开配置选项
@@ -102,23 +102,6 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
     accountsStatusRender,
     operationRender
   })
-
-  const tableList: AccountRecord[] = []
-
-  for (var i = 0; i < 1000; i++) {
-    tableList.push({
-      accountsOrder: i,
-      loginAccount: `850360998@qq.com${i}`,
-      accountPassword: `123456`,
-      department: [1, 2, 3],
-      accountsStatus: 1,
-      phoneNumber: 15526190000,
-      email: '850360998@qq.com',
-      createTime: new Date().getTime(),
-      updateTime: new Date().getTime(),
-      description: 'My name is Jim Green, I am 42 years old, living in London No. 1 Lake Park.'
-    })
-  }
 
   const editAccountStatus = (val: boolean, record: AccountRecord) => {
     Modal.confirm({
