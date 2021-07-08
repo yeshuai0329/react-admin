@@ -7,7 +7,7 @@ for (let i = 0; i < count; i++) {
     loginAccount: Mock.mock('@email'),
     accountPassword: Mock.mock('@word(8, 16)'),
     'department|1': ['1', '2', '3', '4', '5'],
-    'accountsStatus|1': [0, 1],
+    'accountStatus|1': [0, 1],
     phoneNumber: 15526190820,
     email: Mock.mock('@email'),
     createTime: Mock.Random.datetime(),
@@ -52,7 +52,8 @@ module.exports = [
         if (accountStatus === '' || accountStatus === undefined || accountStatus === null) {
           return true
         }
-        return item.accountStatus === accountStatus
+        console.log(`accountStatus`, accountStatus)
+        return item.accountStatus === Number(accountStatus)
       })
       mockList = mockList.filter(item => {
         if (email === '' || email === undefined || email === null) {

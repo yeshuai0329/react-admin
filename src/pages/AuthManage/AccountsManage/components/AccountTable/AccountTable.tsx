@@ -76,9 +76,9 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
   const accountsStatusRender = (value: number, record: AccountRecord) => {
     return (
       <Switch
-        checked={!!record.accountsStatus}
-        checkedChildren={accountStatusMap.find(item => item.value === '1')?.label}
-        unCheckedChildren={accountStatusMap.find(item => item.value === '0')?.label}
+        checked={!!record.accountStatus}
+        checkedChildren={accountStatusMap.find(item => item.value === 1)?.label}
+        unCheckedChildren={accountStatusMap.find(item => item.value === 0)?.label}
         onClick={(val) => { editAccountStatus(val, record) }}
       />
     )

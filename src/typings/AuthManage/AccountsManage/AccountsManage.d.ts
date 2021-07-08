@@ -5,7 +5,7 @@ export interface AccountRecord {
   loginAccount: string,
   accountPassword: string,
   department: number[],
-  accountsStatus: number,
+  accountStatus: number,
   phoneNumber: number,
   email: string,
   createTime: number,
@@ -28,10 +28,10 @@ export const departmentMap: {value: string, label: string}[] = [
   {value: '5',label: '公关部门'}
 ]
 
-export const accountStatusMap: {value: string, label: string}[] = [
+export const accountStatusMap: {value: string | number, label: string}[] = [
   {value: '',label: '全部'},
-  {value: '0',label: '已禁用'},
-  {value: '1',label: '已启用'},
+  {value: 0,label: '已禁用'},
+  {value: 1,label: '已启用'},
 ]
 
 interface IAccountTable {
