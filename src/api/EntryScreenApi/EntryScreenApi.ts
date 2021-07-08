@@ -1,6 +1,7 @@
 import request from '../request'
 
 const baseUrl = process.env.REACT_APP_BASEURL
+
 // 登录接口
 export const loginApi = (data:{username: string, password: string}) => {
   return request({

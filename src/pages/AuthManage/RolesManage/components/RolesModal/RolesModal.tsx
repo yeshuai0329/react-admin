@@ -1,10 +1,7 @@
 import React, { ReactElement } from 'react'
-import { Modal, ModalProps } from 'antd'
-import { RolesRecord } from 'typings/AuthManage/RolesManage/RolseManage'
+import { Modal } from 'antd'
+import { IRolesModal } from 'typings/AuthManage/RolesManage/RolseManage.d'
 
-interface IRolesModal extends ModalProps {
-  rowList?: RolesRecord
-}
 const RolesModal: React.FC<IRolesModal> = (props): ReactElement => {
   const { ...remainProps } = props
   return (

@@ -11,22 +11,10 @@ import {
   ExclamationCircleOutlined
 } from '@ant-design/icons'
 import { ExpandableConfig, TableRowSelection } from 'antd/lib/table/interface'
+import { RolesRecord, titleMap, IRolesTable } from 'typings/AuthManage/RolesManage/RolseManage.d'
 
-interface RolesRecord {
-  rolesOrder: number,
-  rolesName: string,
-  authCharacter: string,
-  rolesStatus: number,
-  createBy: number,
-  description?: string
-}
-interface IRolesTable {
-  toggleModalVisibleMethod: (visible: boolean, title?: string | undefined, record?: RolesRecord | undefined) => void
-
-}
 const RolesTable: React.FC<IRolesTable> = (props): ReactElement => {
   const { toggleModalVisibleMethod } = props
-
   const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([])
   const [selectedRows, setSelectedRows] = useState<RolesRecord[]>([])
 
@@ -49,7 +37,7 @@ const RolesTable: React.FC<IRolesTable> = (props): ReactElement => {
       customtype: 'default',
       icon: <PlusOutlined />,
       onClick: () => {
-        toggleModalVisibleMethod(true, '创建角色配置')
+        toggleModalVisibleMethod(true, titleMap[1])
       }
     },
     {
@@ -69,7 +57,7 @@ const RolesTable: React.FC<IRolesTable> = (props): ReactElement => {
       icon: <EditOutlined />,
       disabled: selectedRowKeys.length !== 1,
       onClick: () => {
-        toggleModalVisibleMethod(true, '编辑角色配置', selectedRows[0])
+        toggleModalVisibleMethod(true, titleMap[2], selectedRows[0])
       }
     },
     {
@@ -135,7 +123,7 @@ const RolesTable: React.FC<IRolesTable> = (props): ReactElement => {
             <AuthButton
               type='link'
               auth='ROLES_EDIT'
-              onClick={() => { toggleModalVisibleMethod(true, '编辑角色配置', record) }}
+              onClick={() => { toggleModalVisibleMethod(true, titleMap[2], record) }}
             >
               <EditOutlined />编辑
             </AuthButton>
@@ -191,6 +179,7 @@ const RolesTable: React.FC<IRolesTable> = (props): ReactElement => {
   }
   return (
     <AdvancedTable
+      bordered
       title={() => <h2>角色列表</h2>}
       canConfig={true}
       authActions={authActions}
@@ -202,6 +191,9 @@ const RolesTable: React.FC<IRolesTable> = (props): ReactElement => {
       rowSelection={rowSelection}
       expandable={expandable}
       scroll={{ x: 'max-content' }}
+      pagination={{
+        position: ['bottomCenter']
+      }}
     />
   )
 }

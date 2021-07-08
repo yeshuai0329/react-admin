@@ -15,7 +15,7 @@ module.exports = [
     response: config => {
       if (config.body?.username === 'admin' && config.body?.password === 'admin') {
         return {
-          code: 0,
+          code: 200,
           data: {
             id: '1',
             username: 'admin',
@@ -41,7 +41,7 @@ module.exports = [
     response: config => {
       if (config.body?.token === 'ABCDEFG') {
         return {
-          code: 0,
+          code: 200,
           data: {
             authMenu: [
               {

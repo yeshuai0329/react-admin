@@ -1,9 +1,6 @@
 import React, { forwardRef, memo, useImperativeHandle, useState } from 'react'
-import style from './AdvancedSearch.module.less'
-import classNames from 'classnames/bind'
-import { Button, Card, Col, Form, Input, Row, Space } from 'antd'
+import { Button, Col, Form, Input, Row, Space } from 'antd'
 import { SearchOutlined, ReloadOutlined, UpOutlined } from '@ant-design/icons'
-const cx = classNames.bind(style)
 
 export interface SearchFormItem {
   name: string,
@@ -55,72 +52,65 @@ const AdvancedSearch = forwardRef(function fnRef(props: AdvancedSearchProps, ref
   }
 
   return (
-    <Card
-      bodyStyle={{
-        padding: 10
-      }}
+    <Form
+      form={form}
+      onFinish={onFinish}
     >
-      <Form
-        className={cx('AdvancedSearch')}
-        form={form}
-        onFinish={onFinish}
-      >
-        <Row gutter={[16, 0]}>
-          {
-            formList && formList.map((item: any, index:number) => {
-              if (index < count) {
-                return (
-                  <Col key={index} span={6}>
-                    <Form.Item
-                      initialValue={item.initialValue}
-                      label={item.label}
-                      key={item.name}
-                      name={item.name}
-                      rules={item.rules}
-                    >
+      <Row gutter={[16, 0]}>
+        {
+          formList && formList.map((item: any, index:number) => {
+            if (index < count) {
+              return (
+                <Col key={index} span={6}>
+                  <Form.Item
+                    initialValue={item.initialValue}
+                    label={item.label}
+                    key={item.name}
+                    name={item.name}
+                    rules={item.rules}
+                  >
+                    {
+                      item.render
+                        ? item.render
+                        : <Input
+                            allowClear
+                            type="text"
+                            placeholder={item.placeholder}
+                          />
+                    }
+                  </Form.Item>
+                </Col>
+              )
+            }
+            return null
+          })
+        }
+      </Row>
+      <Row>
+        <Col span={24} style={{ textAlign: 'right', marginRight: '24px' }}>
+          <Space style={{ marginRight: '48px' }}>
+              <Button type="primary" htmlType="submit">
+                <SearchOutlined />查询
+              </Button>
+              <Button htmlType="reset" onClick={reset}>
+                <ReloadOutlined />重置
+              </Button>
+              {
+                formList && formList.length > 4
+                  ? <Button type='link' onClick={toggle}>
+                      <UpOutlined rotate={isOpen ? 180 : 0} />
                       {
-                        item.render
-                          ? item.render
-                          : <Input
-                              allowClear
-                              type="text"
-                              placeholder={item.placeholder}
-                            />
+                        isOpen
+                          ? '收起'
+                          : '展开'
                       }
-                    </Form.Item>
-                  </Col>
-                )
+                    </Button>
+                  : null
               }
-              return null
-            })
-          }
-        </Row>
-        <Row>
-          <Col span={24} style={{ textAlign: 'right' }}>
-            <Space>
-                <Button type="primary" htmlType="submit">
-                  <SearchOutlined />查询
-                </Button>
-                <Button htmlType="reset" onClick={reset}>
-                  <ReloadOutlined />重置
-                </Button>
-                {
-                  formList && formList.length > 4
-                    ? <Button type='link' onClick={toggle}>
-                        <UpOutlined rotate={isOpen ? 180 : 0} />
-                        {
-                          isOpen
-                            ? '收起'
-                            : '展开'
-                        }
-                      </Button>
-                    : null
-                }
-            </Space>
-          </Col>
-        </Row>
-      </Form>
-    </Card>
+          </Space>
+        </Col>
+      </Row>
+    </Form>
   )
 }
 )
