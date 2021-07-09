@@ -54,6 +54,7 @@ const AdvancedTable = <RecordType extends object = any>(props: IAdvancedTablePro
       </Space>
       <Alert message="Informational Notes" type="info" showIcon closable/>
       <Table
+        size='small'
         columns={pickColumns}
         {...mainProps}
       />

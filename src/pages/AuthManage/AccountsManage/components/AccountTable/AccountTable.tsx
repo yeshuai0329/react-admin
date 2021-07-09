@@ -16,11 +16,12 @@ import { ColumnsType } from 'antd/lib/table/interface'
 
 const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
   const {
-    tableList,
-    toggleModalVisibleMethod,
-    paging,
-    pageTotal,
-    changePage
+    tableList, // 账号表格数据
+    toggleModalVisibleMethod, // 新建和编辑控制模态框关闭打开的方法
+    paging, // 分页详情{pageNo: 1,pageSize: 10}
+    pageTotal, // 总条数
+    changePage, // 改变分页的方法
+    tableLoading
   } = props
   console.log(`paging`, paging)
   // 表格选择配置选项
@@ -121,6 +122,7 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
   }
   return (
     <AdvancedTable
+      loading={tableLoading}
       bordered
       title={() => <h2>账号列表</h2>}
       canConfig={true}

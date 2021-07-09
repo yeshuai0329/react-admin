@@ -2,11 +2,12 @@ import { ModalProps } from 'antd'
 
 export interface AccountRecord {
   accountsOrder: number,
+  name: string,
   loginAccount: string,
   accountPassword: string,
   department: number[],
   accountStatus: number,
-  phoneNumber: number,
+  phoneNumber: string,
   email: string,
   createTime: number,
   updateTime: number,
@@ -40,6 +41,7 @@ interface IAccountTable {
   paging: { pageNo: number, pageSize: number },
   pageTotal: number
   changePage:(page: number, pageSize?: number | undefined) => void
+  tableLoading: boolean
 }
 
 // 账号管理模态框

@@ -4,18 +4,18 @@ const count = 666
 for (let i = 0; i < count; i++) {
   List.push(Mock.mock({
     'accountsOrder|+1': /\d{5,10}/,
+    name: Mock.mock('@cname'),
     loginAccount: Mock.mock('@email'),
     accountPassword: Mock.mock('@word(8, 16)'),
     'department|1': ['1', '2', '3', '4', '5'],
     'accountStatus|1': [0, 1],
-    phoneNumber: 15526190820,
+    'phoneNumber|1': ['15526190001', '1552619000', '15526198888', '15526198080', '15526190880', '15526198686', '15526196868'],
     email: Mock.mock('@email'),
     createTime: Mock.Random.datetime(),
     updateTime: Mock.Random.datetime(),
     description: Mock.mock('@cparagraph(2)')
   }))
 }
-
 module.exports = [
   {
     url: `/api/v1/account/query`,
@@ -27,6 +27,7 @@ module.exports = [
         department,
         accountStatus,
         email,
+        name,
         pageNo = 1,
         pageSize = 10
       } = config.query
@@ -60,6 +61,12 @@ module.exports = [
           return true
         }
         return item.email === email
+      })
+      mockList = mockList.filter(item => {
+        if (name === '' || name === undefined || name === null) {
+          return true
+        }
+        return item.name === name
       })
       const pageList = mockList.filter((item, index) => index < pageSize * pageNo && index >= pageSize * (pageNo - 1))
       return {

@@ -13,6 +13,7 @@ const AccountsManage: React.FC = (): ReactElement => {
   const [modalVisible, setModalVisible] = useState<boolean>(false)
   // 表格编辑按钮被点击获取到的行数据
   const [rowList, setRowList] = useState<AccountRecord>()
+  const [tableLoading, setTableLoading] = useState<boolean>(false)
   // 高级搜索查询参数
   const [searchData, setSearchData] = useState({
     accountsOrder: '',
@@ -56,6 +57,12 @@ const AccountsManage: React.FC = (): ReactElement => {
         placeholder: "请输入登录账号"
       },
       {
+        name: 'name',
+        label: '姓名',
+        initialValue: '',
+        placeholder: "请输入姓名"
+      },
+      {
         name: 'department',
         label: '所属部门',
         initialValue: '',
@@ -93,6 +100,7 @@ const AccountsManage: React.FC = (): ReactElement => {
 
   // 查询接口
   const accountQueryMethod = async () => {
+    setTableLoading(true)
     const params = { ...searchData, ...paging }
     const { data } = await accountQueryApi(params)
     console.log(`data`, data)
@@ -100,6 +108,7 @@ const AccountsManage: React.FC = (): ReactElement => {
       setTableList(data.data)
       setPageTotal(data.total)
     }
+    setTableLoading(false)
   }
 
   return (
@@ -110,6 +119,7 @@ const AccountsManage: React.FC = (): ReactElement => {
       />
 
       <AccountTable
+        tableLoading={tableLoading}
         toggleModalVisibleMethod={toggleModalVisibleMethod}
         tableList={tableList}
         paging={paging}
