@@ -48,30 +48,46 @@ export const useExpandable = <T>(expandedRowRender?: any) => {
  * 公共表格列
  */
 export const useCommonColumns = <T>() => {
-  // 创建时间渲染函数
-  const renderCreateTime = (value: number) => {
+  // 时间渲染函数
+  const renderTime = (value: number) => {
     return moment(value).format('YYYY-MM-DD HH:mm:ss')
   }
 
-  // 更新时间渲染函数
-  const renderUpdateTime = (value: number) => {
-    return moment(value).format('YYYY-MM-DD HH:mm:ss')
-  }
   const commonColumns: ColumnsType<T> = [
     {
       title: '创建时间',
       dataIndex: 'createTime',
       align: 'center',
       width: 200,
-      render: renderCreateTime
+      render: renderTime
     },
     {
       title: '更新时间',
       dataIndex: 'updateTime',
       align: 'center',
       width: 200,
-      render: renderUpdateTime
+      render: renderTime
     }
   ]
   return commonColumns
+}
+
+/**
+ * 分页hooks
+ */
+export const usePaging = () => {
+  const [paging, setPaging] = useState<{ pageNo: number, pageSize: number}>({
+    pageNo: 1,
+    pageSize: 10
+  })
+  /**
+  * @description: 改变分页的方法
+  * */
+  const changePage = (page: number, pageSize?: number | undefined) => {
+    setPaging({ ...paging, pageNo: page, pageSize: (pageSize as number) })
+  }
+  return {
+    paging,
+    changePage
+  }
 }

@@ -5,10 +5,10 @@ export interface AccountRecord {
   name: string,
   loginAccount: string,
   accountPassword: string,
-  department: number[],
+  department: string[],
   accountStatus: number,
   phoneNumber: string,
-  email: string,
+  belongToRoles: string[],
   createTime: number,
   updateTime: number,
   description?: string
@@ -35,10 +35,9 @@ export const accountStatusMap: {value: string | number, label: string}[] = [
   {value: 1,label: '已启用'},
 ]
 
-interface IAccountTable {
+interface IAccountTable{
   toggleModalVisibleMethod: (visible: boolean, title?: string | undefined, record?: AccountRecord | undefined) => void
   tableList: AccountRecord[] | never[]
-  paging: { pageNo: number, pageSize: number },
   pageTotal: number
   changePage:(page: number, pageSize?: number | undefined) => void
   tableLoading: boolean

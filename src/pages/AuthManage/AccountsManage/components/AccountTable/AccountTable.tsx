@@ -9,7 +9,7 @@ import {
   VerticalAlignBottomOutlined,
   ExclamationCircleOutlined
 } from '@ant-design/icons'
-import { useAccountColumns } from 'service/AuthManage/AccountsManage/columnsHook'
+import { useAccountColumns } from 'pages/AuthManage/AccountsManage/service/columnsHook'
 import { AccountRecord, titleMap, IAccountTable, accountStatusMap } from 'typings/AuthManage/AccountsManage/AccountsManage.d'
 import { useRowSelection, useExpandable } from 'publicHooks/publicTableHooks/publicTableHooks'
 import { ColumnsType } from 'antd/lib/table/interface'
@@ -18,19 +18,20 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
   const {
     tableList, // 账号表格数据
     toggleModalVisibleMethod, // 新建和编辑控制模态框关闭打开的方法
-    paging, // 分页详情{pageNo: 1,pageSize: 10}
     pageTotal, // 总条数
     changePage, // 改变分页的方法
     tableLoading
   } = props
-  console.log(`paging`, paging)
+
   // 表格选择配置选项
   const { selectedRowKeys, rowSelection, selectedRows } = useRowSelection<AccountRecord>()
   // 表格展开配置选项
-  const expandedRowRender = (record: AccountRecord) => {
-    return <p style={{ margin: 0 }}>{record.description}</p>
-  }
-  const expandable = useExpandable<AccountRecord>(expandedRowRender)
+  const expandable = useExpandable<AccountRecord>(
+    (record: AccountRecord) => {
+      return <p style={{ margin: 0 }}>{record.description}</p>
+    }
+  )
+
   // 表格操作按钮配置项
   const authActions: AuthAction[] = useMemo(() => [
     {
@@ -120,6 +121,7 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
       }
     })
   }
+
   return (
     <AdvancedTable
       loading={tableLoading}

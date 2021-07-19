@@ -2,7 +2,7 @@ import React, { Dispatch } from 'react'
 import { Form, Input, Button } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import QueueAnim from 'rc-queue-anim'
-import { useLogin } from 'service/EntryScreen/EntryScreenHoooks'
+import { useLogin } from 'pages/EntryScreen/service/EntryScreenHoooks'
 import { connect } from 'react-redux'
 interface IProps {
   reduxLang: any
@@ -15,6 +15,7 @@ const Login: React.FC<IProps> = (props) => {
    * @return {*}
    */
   const { onFinish } = useLogin()
+
   return (
      <Form
       name="normal_login"

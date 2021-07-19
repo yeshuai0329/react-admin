@@ -81,7 +81,6 @@ export const userDynamicRouters = (rightRouters: any) => {
 
 /**
  * @description: 权限路由,根据请求回来的路由,过滤有权限的路由
- * @param {*}
  * @return {*}
  */
 export const filterAuthRoutes = (authMenu: any[]): any => {

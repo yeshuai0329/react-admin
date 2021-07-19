@@ -2,9 +2,12 @@ import React, { ReactElement, useMemo, useState, Fragment, useEffect } from 'rea
 import AdvancedSearch, { SearchFormItem } from 'components/AdvancedSearch/AdvancedSearch'
 import AccountTable from './components/AccountTable/AccountTable'
 import AccountModal from './components/AccountModal/AccountModal'
-import { AccountRecord, accountStatusMap, departmentMap, titleMap } from 'typings/AuthManage/AccountsManage/AccountsManage.d'
+import {
+  AccountRecord, accountStatusMap, departmentMap, titleMap
+} from 'typings/AuthManage/AccountsManage/AccountsManage.d'
 import { accountQueryApi } from 'api/AccountsManage/AccountsManage'
 import { InputNumber, Select } from 'antd'
+import { usePaging } from '../../../publicHooks/publicTableHooks/publicTableHooks'
 
 const AccountsManage: React.FC = (): ReactElement => {
   // 模态框的标题
@@ -13,6 +16,7 @@ const AccountsManage: React.FC = (): ReactElement => {
   const [modalVisible, setModalVisible] = useState<boolean>(false)
   // 表格编辑按钮被点击获取到的行数据
   const [rowList, setRowList] = useState<AccountRecord>()
+  // 表格loading
   const [tableLoading, setTableLoading] = useState<boolean>(false)
   // 高级搜索查询参数
   const [searchData, setSearchData] = useState({
@@ -22,21 +26,16 @@ const AccountsManage: React.FC = (): ReactElement => {
     accountStatus: '',
     email: ''
   })
+  // 分页的自定义hook
+  const { paging, changePage } = usePaging()
   // 高级搜索查询参数
   const [tableList, setTableList] = useState<AccountRecord[] | never[]>([])
-  // 表格分页参数
-  const [paging, setPaging] = useState<{ pageNo: number, pageSize: number}>({
-    pageNo: 1,
-    pageSize: 10
-  })
   const [pageTotal, setPageTotal] = useState<number>(0)
-  const changePage = (page: number, pageSize?: number | undefined) => {
-    setPaging({ ...paging, pageNo: page, pageSize: (pageSize as number) })
-  }
+
   // 打开模态框方法
   const toggleModalVisibleMethod = (visible: boolean, title?: string, record?: AccountRecord) => {
-    setModalTitle((title as string))
     setModalVisible(visible)
+    setModalTitle((title as string))
     setRowList(record)
   }
 
@@ -78,12 +77,6 @@ const AccountsManage: React.FC = (): ReactElement => {
         render: (
           <Select options={accountStatusMap}></Select>
         )
-      },
-      {
-        name: 'email',
-        label: '邮箱',
-        initialValue: '',
-        placeholder: "请输入邮箱"
       }
     ]
   }, [])
@@ -91,7 +84,7 @@ const AccountsManage: React.FC = (): ReactElement => {
   const onSearch = (params: any) => {
     console.log(`params`, params)
     setSearchData(params)
-    setPaging({ ...paging, pageNo: 1 })
+    changePage(1)
   }
 
   useEffect(() => {
@@ -122,7 +115,6 @@ const AccountsManage: React.FC = (): ReactElement => {
         tableLoading={tableLoading}
         toggleModalVisibleMethod={toggleModalVisibleMethod}
         tableList={tableList}
-        paging={paging}
         pageTotal={pageTotal}
         changePage={changePage}
       />

@@ -12,8 +12,6 @@ export const useAccountColumns = (options: IOptions) : ColumnsType<AccountRecord
   const commonColumns = useCommonColumns<AccountRecord>()
   return [
     { title: '编号', dataIndex: 'accountsOrder', align: 'center', width: 100, fixed: 'left' },
-    { title: '登录账号', dataIndex: 'loginAccount', align: 'center', width: 200 },
-    { title: '账号密码', dataIndex: 'accountPassword', align: 'center', width: 200 },
     { title: '姓名', dataIndex: 'name', align: 'center', width: 120 },
     {
       title: '手机号',
@@ -24,7 +22,16 @@ export const useAccountColumns = (options: IOptions) : ColumnsType<AccountRecord
         return value.substring(0, 3) + "****" + value.substr(value.length - 4)
       }
     },
-    { title: '邮箱', dataIndex: 'email', align: 'center', width: 200 },
+    {
+      title: '所属角色',
+      dataIndex: 'belongToRoles',
+      align: 'center',
+      ellipsis: true,
+      width: 200,
+      render: function (value:string) {
+        return departmentMap.find(item => item.value === value)?.label
+      }
+    },
     {
       title: '所属部门',
       dataIndex: 'department',
@@ -41,6 +48,8 @@ export const useAccountColumns = (options: IOptions) : ColumnsType<AccountRecord
       width: 200,
       render: options.accountsStatusRender
     },
+    { title: '登录账号', dataIndex: 'loginAccount', align: 'center', width: 200 },
+    { title: '账号密码', dataIndex: 'accountPassword', align: 'center', width: 200 },
     ...commonColumns,
     {
       title: '操作',

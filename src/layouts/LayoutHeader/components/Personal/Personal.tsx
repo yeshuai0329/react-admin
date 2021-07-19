@@ -4,7 +4,7 @@ import { UserOutlined, SettingOutlined, LogoutOutlined } from '@ant-design/icons
 import style from 'layouts/LayoutHeader/LayoutHeader.module.less'
 import classNames from 'classnames/bind'
 import { LangMessage } from 'components/LangMessage/LangMessage'
-import { useLogout } from 'service/EntryScreen/EntryScreenHoooks'
+import { useLogout } from 'pages/EntryScreen/service/EntryScreenHoooks'
 
 const cx = classNames.bind(style)
 

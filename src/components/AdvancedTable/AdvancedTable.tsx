@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { Space, Table, TableProps as AntdTableProps, Alert } from 'antd'
+import { Space, Table, TableProps as AntdTableProps } from 'antd'
 import AuthButton, { IButtonProps } from 'components/AuthButton/AuthButton'
 import ColumnsConfig from './_components/ColumnsConfig/ColumnsConfig'
 export interface AuthAction extends IButtonProps {
@@ -11,9 +11,10 @@ export interface IPickColumn {
   label: string,
   value: string
 }
-interface IAdvancedTableProps<RecordType> extends AntdTableProps<RecordType>{
+export interface IAdvancedTableProps<RecordType> extends AntdTableProps<RecordType>{
   authActions: AuthAction[]
   canConfig: boolean,
+  alert?: React.ReactElement
 }
 
 const AdvancedTable = <RecordType extends object = any>(props: IAdvancedTableProps<RecordType>): ReactElement => {
@@ -52,7 +53,7 @@ const AdvancedTable = <RecordType extends object = any>(props: IAdvancedTablePro
             : null
         }
       </Space>
-      <Alert message="Informational Notes" type="info" showIcon closable/>
+      {}
       <Table
         size='small'
         columns={pickColumns}
