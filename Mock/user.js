@@ -10,7 +10,7 @@ for (let i = 0; i < count; i++) {
 
 module.exports = [
   {
-    url: `/api/v1/user/login`,
+    url: `v1/user/login`,
     type: 'post',
     response: config => {
       if (config.body?.username === 'admin' && config.body?.password === 'admin') {
@@ -36,7 +36,7 @@ module.exports = [
     }
   },
   {
-    url: `/api/v1/user/authinfo`,
+    url: `/v1/user/authinfo`,
     type: 'post',
     response: config => {
       if (config.body?.token === 'ABCDEFG') {

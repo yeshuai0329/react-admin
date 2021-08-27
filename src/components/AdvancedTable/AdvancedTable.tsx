@@ -1,7 +1,8 @@
 import React, { ReactElement } from 'react'
 import { Space, Table, TableProps as AntdTableProps } from 'antd'
 import AuthButton, { IButtonProps } from 'components/AuthButton/AuthButton'
-import ColumnsConfig from './_components/ColumnsConfig/ColumnsConfig'
+import ColumnsConfig from './components/ColumnsConfig/ColumnsConfig'
+
 export interface AuthAction extends IButtonProps {
   name: string,
   onClick: () => void

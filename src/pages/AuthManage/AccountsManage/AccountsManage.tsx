@@ -2,43 +2,65 @@ import React, { ReactElement, useMemo, useState, Fragment, useEffect } from 'rea
 import AdvancedSearch, { SearchFormItem } from 'components/AdvancedSearch/AdvancedSearch'
 import AccountTable from './components/AccountTable/AccountTable'
 import AccountModal from './components/AccountModal/AccountModal'
-import {
-  AccountRecord, accountStatusMap, departmentMap, titleMap
-} from 'typings/AuthManage/AccountsManage/AccountsManage.d'
+import { AccountRecord } from 'typings/AuthManage/AccountsManage/AccountsManage.d'
 import { accountQueryApi } from 'api/AccountsManage/AccountsManage'
 import { InputNumber, Select } from 'antd'
-import { usePaging } from '../../../publicHooks/publicTableHooks/publicTableHooks'
+import { usePaging } from '../../../publicHooks/tableHooks/tableHooks'
+import {
+  titleMap,
+  departmentMap,
+  accountStatusMap
+} from 'pages/AuthManage/AccountsManage/service/constantParams'
+import { FIRST_TYPE } from 'utils/globalConstantParams'
 
 const AccountsManage: React.FC = (): ReactElement => {
-  // 模态框的标题
-  const [modalTitle, setModalTitle] = useState<string>(titleMap[1])
-  // 模态框的显示隐藏
-  const [modalVisible, setModalVisible] = useState<boolean>(false)
-  // 表格编辑按钮被点击获取到的行数据
-  const [rowList, setRowList] = useState<AccountRecord>()
-  // 表格loading
-  const [tableLoading, setTableLoading] = useState<boolean>(false)
-  // 高级搜索查询参数
+  const [modalTitle, setModalTitle] = useState<string>(titleMap[FIRST_TYPE]) // 新建或者编辑的模态框的标题
+  const [modalVisible, setModalVisible] = useState<boolean>(false) // 模态框的显示隐藏
+  const [rowList, setRowList] = useState<AccountRecord>() // 表格编辑按钮被点击获取到的行数据
+  const [tableLoading, setTableLoading] = useState<boolean>(false) // 表格loading
+  const { paging, changePage } = usePaging() // 分页的自定义hook
+  const [pageTotal, setPageTotal] = useState<number>(0) // 表格页数
+  const [tableList, setTableList] = useState<AccountRecord[] | never[]>([]) // 表格数据
   const [searchData, setSearchData] = useState({
     accountsOrder: '',
     loginAccount: '',
     department: '',
     accountStatus: '',
     email: ''
-  })
-  // 分页的自定义hook
-  const { paging, changePage } = usePaging()
-  // 高级搜索查询参数
-  const [tableList, setTableList] = useState<AccountRecord[] | never[]>([])
-  const [pageTotal, setPageTotal] = useState<number>(0)
+  }) // 高级搜索查询参数
 
-  // 打开模态框方法
+  /**
+   * 查询表格数据的接口
+   */
+  const accountQueryMethod = async () => {
+    setTableLoading(true)
+    const params = { ...searchData, ...paging }
+    const { data } = await accountQueryApi(params)
+    if (data.code === 200) {
+      setTableList(data.data)
+      setPageTotal(data.total)
+    }
+    setTableLoading(false)
+  }
+
+  // 刷新页面查询表格数据,分页改变的时候,查询表格数据
+  useEffect(() => {
+    accountQueryMethod()
+  }, [paging])
+
+  /**
+   * 新建和编辑打开模态框方法
+   * @param {boolean} visible 控制模态框显示隐藏
+   * @param title 模态框新建还是编辑
+   * @param record 点击新建和编辑的时候可能需要传递的表格行数据
+   */
   const toggleModalVisibleMethod = (visible: boolean, title?: string, record?: AccountRecord) => {
     setModalVisible(visible)
     setModalTitle((title as string))
     setRowList(record)
   }
 
+  // 高级搜索 - 搜索条件
   const formList: SearchFormItem[] = useMemo(() => {
     return [
       {
@@ -81,27 +103,13 @@ const AccountsManage: React.FC = (): ReactElement => {
     ]
   }, [])
 
+  /**
+   * 高级搜索栏 - 搜索按钮事件
+   * @param params 搜索查询参数
+   */
   const onSearch = (params: any) => {
-    console.log(`params`, params)
     setSearchData(params)
     changePage(1)
-  }
-
-  useEffect(() => {
-    accountQueryMethod()
-  }, [paging])
-
-  // 查询接口
-  const accountQueryMethod = async () => {
-    setTableLoading(true)
-    const params = { ...searchData, ...paging }
-    const { data } = await accountQueryApi(params)
-    console.log(`data`, data)
-    if (data.code === 200) {
-      setTableList(data.data)
-      setPageTotal(data.total)
-    }
-    setTableLoading(false)
   }
 
   return (

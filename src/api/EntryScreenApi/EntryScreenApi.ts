@@ -5,7 +5,7 @@ const baseUrl = process.env.REACT_APP_BASEURL
 // 登录接口
 export const loginApi = (data:{username: string, password: string}) => {
   return request({
-    url: `${baseUrl}/api/v1/user/login`,
+    url: `${baseUrl}/v1/user/login`,
     method: 'post',
     data
   })
@@ -14,7 +14,7 @@ export const loginApi = (data:{username: string, password: string}) => {
 // 获取用户权限信息
 export const getAuthInfoApi = (data:{token: string}) => {
   return request({
-    url: `${baseUrl}/api/v1/user/authinfo`,
+    url: `${baseUrl}/v1/user/authinfo`,
     method: 'post',
     data
   })

@@ -17,7 +17,7 @@ for (let i = 0; i < count; i++) {
 }
 module.exports = [
   {
-    url: `/api/v1/account/query`,
+    url: `/v1/account/query`,
     type: 'get',
     response: config => {
       const {

@@ -3,9 +3,9 @@ import { Route } from 'react-router-dom'
 import EntryScreen from 'pages/EntryScreen/EntryScreen'
 import cookie from 'js-cookie'
 
-type RouteProos = React.ComponentProps<typeof Route>
+type RouteProps = React.ComponentProps<typeof Route>
 
-const AuthRoute: React.FC<RouteProos> = (props): ReactElement => {
+const AuthRoute: React.FC<RouteProps> = (props): ReactElement => {
   return (
     <Fragment>
       {

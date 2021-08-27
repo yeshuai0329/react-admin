@@ -2,6 +2,12 @@ import React, { ReactElement, Fragment, useMemo } from 'react'
 import AdvancedTable, { AuthAction } from 'components/AdvancedTable/AdvancedTable'
 import { Modal, Switch } from 'antd'
 import AuthButton from 'components/AuthButton/AuthButton'
+import { useAccountColumns } from 'pages/AuthManage/AccountsManage/service/columnsHook'
+import { AccountRecord, IAccountTable } from 'typings/AuthManage/AccountsManage/AccountsManage.d'
+import { useRowSelection, useExpandable } from 'publicHooks/tableHooks/tableHooks'
+import { ColumnsType } from 'antd/lib/table/interface'
+import { titleMap, accountStatusMap } from 'pages/AuthManage/AccountsManage/service/constantParams'
+import { FIRST_TYPE, SECOND_TYPE } from 'utils/globalConstantParams'
 import {
   PlusOutlined,
   DeleteOutlined,
@@ -9,10 +15,6 @@ import {
   VerticalAlignBottomOutlined,
   ExclamationCircleOutlined
 } from '@ant-design/icons'
-import { useAccountColumns } from 'pages/AuthManage/AccountsManage/service/columnsHook'
-import { AccountRecord, titleMap, IAccountTable, accountStatusMap } from 'typings/AuthManage/AccountsManage/AccountsManage.d'
-import { useRowSelection, useExpandable } from 'publicHooks/publicTableHooks/publicTableHooks'
-import { ColumnsType } from 'antd/lib/table/interface'
 
 const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
   const {
@@ -25,6 +27,7 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
 
   // 表格选择配置选项
   const { selectedRowKeys, rowSelection, selectedRows } = useRowSelection<AccountRecord>()
+
   // 表格展开配置选项
   const expandable = useExpandable<AccountRecord>(
     (record: AccountRecord) => {
@@ -40,7 +43,7 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
       customtype: 'default',
       icon: <PlusOutlined />,
       onClick: () => {
-        toggleModalVisibleMethod(true, titleMap[1])
+        toggleModalVisibleMethod(true, titleMap[FIRST_TYPE])
       }
     },
     {
@@ -60,7 +63,7 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
       icon: <EditOutlined />,
       disabled: selectedRowKeys.length !== 1,
       onClick: () => {
-        toggleModalVisibleMethod(true, titleMap[2], selectedRows[0])
+        toggleModalVisibleMethod(true, titleMap[SECOND_TYPE], selectedRows[0])
       }
     },
     {
@@ -106,6 +109,7 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
       </Fragment>
     )
   }
+
   // 可展示列
   const columns :ColumnsType<AccountRecord> = useAccountColumns({
     accountsStatusRender,
