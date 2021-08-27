@@ -1,7 +1,10 @@
-export const scrollIntoView = (traget: any) => {
+/**
+ * 元素滚动到顶部
+ * @param traget id 选择器
+ */
+export const scrollIntoView = (traget: string) => {
   const tragetElem = document.querySelector(traget)
-  console.log(`tragetElem`, tragetElem.scrollTop)
-  tragetElem.scrollTo({
+  tragetElem!.scrollTo({
     top: 0,
     behavior: 'smooth'
   })
