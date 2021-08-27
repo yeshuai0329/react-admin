@@ -3,7 +3,7 @@ import { loginApi, getAuthInfoApi } from 'api/EntryScreenApi/EntryScreenApi'
 import Cookies from 'js-cookie'
 import { useHistory } from 'react-router'
 import { filterAuthRoutes } from 'routers/userDynamicRouters'
-import { errorCode } from 'api/errorCode'
+import { rightCode } from 'api/rightCode'
 
 export interface ILogin {
   username: string,
@@ -30,16 +30,15 @@ export const useLogin = () => {
    */
   const loginFetch = async (values: ILogin) => {
     const { data } = await loginApi(values)
+    console.log(`data`, data)
     // 存储过滤好的权限路由信息
     if (data.code === 200) {
       localStorage.setItem('userInfo', JSON.stringify(data.data))
       Cookies.set('R-Boot-token', data.data.token)
-      message.success('🎉登录成功!')
+      message.success(rightCode.loginSuccess)
       return true
-    } else {
-      message.error(`${errorCode[data.code]}`)
-      return false
     }
+    return false
   }
 
   /**
@@ -52,8 +51,6 @@ export const useLogin = () => {
       if (data.code === 200 && data.data.authMenu) {
         localStorage.setItem('authMenu', JSON.stringify(filterAuthRoutes(data.data.authMenu)))
         localStorage.setItem('authButton', JSON.stringify(data.data.authButton))
-      } else {
-        message.error(`${errorCode[data.code]}`)
       }
     }
   }
