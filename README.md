@@ -5,7 +5,7 @@
 
 ## 二、目录结构
 ```html
-├── __json__server           #模拟后台请求的mock服务器
+├── Mock           #模拟后台请求的mock服务器
 ├── public
 │   └── favicon.png          # Favicon
 │   └── index.html           # 入口html文件
@@ -14,12 +14,11 @@
 │   ├── assets               # 本地静态资源
 │   │   └── images                 # 全局图片资源
 │   ├── components           # 业务通用组件
-│   │   └── AppConfig              # 全局App控制
-│   │   └── AppProviders           # App组件包裹组件
-│   │   └── AuthButton             # 全局权限按钮
-│   │   └── AuthRoute              # 全局权限路由,token过期,跳转登录页
 │   │   └── AdvancedSearch         # Form高级搜索
 │   │   └── AdvancedTable          # Table高级表格
+│   │   └── AppProviders           # App组件包裹组件
+│   │   └── AuthButton             # 全局权限按钮
+│   │   └── AuthRoute              # 全局权限路由,token过期,跳转登录页/过滤一些特定的路由
 │   │   └── BreadCrumbPro          # 面包屑
 │   │   └── Copyright              # footer
 │   │   └── CustomLogo             # logo
@@ -31,17 +30,23 @@
 │   ├── locales              # 国际化资源
 │   ├── pages                # 业务页面入口和常用模板
 │   │   └── EntryScreen             # 登录注册界面
+│   ├── publicHooks          # 公共的hooks
+│   │   └── modalHooks              # 模态框hooks
+│   │   └── tableHooks              # 表格hooks
 │   ├── routers              # 全局路由组件配置
 │   │   └── AsyncComponent          # 异步加载组件
 │   │   └── userDynamicRouters      # 动态路由匹配文件
-│   ├── service              # 组件逻辑处理
 │   ├── store                # 全局状态共享store
 │   ├── styles               # 全局样式
 │   ├── typings              # 全局TS声明文件
-│   ├── utils                # 工具库
+│   ├── utils                # 工具库/通用库
 │   ├── react-app-env.d.ts   # 全局忽略文件
 │   └── index.ts             # 工具库
+├── .env.mock                # mock环境变量配置文件
 ├── .env.develop             # 开发环境变量配置文件
+├── .env.test                # 测试环境变量配置文件
+├── .env.pre                 # 预发布环境变量配置文件
+├── .env.pro                 # 生产环境变量配置文件
 ├── .eslintrc.js             # eslint配置文件
 ├── .gitignore            	 # git 上传忽略文件
 ├── config-overrides         # webpack 扩展文件
