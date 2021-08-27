@@ -2,6 +2,7 @@ import React, { useState, Key } from 'react'
 import { Table } from 'antd'
 import { ColumnsType, ExpandableConfig, TableRowSelection } from 'antd/lib/table/interface'
 import moment from 'moment'
+import { scrollIntoView } from 'utils/public'
 
 /**
  * @description 表格选择行配置项
@@ -84,7 +85,10 @@ export const usePaging = () => {
   * @description: 改变分页的方法
   * */
   const changePage = (page: number, pageSize?: number | undefined) => {
-    setPaging({ ...paging, pageNo: page, pageSize: (pageSize as number) })
+    scrollIntoView('#scrollTop')
+    setTimeout(() => {
+      setPaging({ ...paging, pageNo: page, pageSize: (pageSize as number) })
+    })
   }
   return {
     paging,

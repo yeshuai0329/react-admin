@@ -43,7 +43,7 @@ const App = (props: IAppProps): ReactElement => {
           <LayoutHeader/>
         </Header>
 
-        <Content className={cx('layout-right__content')} >
+        <Content className={cx('layout-right__content')} id='scrollTop'>
           <LayoutContent />
         </Content>
 
