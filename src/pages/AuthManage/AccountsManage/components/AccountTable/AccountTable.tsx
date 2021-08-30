@@ -140,15 +140,8 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
       }}
       rowSelection={rowSelection}
       expandable={expandable}
-      scroll={{ x: 'max-content' }}
-      pagination={{
-        showSizeChanger: true,
-        showQuickJumper: true,
-        total: pageTotal,
-        showTotal: (total) => `共 ${total} 条`,
-        position: ['bottomCenter'],
-        onChange: changePage
-      }}
+      pageTotal={pageTotal}
+      changePage={changePage}
     />
   )
 }
