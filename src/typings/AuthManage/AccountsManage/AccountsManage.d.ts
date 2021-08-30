@@ -1,7 +1,7 @@
 import { ModalProps } from 'antd'
 
 export interface AccountRecord {
-  accountsOrder: number,
+  accountsOrder: string,
   name: string,
   loginAccount: string,
   accountPassword: string,
@@ -16,10 +16,11 @@ export interface AccountRecord {
 
 interface IAccountTable{
   toggleModalVisibleMethod: (visible: boolean, title?: string | undefined, record?: AccountRecord | undefined) => void
-  tableList: AccountRecord[] | never[]
-  pageTotal: number
-  changePage:(page: number, pageSize?: number | undefined) => void
-  tableLoading: boolean
+  tableList: AccountRecord[] | never[],
+  pageTotal: number,
+  changePage:(page: number, pageSize?: number | undefined) => void,
+  tableLoading: boolean,
+  accountQueryMethod: () => Promise<void>
 }
 
 // 账号管理模态框

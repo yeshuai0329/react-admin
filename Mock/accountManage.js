@@ -1,5 +1,5 @@
 var Mock = require('mockjs')
-const List = []
+let List = []
 const count = 666
 for (let i = 0; i < count; i++) {
   List.push(Mock.mock({
@@ -67,6 +67,21 @@ module.exports = [
         code: 200,
         total: mockList.length,
         data: pageList
+      }
+    }
+  },
+  {
+    url: `/v1/account/del`,
+    type: 'delete',
+    response: config => {
+      const paramsData = config.body
+      const mockList = List.filter(item => {
+        return !paramsData.includes(item.accountsOrder)
+      })
+      List = mockList
+      return {
+        code: 200,
+        data: []
       }
     }
   }

@@ -1,5 +1,5 @@
-import React, { useState, Key } from 'react'
-import { Table } from 'antd'
+import { useState, Key } from 'react'
+// import { Table } from 'antd'
 import { ColumnsType, ExpandableConfig, TableRowSelection } from 'antd/lib/table/interface'
 import moment from 'moment'
 import { scrollIntoView } from 'utils/public'
@@ -8,28 +8,66 @@ import { scrollIntoView } from 'utils/public'
  * @description 表格选择行配置项
  */
 export const useRowSelection = <T>() => {
-  const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([])
-  const [selectedRows, setSelectedRows] = useState<T[]>([])
+  const [checkedRowKeys, setCheckedRowKeys] = useState<Key[]>([])
+  const [checkedRows, setCheckedRows] = useState<T[]>([])
 
   const rowSelection: TableRowSelection<T> | undefined = {
-    selectedRowKeys,
+    selectedRowKeys: checkedRowKeys,
     fixed: true,
-    onChange: (selectedRowKeys: React.Key[], selectedRows: T[]) => {
-      setSelectedRowKeys(selectedRowKeys)
-      setSelectedRows(selectedRows)
+    onSelect: (record, selected, selectedRow) => {
+      if (selected) {
+        // 添加
+        // @ts-ignore
+        setCheckedRowKeys([...checkedRowKeys, record.accountsOrder])
+        setCheckedRows([...checkedRows, record])
+      } else {
+        // @ts-ignore
+        const subCheckedKeys = checkedRowKeys.filter((item: Key) => item !== record.accountsOrder)
+        // @ts-ignore
+        const subCheckedRows = checkedRows.filter((item: T) => item.accountsOrder !== record.accountsOrder)
+        setCheckedRowKeys(subCheckedKeys)
+        setCheckedRows(subCheckedRows)
+      }
+    },
+    onSelectAll: (selected, selectedRows, changeRows) => {
+      if (selected) {
+        const addCheckedKeys = changeRows.map((item: T) => {
+          // @ts-ignore
+          return item.accountsOrder
+        })
+        setCheckedRowKeys([...checkedRowKeys, ...addCheckedKeys])
+        setCheckedRows([...checkedRows, ...changeRows])
+      } else {
+        const subCheckedKeys = checkedRowKeys.filter((ite: Key) => {
+          return !changeRows.some((item: T) => {
+            // @ts-ignore
+            return item.accountsOrder === ite
+          })
+        })
+        const subCheckedRows = checkedRows.filter((ite: any) => {
+          return !changeRows.some((item: T) => {
+            // @ts-ignore
+            return item.accountsOrder === ite.accountsOrder
+          })
+        })
+        setCheckedRowKeys(subCheckedKeys)
+        setCheckedRows(subCheckedRows)
+      }
     },
     columnWidth: 64,
-    selections: [
-      Table.SELECTION_ALL,
-      Table.SELECTION_INVERT,
-      Table.SELECTION_NONE
-    ],
+    // selections: [
+    //   Table.SELECTION_ALL,
+    //   Table.SELECTION_INVERT,
+    //   Table.SELECTION_NONE
+    // ],
     type: 'checkbox'
   }
 
   return {
-    selectedRowKeys,
-    selectedRows,
+    checkedRowKeys,
+    checkedRows,
+    setCheckedRowKeys,
+    setCheckedRows,
     rowSelection
   }
 }

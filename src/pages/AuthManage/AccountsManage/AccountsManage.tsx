@@ -125,6 +125,7 @@ const AccountsManage: React.FC = (): ReactElement => {
         tableList={tableList}
         pageTotal={pageTotal}
         changePage={changePage}
+        accountQueryMethod={accountQueryMethod}
       />
 
       <AccountModal

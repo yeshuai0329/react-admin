@@ -1,6 +1,6 @@
 import React, { ReactElement, Fragment, useMemo } from 'react'
 import AdvancedTable, { AuthAction } from 'components/AdvancedTable/AdvancedTable'
-import { Modal, Switch } from 'antd'
+import { Modal, Space, Switch, Tag } from 'antd'
 import AuthButton from 'components/AuthButton/AuthButton'
 import { useAccountColumns } from 'pages/AuthManage/AccountsManage/service/columnsHook'
 import { AccountRecord, IAccountTable } from 'typings/AuthManage/AccountsManage/AccountsManage.d'
@@ -15,6 +15,7 @@ import {
   VerticalAlignBottomOutlined,
   ExclamationCircleOutlined
 } from '@ant-design/icons'
+import { accountDeleteApi } from 'api/AccountsManage/AccountsManage'
 
 const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
   const {
@@ -22,11 +23,18 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
     toggleModalVisibleMethod, // 新建和编辑控制模态框关闭打开的方法
     pageTotal, // 总条数
     changePage, // 改变分页的方法
-    tableLoading
+    tableLoading,
+    accountQueryMethod
   } = props
 
   // 表格选择配置选项
-  const { selectedRowKeys, rowSelection, selectedRows } = useRowSelection<AccountRecord>()
+  const {
+    checkedRowKeys,
+    checkedRows,
+    setCheckedRowKeys,
+    setCheckedRows,
+    rowSelection
+  } = useRowSelection<AccountRecord>()
 
   // 表格展开配置选项
   const expandable = useExpandable<AccountRecord>(
@@ -51,9 +59,9 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
       auth: 'ACCOUNT_DEL',
       customtype: 'danger',
       icon: <DeleteOutlined />,
-      disabled: selectedRowKeys.length === 0,
+      disabled: checkedRowKeys.length === 0 && checkedRows.length === 0,
       onClick: () => {
-        console.log(`obj`, 222222222222222)
+        deleteTableRow(SECOND_TYPE, checkedRows)
       }
     },
     {
@@ -61,9 +69,9 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
       auth: 'ACCOUNT_EDIT',
       customtype: 'warning',
       icon: <EditOutlined />,
-      disabled: selectedRowKeys.length !== 1,
+      disabled: checkedRowKeys.length !== 1 && checkedRows.length !== 1,
       onClick: () => {
-        toggleModalVisibleMethod(true, titleMap[SECOND_TYPE], selectedRows[0])
+        toggleModalVisibleMethod(true, titleMap[SECOND_TYPE], checkedRows[0])
       }
     },
     {
@@ -75,7 +83,7 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
         console.log(`obj`, 444444444444444)
       }
     }
-  ], [selectedRowKeys])
+  ], [checkedRowKeys, checkedRows])
 
   // 账号状态渲染函数
   const accountsStatusRender = (value: number, record: AccountRecord) => {
@@ -103,6 +111,7 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
           danger
           type='link'
           auth='ROLES_DEL'
+          onClick={() => { deleteTableRow(FIRST_TYPE, [record]) }}
         >
           <DeleteOutlined />删除
         </AuthButton>
@@ -122,6 +131,39 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
       content: <Fragment>{val ? `确定启用 ${record.loginAccount} 账号 ?` : `确定禁用 ${record.loginAccount} 账号 ?`}</Fragment>,
       onOk: () => {
         console.log(`obj`, 11)
+      }
+    })
+  }
+  /**
+   * 单个删除/批量删除
+   * @param type  单个删除/批量删除 单个删除:type===FIRST_TYPE 批量删除: type === SECOND_TYPE
+   * @param {Array} rowArr 要删除的行数据集合
+   */
+  const deleteTableRow = async (type: string, rowArr: AccountRecord[]) => {
+    const paramsData = rowArr.map((item: AccountRecord) => item.accountsOrder)
+    Modal.confirm({
+      icon: null,
+      content:
+        <Space wrap>
+            <span>确定要删除</span>
+            <Space wrap>
+              {
+                rowArr.map((item: AccountRecord) => {
+                  return (
+                    <Tag key={item.accountsOrder} color='error' >{item.name}</Tag>
+                  )
+                })
+              }
+            </Space>
+            <span>{rowArr.length}个账号 ?</span>
+        </Space>,
+      onOk: async () => {
+        const { data } = await accountDeleteApi(paramsData)
+        if (data.code === 200) {
+          accountQueryMethod()
+          setCheckedRowKeys([])
+          setCheckedRows([])
+        }
       }
     })
   }

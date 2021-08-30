@@ -10,3 +10,12 @@ export const accountQueryApi = (params:any) => {
     params
   })
 }
+
+// 账号管理查询接口
+export const accountDeleteApi = (data:any) => {
+  return request({
+    url: `${baseUrl}/v1/account/del`,
+    method: 'delete',
+    data
+  })
+}
