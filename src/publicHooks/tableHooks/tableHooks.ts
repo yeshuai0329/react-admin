@@ -86,7 +86,9 @@ export const usePaging = () => {
   * */
   const changePage = (page: number, pageSize?: number | undefined) => {
     scrollIntoView('#scrollTop')
-    setPaging({ ...paging, pageNo: page, pageSize: (pageSize as number) })
+    setTimeout(() => {
+      setPaging({ ...paging, pageNo: page, pageSize: (pageSize as number) })
+    })
   }
   return {
     paging,

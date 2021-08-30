@@ -4,5 +4,8 @@
  */
 export const scrollIntoView = (traget: string) => {
   const tragetElem = document.querySelector(traget)
-  tragetElem!.scrollTop = 0
+  tragetElem?.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
 }
