@@ -176,3 +176,71 @@ export const compareVersion = (version1:string, version2: string) => {
   }
   return 0
 }
+
+/**
+ * 返回min到max之间的一个随机整数
+ * @param min 最小数
+ * @param max 最大数
+ * @returns
+ * @description 包后不包前
+ */
+export const minToMaxRandom = (min:number, max: number) => {
+  return Math.floor(Math.random() * (max - min)) + min
+}
+
+/**
+ * 返回一个十六进制的颜色,例如#FFFFFF
+ * @returns
+ */
+export const colorRandomTo16 = () => {
+  var str = "#"
+  for (var i = 1; i <= 6; i++) {
+    str += minToMaxRandom(0, 15).toString(16)
+  }
+  return str
+}
+
+/**
+ * 测算元素距离页面的距离
+ * @param dom 测算元素距离页面的距离
+ * @returns
+ */
+export const getDistance = (dom: any) => {
+  let totalLeft = 0
+  let totalTop = 0
+  do {
+    totalLeft += dom.offsetLeft
+    totalTop += dom.offsetTop
+    // 下一次的dom节点就是本次dom节点的最近的有定位的父元素
+    dom = dom.offsetParent
+  } while (dom.nodeName !== "BODY")
+
+  return {
+    left: totalLeft,
+    top: totalTop
+  }
+}
+
+/**
+ * 封装一个函数,返回鼠标按键,要求:左0  中1  右2
+ * @param e
+ * @returns
+ */
+export const getButton = (e: any) => {
+  // 普通的函数
+  if (e) {
+    // 如果接到的e确实有值,说明e不是undefined,说明当前浏览器不是IE678
+    return e.button
+  } else {
+    // 就是IE678
+    // @ts-ignore
+    switch (window.event.button) {
+      case 1:
+        return 0
+      case 4:
+        return 1
+      case 2:
+        return 2
+    }
+  }
+}
