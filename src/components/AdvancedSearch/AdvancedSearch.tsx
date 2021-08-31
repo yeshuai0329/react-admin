@@ -20,7 +20,7 @@ const AdvancedSearch = forwardRef(function fnRef(props: AdvancedSearchProps, ref
   const { formList, onSearch } = props
 
   const [isOpen, setIsOpen] = useState(false)
-  const [count, setCount] = useState(4)
+  const [count, setCount] = useState(3)
   const [form] = Form.useForm()
 
   const reset = () => {
@@ -44,7 +44,7 @@ const AdvancedSearch = forwardRef(function fnRef(props: AdvancedSearchProps, ref
     if (!isOpen) {
       setCount(formList.length)
     } else {
-      setCount(4)
+      setCount(3)
     }
     setIsOpen(!isOpen)
   }
@@ -54,7 +54,7 @@ const AdvancedSearch = forwardRef(function fnRef(props: AdvancedSearchProps, ref
       form={form}
       onFinish={onFinish}
     >
-      <Row gutter={[16, 0]}>
+      <Row gutter={[16, 0]} style={{ position: 'relative' }}>
         {
           formList && formList.map((item: any, index:number) => {
             if (index < count) {
@@ -83,10 +83,13 @@ const AdvancedSearch = forwardRef(function fnRef(props: AdvancedSearchProps, ref
             return null
           })
         }
-      </Row>
-      <Row>
-        <Col span={24} style={{ textAlign: 'right', marginRight: '24px' }}>
-          <Space style={{ marginRight: '48px' }}>
+        {
+          count % 4 === 0
+            ? <Col span={6} style={{ height: '56px' }}></Col>
+            : null
+        }
+        <Col span={6} style={{ textAlign: 'right', height: '56px', position: 'absolute', bottom: 0, right: 0 }}>
+          <Space >
               <Button type="primary" htmlType="submit">
                 <SearchOutlined />查询
               </Button>
@@ -96,12 +99,12 @@ const AdvancedSearch = forwardRef(function fnRef(props: AdvancedSearchProps, ref
               {
                 formList && formList.length > 4
                   ? <Button type='link' onClick={toggle}>
-                      <UpOutlined rotate={isOpen ? 180 : 0} />
                       {
                         isOpen
                           ? '收起'
                           : '展开'
                       }
+                      <UpOutlined rotate={isOpen ? 180 : 0} />
                     </Button>
                   : null
               }
