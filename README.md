@@ -100,6 +100,8 @@ $ yarn start:mock
     - 增加 auth 属性, 用户菜单权限数组包含 auth 属性对应的值,则显示此按钮
     - 增加 customtype 属性, 增加Antd Button 按钮的样式  sucess|warning|error|info
 
+- 单向的数据流
+
 - 语言国际化
 
   - 结合redux思想，根据redux状态共享，开发语言国际化模块。
@@ -107,4 +109,8 @@ $ yarn start:mock
   - 设计ToggleLang组件，做全局国际化语言切换。
   - 利用localStorage对语言状态做持久化
 
+- 统一错误码拦截
+  - 在axios拦截器中拦截错误码,提示错误信息,优化工作效率
 
+- 文件完整度校验
+ - 采用MD5对上传文件计算MD5,与后台交互校验文件完整性

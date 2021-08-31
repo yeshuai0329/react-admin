@@ -6,12 +6,12 @@ import { AccountRecord } from 'typings/AuthManage/AccountsManage/AccountsManage.
 import { accountQueryApi } from 'api/AccountsManage/AccountsManage'
 import { InputNumber, Select } from 'antd'
 import { usePaging } from '../../../publicHooks/tableHooks/tableHooks'
+import { FIRST_TYPE } from 'utils/globalConstantParams'
 import {
   titleMap,
   departmentMap,
   accountStatusMap
 } from 'pages/AuthManage/AccountsManage/service/constantParams'
-import { FIRST_TYPE } from 'utils/globalConstantParams'
 
 const AccountsManage: React.FC = (): ReactElement => {
   const [modalTitle, setModalTitle] = useState<string>(titleMap[FIRST_TYPE]) // 新建或者编辑的模态框的标题
