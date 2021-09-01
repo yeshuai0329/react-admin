@@ -1,5 +1,5 @@
-import AppProviders from 'components/AppProviders/AppProviders'
 import React from 'react'
+import AppProviders from 'components/AppProviders/AppProviders'
 import ReactDOM from 'react-dom'
 import './styles/reset.less'
 import './styles/globalAntd.module.less'

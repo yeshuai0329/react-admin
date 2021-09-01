@@ -36,6 +36,7 @@ const AccountsManage: React.FC = (): ReactElement => {
     setTableLoading(true)
     const params = { ...searchData, ...paging }
     const { data } = await accountQueryApi(params)
+    console.log(`data`, data)
     if (data.code === 200) {
       setTableList(data.data)
       setPageTotal(data.total)

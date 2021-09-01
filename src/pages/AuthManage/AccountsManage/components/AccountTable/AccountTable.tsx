@@ -15,7 +15,7 @@ import {
   VerticalAlignBottomOutlined,
   ExclamationCircleOutlined
 } from '@ant-design/icons'
-import { accountDeleteApi } from 'api/AccountsManage/AccountsManage'
+import { accountDeleteApi, changeAccountStatusApi } from 'api/AccountsManage/AccountsManage'
 
 const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
   const {
@@ -61,7 +61,7 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
       icon: <DeleteOutlined />,
       disabled: checkedRowKeys.length === 0 && checkedRows.length === 0,
       onClick: () => {
-        deleteTableRow(SECOND_TYPE, checkedRows)
+        deleteTableRow(checkedRows)
       }
     },
     {
@@ -79,6 +79,7 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
       auth: 'ACCOUNT_EXPORT',
       customtype: 'info',
       icon: <VerticalAlignBottomOutlined />,
+      disabled: checkedRowKeys.length === 0 && checkedRows.length === 0,
       onClick: () => {
         console.log(`obj`, 444444444444444)
       }
@@ -111,7 +112,7 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
           danger
           type='link'
           auth='ROLES_DEL'
-          onClick={() => { deleteTableRow(FIRST_TYPE, [record]) }}
+          onClick={() => { deleteTableRow([record]) }}
         >
           <DeleteOutlined />删除
         </AuthButton>
@@ -125,21 +126,41 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
     operationRender
   })
 
+  /**
+   * 编辑账号状态的二次弹窗
+   * @param {Boolean} val 账号启用还是禁用的值
+   * @param {AccountRecord} record 账号管理列表的行数据
+   */
   const editAccountStatus = (val: boolean, record: AccountRecord) => {
     Modal.confirm({
       icon: <ExclamationCircleOutlined />,
-      content: <Fragment>{val ? `确定启用 ${record.loginAccount} 账号 ?` : `确定禁用 ${record.loginAccount} 账号 ?`}</Fragment>,
+      content: (
+        <Fragment>{`确定${val ? '启用' : '禁用'} ${record.loginAccount} 账号 ?`}</Fragment>
+      ),
       onOk: () => {
-        console.log(`obj`, 11)
+        enAbleOrBindAccount(val, record)
       }
     })
   }
+
+  /**
+   *  账号启用禁用的方法
+   * @param {Boolean} val 账号启用还是禁用的值
+   * @param {AccountRecord} record 账号管理列表的行数据
+   */
+  const enAbleOrBindAccount = async (val: boolean, record: AccountRecord) => {
+    const paramsData = { accountsOrder: record.accountsOrder, accountStatus: Number(val) }
+    const { data } = await changeAccountStatusApi(paramsData)
+    if (data.code === 200) {
+      accountQueryMethod()
+    }
+  }
+
   /**
    * 单个删除/批量删除
-   * @param type  单个删除/批量删除 单个删除:type===FIRST_TYPE 批量删除: type === SECOND_TYPE
    * @param {Array} rowArr 要删除的行数据集合
    */
-  const deleteTableRow = async (type: string, rowArr: AccountRecord[]) => {
+  const deleteTableRow = async (rowArr: AccountRecord[]) => {
     const paramsData = rowArr.map((item: AccountRecord) => item.accountsOrder)
     Modal.confirm({
       icon: null,

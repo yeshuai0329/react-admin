@@ -84,5 +84,36 @@ module.exports = [
         data: []
       }
     }
+  },
+  {
+    url: `/v1/account/changeAccountStatus`,
+    type: 'post',
+    response: config => {
+      const paramsData = config.body
+      console.log(`paramsData`, paramsData)
+      const mockList = List.filter(item => {
+        if (item.accountsOrder === paramsData.accountsOrder) {
+          item.accountStatus = paramsData.accountStatus
+        }
+        return item.accountsOrder === paramsData.accountsOrder
+      })
+      console.log(`mockList`, mockList)
+      if (mockList.length === 0) {
+        return {
+          code: 1001,
+          data: []
+        }
+      } else if (mockList.length === 1) {
+        return {
+          code: 200,
+          data: mockList
+        }
+      } else {
+        return {
+          code: 1002,
+          data: mockList
+        }
+      }
+    }
   }
 ]
