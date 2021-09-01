@@ -11,7 +11,7 @@ export interface SearchFormItem {
   initialValue?: any,
 }
 
-interface AdvancedSearchProps {
+export interface AdvancedSearchProps {
   formList: SearchFormItem[],
   onSearch: (values: any) => void,
 }

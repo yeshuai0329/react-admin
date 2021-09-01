@@ -1,5 +1,6 @@
 import React, { ReactElement, Fragment, useState, Key, useMemo } from 'react'
-import AdvancedTable, { AuthAction } from 'components/AdvancedTable/AdvancedTable'
+import AdvancedTable from 'components/AdvancedTable/AdvancedTable'
+import { AuthAction } from 'components/AuthButtonGroup'
 import Table, { ColumnType } from 'antd/lib/table'
 import { Modal, Switch } from 'antd'
 import AuthButton from 'components/AuthButton/AuthButton'

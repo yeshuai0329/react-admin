@@ -1,5 +1,6 @@
 import React, { ReactElement, Fragment, useMemo } from 'react'
-import AdvancedTable, { AuthAction } from 'components/AdvancedTable/AdvancedTable'
+import AdvancedTable from 'components/AdvancedTable/AdvancedTable'
+import { AuthAction } from 'components/AuthButtonGroup'
 import { Modal, Space, Switch, Tag } from 'antd'
 import AuthButton from 'components/AuthButton/AuthButton'
 import { useAccountColumns } from 'pages/AuthManage/AccountsManage/service/columnsHook'

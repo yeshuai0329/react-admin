@@ -1,12 +1,7 @@
 import React, { ReactElement } from 'react'
 import { Space, Table, TableProps as AntdTableProps } from 'antd'
-import AuthButton, { IButtonProps } from 'components/AuthButton/AuthButton'
 import ColumnsConfig from './components/ColumnsConfig/ColumnsConfig'
-
-export interface AuthAction extends IButtonProps {
-  name: string,
-  onClick: () => void
-}
+import AuthButtonGroup, { AuthAction } from 'components/AuthButtonGroup'
 
 export interface IPickColumn {
   label: string,
@@ -35,18 +30,7 @@ const AdvancedTable = <RecordType extends object = any>(props: IAdvancedTablePro
   return (
     <Space direction='vertical' style={{ width: '100%', marginTop: '16px' }}>
       <Space>
-        {
-          authActions && authActions.map((item: any, index: number) => {
-            return (
-              <AuthButton
-                key={index}
-                {...item}
-              >
-                {item.name}
-              </AuthButton>
-            )
-          })
-        }
+        <AuthButtonGroup authActions={authActions}/>
         {
           canConfig
             ? <ColumnsConfig
