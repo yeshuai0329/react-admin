@@ -25,5 +25,5 @@ interface IAccountTable{
 
 // 账号管理模态框
 export interface IAccountModal extends ModalProps {
-  rowList?: AccountRecord
+  detail?: AccountRecord
 }

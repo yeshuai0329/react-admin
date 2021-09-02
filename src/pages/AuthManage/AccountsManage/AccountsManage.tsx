@@ -35,6 +35,7 @@ const AccountsManage: React.FC = (): ReactElement => {
   const accountQueryMethod = async () => {
     setTableLoading(true)
     const params = { ...searchData, ...paging }
+    console.log(`params`, params)
     const { data } = await accountQueryApi(params)
     console.log(`data`, data)
     if (data.code === 200) {
@@ -132,7 +133,7 @@ const AccountsManage: React.FC = (): ReactElement => {
       <AccountModal
         title={modalTitle}
         visible={modalVisible}
-        rowList={rowList}
+        detail={rowList}
         onCancel={() => { toggleModalVisibleMethod(false) }}
       />
     </Fragment>
