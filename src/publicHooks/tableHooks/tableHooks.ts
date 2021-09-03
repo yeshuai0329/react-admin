@@ -1,5 +1,4 @@
 import { useState, Key } from 'react'
-// import { Table } from 'antd'
 import { ColumnsType, ExpandableConfig, TableRowSelection } from 'antd/lib/table/interface'
 import moment from 'moment'
 import { scrollIntoView } from 'utils/public'
@@ -7,7 +6,7 @@ import { scrollIntoView } from 'utils/public'
 /**
  * @description 表格选择行配置项
  */
-export const useRowSelection = <T>() => {
+export const useRowSelection = <T>(keyID: string) => {
   const [checkedRowKeys, setCheckedRowKeys] = useState<Key[]>([])
   const [checkedRows, setCheckedRows] = useState<T[]>([])
 
@@ -18,13 +17,13 @@ export const useRowSelection = <T>() => {
       if (selected) {
         // 添加
         // @ts-ignore
-        setCheckedRowKeys([...checkedRowKeys, record.accountsOrder])
+        setCheckedRowKeys([...checkedRowKeys, record[keyID]])
         setCheckedRows([...checkedRows, record])
       } else {
         // @ts-ignore
-        const subCheckedKeys = checkedRowKeys.filter((item: Key) => item !== record.accountsOrder)
+        const subCheckedKeys = checkedRowKeys.filter((item: Key) => item !== record[keyID])
         // @ts-ignore
-        const subCheckedRows = checkedRows.filter((item: T) => item.accountsOrder !== record.accountsOrder)
+        const subCheckedRows = checkedRows.filter((item: T) => item[keyID] !== record[keyID])
         setCheckedRowKeys(subCheckedKeys)
         setCheckedRows(subCheckedRows)
       }
@@ -33,7 +32,7 @@ export const useRowSelection = <T>() => {
       if (selected) {
         const addCheckedKeys = changeRows.map((item: T) => {
           // @ts-ignore
-          return item.accountsOrder
+          return item[keyID]
         })
         setCheckedRowKeys([...checkedRowKeys, ...addCheckedKeys])
         setCheckedRows([...checkedRows, ...changeRows])
@@ -41,13 +40,13 @@ export const useRowSelection = <T>() => {
         const subCheckedKeys = checkedRowKeys.filter((ite: Key) => {
           return !changeRows.some((item: T) => {
             // @ts-ignore
-            return item.accountsOrder === ite
+            return item[keyID] === ite
           })
         })
         const subCheckedRows = checkedRows.filter((ite: any) => {
           return !changeRows.some((item: T) => {
             // @ts-ignore
-            return item.accountsOrder === ite.accountsOrder
+            return item[keyID] === ite[keyID]
           })
         })
         setCheckedRowKeys(subCheckedKeys)
@@ -119,6 +118,7 @@ export const usePaging = () => {
     pageNo: 1,
     pageSize: 10
   })
+
   /**
   * @description: 改变分页的方法
   * */
@@ -132,27 +132,17 @@ export const usePaging = () => {
       }
     })
   }
+
+  /**
+   *  刷新页面请求的方法
+   */
+
+  const resetPage = () => {
+    setPaging({ ...paging })
+  }
   return {
     paging,
-    changePage
-  }
-}
-
-// 区分是不是安卓/ios
-export const isIos = () => {
-  const userAgent = window.navigator.userAgent
-  if (/iphone/i.test(userAgent)) {
-    return true
-  } else {
-    return false
-  }
-}
-// 是不是使用微信内核浏览器
-export const isWxBrowser = () => {
-  const userAgent = window.navigator.userAgent
-  if (/MicroMessenger/i.test(userAgent)) {
-    return true
-  } else {
-    return false
+    changePage,
+    resetPage
   }
 }

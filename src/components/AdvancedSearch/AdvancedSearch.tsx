@@ -7,8 +7,9 @@ export interface SearchFormItem {
   label: string,
   placeholder?: string,
   rules?: object[],
-  render?: React.ReactElement,
+  render?: any,
   initialValue?: any,
+  shouldUpdate?: boolean
 }
 
 export interface AdvancedSearchProps {
@@ -66,6 +67,7 @@ const AdvancedSearch = forwardRef(function fnRef(props: AdvancedSearchProps, ref
                     key={item.name}
                     name={item.name}
                     rules={item.rules}
+                    shouldUpdate={item.shouldUpdate}
                   >
                     {
                       item.render

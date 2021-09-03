@@ -244,3 +244,22 @@ export const getButton = (e: any) => {
     }
   }
 }
+
+// 区分是不是安卓/ios
+export const isIos = () => {
+  const userAgent = window.navigator.userAgent
+  if (/iphone/i.test(userAgent)) {
+    return true
+  } else {
+    return false
+  }
+}
+// 是不是使用微信内核浏览器
+export const isWxBrowser = () => {
+  const userAgent = window.navigator.userAgent
+  if (/MicroMessenger/i.test(userAgent)) {
+    return true
+  } else {
+    return false
+  }
+}

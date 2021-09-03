@@ -126,6 +126,7 @@ const AccountsManage: React.FC = (): ReactElement => {
         toggleModalVisibleMethod={toggleModalVisibleMethod}
         tableList={tableList}
         pageTotal={pageTotal}
+        paging={paging}
         changePage={changePage}
         accountQueryMethod={accountQueryMethod}
       />

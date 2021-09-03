@@ -1,8 +1,8 @@
 import React, { ReactElement, Fragment, useMemo } from 'react'
-import AdvancedTable from 'components/AdvancedTable/AdvancedTable'
-import { AuthAction } from 'components/AuthButtonGroup'
+import AdvancedTable from 'components/aboutAdvanceTable/AdvancedTable/AdvancedTable'
+import { AuthAction } from 'components/aboutAuthButton/AuthButtonGroup'
 import { Modal, Space, Switch, Tag } from 'antd'
-import AuthButton from 'components/AuthButton/AuthButton'
+import AuthButton from 'components/aboutAuthButton/AuthButton/AuthButton'
 import { useAccountColumns } from 'pages/AuthManage/AccountsManage/service/columnsHook'
 import { AccountRecord, IAccountTable } from 'typings/AuthManage/AccountsManage/AccountsManage.d'
 import { useRowSelection, useExpandable } from 'publicHooks/tableHooks/tableHooks'
@@ -24,6 +24,7 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
     toggleModalVisibleMethod, // 新建和编辑控制模态框关闭打开的方法
     pageTotal, // 总条数
     changePage, // 改变分页的方法
+    paging,
     tableLoading,
     accountQueryMethod
   } = props
@@ -35,7 +36,12 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
     setCheckedRowKeys,
     setCheckedRows,
     rowSelection
-  } = useRowSelection<AccountRecord>()
+  } = useRowSelection<AccountRecord>('accountsOrder')
+  const parantAccountQueryMethod = () => {
+    accountQueryMethod()
+    setCheckedRowKeys([])
+    setCheckedRows([])
+  }
 
   // 表格展开配置选项
   const expandable = useExpandable<AccountRecord>(
@@ -153,7 +159,7 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
     const paramsData = { accountsOrder: record.accountsOrder, accountStatus: Number(val) }
     const { data } = await changeAccountStatusApi(paramsData)
     if (data.code === 200) {
-      accountQueryMethod()
+      parantAccountQueryMethod()
     }
   }
 
@@ -182,9 +188,7 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
       onOk: async () => {
         const { data } = await accountDeleteApi(paramsData)
         if (data.code === 200) {
-          accountQueryMethod()
-          setCheckedRowKeys([])
-          setCheckedRows([])
+          parantAccountQueryMethod()
         }
       }
     })
@@ -198,6 +202,7 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
       canConfig={true}
       authActions={authActions}
       columns={columns}
+      paging={paging}
       dataSource={tableList}
       rowKey={(record) => {
         return `${record.accountsOrder}`

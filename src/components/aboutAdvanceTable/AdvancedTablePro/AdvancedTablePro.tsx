@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import AdvancedSearch, { AdvancedSearchProps } from 'components/AdvancedSearch/AdvancedSearch'
-import AdvancedTable, { IAdvancedTableProps } from 'components/AdvancedTable/AdvancedTable'
+import AdvancedTable, { IAdvancedTableProps } from 'components/aboutAdvanceTable/AdvancedTable/AdvancedTable'
 import AdvancedModal, { IAdvancedModalProps } from 'components/AdvancedModal/AdvancedModal'
 
 interface IAdvancedTableProProps<RecordType> {
@@ -10,7 +10,6 @@ interface IAdvancedTableProProps<RecordType> {
 }
 
 const AdvancedTablePro = <RecordType extends object = any>(props: IAdvancedTableProProps<RecordType>) => {
-  console.log(`AdvancedTablePro`, props)
   const { serchFormOptions, advancedTableOptions, advancedModalOptions } = props
   return (
     <Fragment>

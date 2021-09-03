@@ -14,13 +14,14 @@ export interface AccountRecord {
   description?: string
 }
 
-interface IAccountTable{
+interface IAccountTable {
   toggleModalVisibleMethod: (visible: boolean, title?: string | undefined, record?: AccountRecord | undefined) => void
   tableList: AccountRecord[] | never[],
   pageTotal: number,
   changePage:(page: number, pageSize?: number | undefined) => void,
   tableLoading: boolean,
   accountQueryMethod: () => Promise<void>
+  paging: {pageNo: number,pageSize: number | undefined}
 }
 
 // 账号管理模态框

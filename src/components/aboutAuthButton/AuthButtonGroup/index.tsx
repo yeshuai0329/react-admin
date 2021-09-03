@@ -1,6 +1,6 @@
 import React from 'react'
 import { Space } from 'antd'
-import AuthButton, { IButtonProps } from 'components/AuthButton/AuthButton'
+import AuthButton, { IButtonProps } from 'components/aboutAuthButton/AuthButton/AuthButton'
 
 export interface AuthAction extends IButtonProps {
   name: string,

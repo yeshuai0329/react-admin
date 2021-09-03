@@ -10,7 +10,7 @@ export interface IFormProps extends FormProps {
 }
 
 export interface IModalProps extends ModalProps {
-  detail?: {[key: string] : any},
+  modalDetail?: {[key: string] : any},
   confirmed?: (value: any) => void
 }
 
