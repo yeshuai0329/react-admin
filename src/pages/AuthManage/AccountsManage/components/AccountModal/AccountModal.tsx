@@ -1,6 +1,6 @@
 import React from 'react'
 import { Modal } from 'antd'
-import { IAccountModal } from 'typings/AuthManage/AccountsManage/AccountsManage.d'
+import { IAccountModal } from 'typings/AccountsManage'
 
 const AccountModal = (props: IAccountModal) => {
   return (

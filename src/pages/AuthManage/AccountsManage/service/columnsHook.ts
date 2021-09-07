@@ -1,6 +1,6 @@
 import React from 'react'
 import { ColumnsType } from 'antd/lib/table'
-import { AccountRecord } from 'typings/AuthManage/AccountsManage/AccountsManage.d'
+import { AccountRecord } from 'typings/AccountsManage'
 import { useCommonColumns } from 'publicHooks/tableHooks/tableHooks'
 import { departmentMap } from 'pages/AuthManage/AccountsManage/service/constantParams'
 

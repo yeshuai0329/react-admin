@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import { Breadcrumb, Space } from 'antd'
 import * as Icon from '@ant-design/icons'
-import { BreadcrumbItem } from 'typings/breadcrumbItem/breadcrumbItem'
+import { BreadcrumbItem } from 'typings/breadcrumbItem'
 import { LangMessage } from 'components/LangMessage/LangMessage'
 import { NavLink, useLocation } from 'react-router-dom'
 

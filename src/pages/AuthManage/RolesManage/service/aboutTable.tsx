@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import { Modal, Switch, Space } from 'antd'
 import { ColumnsType } from "antd/lib/table"
-import { RolesRecord } from "typings/AuthManage/RolesManage/RolseManage"
+import { RolesRecord } from "typings/RolseManage"
 import AuthButton from 'components/aboutAuthButton/AuthButton/AuthButton'
 import { FIRST_TYPE, SECOND_TYPE } from 'utils/globalConstantParams'
 import { AuthAction } from 'components/aboutAuthButton/AuthButtonGroup'

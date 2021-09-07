@@ -6,7 +6,7 @@ import LayoutSiderMenu from 'layouts/LayoutSider/LayoutSiderMenu'
 import { connect, DispatchProp } from 'react-redux'
 import style from './App.module.less'
 import classNames from 'classnames/bind'
-import { TConfig } from 'typings/config/config'
+import { TConfig } from 'typings/config'
 
 const cx = classNames.bind(style)
 const { Header, Sider, Content } = Layout

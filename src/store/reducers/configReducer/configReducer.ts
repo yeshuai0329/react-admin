@@ -1,4 +1,4 @@
-import { TConfig } from 'typings/config/config'
+import { TConfig } from 'typings/config'
 import config from 'config/config'
 import {
   SET_LANG,

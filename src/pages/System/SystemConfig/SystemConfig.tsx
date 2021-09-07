@@ -2,7 +2,7 @@ import React, { Dispatch, ReactElement } from 'react'
 
 import { Row, Col, Card } from 'antd'
 import { connect } from 'react-redux'
-import { TConfig } from 'typings/config/config'
+import { TConfig } from 'typings/config'
 import SiderMenuConfig from './components/SiderMenuConfig/SiderMenuConfig'
 import TopMenuConfig from './components/TopMenuConfig/TopMenuConfig'
 

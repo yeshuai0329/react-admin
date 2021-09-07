@@ -1,13 +1,13 @@
 
 import React from 'react'
-import { ISiderMenuConfig } from "typings/System/SystemConfig/SystemConfig"
+import { ISiderMenuConfig } from "typings/SystemConfig"
 import {
   SET_TOP_MENU_IS_HAS,
   SET_TOP_MENU_IS_HAS_LOGO,
   SET_BREADCRUMB_IS_HAS
 } from 'store/actionTypes/configActionType'
 import { Row, Col, Switch } from 'antd'
-import { TConfig } from 'typings/config/config'
+import { TConfig } from 'typings/config'
 
 interface IProps {
   reduxConfig: TConfig,

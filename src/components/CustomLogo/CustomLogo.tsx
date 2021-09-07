@@ -4,7 +4,7 @@ import { connect, DispatchProp } from 'react-redux'
 import Texty from 'rc-texty'
 import style from './CustomLogo.module.less'
 import classNames from 'classnames/bind'
-import { TConfig } from 'typings/config/config'
+import { TConfig } from 'typings/config'
 
 const cx = classNames.bind(style)
 

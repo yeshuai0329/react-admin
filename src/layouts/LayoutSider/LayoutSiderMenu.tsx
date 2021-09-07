@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import CustomMenu from 'components/CustomMenu/CustomMenu'
 import { connect, DispatchProp } from 'react-redux'
-import { TConfig } from 'typings/config/config'
+import { TConfig } from 'typings/config'
 
 interface IProps {
   reduxConfig: TConfig

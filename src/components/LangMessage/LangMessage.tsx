@@ -3,7 +3,7 @@ import { GlobalOutlined } from '@ant-design/icons'
 import { Dropdown, Menu, Space } from 'antd'
 import { connect } from 'react-redux'
 import { IProps, LangMap, ILangMap } from './params'
-import { TConfig } from 'typings/config/config'
+import { TConfig } from 'typings/config'
 import { Dispatch } from 'redux'
 import { SET_LANG } from 'store/actionTypes/configActionType'
 
