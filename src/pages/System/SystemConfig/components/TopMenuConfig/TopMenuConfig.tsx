@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { ISiderMenuConfig } from "typings/SystemConfig"
+import { ISiderMenuConfig } from "typings/systemConfig"
 import {
   SET_TOP_MENU_IS_HAS,
   SET_TOP_MENU_IS_HAS_LOGO,

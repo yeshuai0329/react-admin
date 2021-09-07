@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { ISiderMenuConfig } from "typings/SystemConfig"
+import { ISiderMenuConfig } from "typings/systemConfig"
 import {
   SET_SIDER_MENU_IS_HAS,
   SET_SIDER_MENU_THEME,

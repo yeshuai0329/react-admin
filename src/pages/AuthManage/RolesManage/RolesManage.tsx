@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 import { Input } from 'antd'
-import { RolesRecord, titleMap } from 'typings/RolseManage.d'
+import { RolesRecord, titleMap } from 'typings/rolesManage'
 import AdvancedTablePro from 'components/aboutAdvanceTable/AdvancedTablePro/AdvancedTablePro'
 import { IAdvancedTableProps } from 'components/aboutAdvanceTable/AdvancedTable/AdvancedTable'
 import { usePaging, useRowSelection } from 'publicHooks/tableHooks/tableHooks'
