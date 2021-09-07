@@ -2,7 +2,7 @@ import React, { ReactElement, useMemo, useState, Fragment, useEffect } from 'rea
 import AdvancedSearch, { SearchFormItem } from 'components/AdvancedSearch/AdvancedSearch'
 import AccountTable from './components/AccountTable/AccountTable'
 import AccountModal from './components/AccountModal/AccountModal'
-import { AccountRecord } from 'typings/AccountsManage.d'
+import { AccountRecord } from 'typings/AccountsManage'
 import { accountQueryApi } from 'api/AccountsManage/AccountsManage'
 import { InputNumber, Select } from 'antd'
 import { usePaging } from '../../../publicHooks/tableHooks/tableHooks'
