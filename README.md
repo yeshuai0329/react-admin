@@ -11,8 +11,6 @@
 │   └── index.html           # 入口html文件
 ├── src
 │   ├── api                  # 后台接口服务
-│   │   └── images                 # 全局图片资源
-
 │   ├── assets               # 本地静态资源
 │   │   └── images                 # 全局图片资源
 │   ├── components           # 业务通用组件
@@ -33,8 +31,10 @@
 │   ├── pages                # 业务页面入口和常用模板
 │   │   └── EntryScreen             # 登录注册界面
 │   ├── publicHooks          # 公共的hooks
+│   │   └── apiHooks                # apihooks
 │   │   └── modalHooks              # 模态框hooks
 │   │   └── tableHooks              # 表格hooks
+│   │   └── index                   # 公共hooks
 │   ├── routers              # 全局路由组件配置
 │   │   └── AsyncComponent          # 异步加载组件
 │   │   └── userDynamicRouters      # 动态路由匹配文件
@@ -43,7 +43,7 @@
 │   ├── typings              # 全局TS声明文件
 │   ├── utils                # 工具库/通用库
 │   ├── react-app-env.d.ts   # 全局忽略文件
-│   └── index.ts             # 工具库
+│   └── index.ts             # 入口文件
 ├── .env.mock                # mock环境变量配置文件
 ├── .env.develop             # 开发环境变量配置文件
 ├── .env.test                # 测试环境变量配置文件
@@ -104,9 +104,7 @@ $ yarn start:mock
 - 单向的数据流
 
 - 语言国际化
-
-  - 结合redux思想，根据redux状态共享，开发语言国际化模块。
-  - 设计LangMessage组件，获取redux中的语言数据。
+  - 设计语言国际化模块。
   - 设计ToggleLang组件，做全局国际化语言切换。
   - 利用localStorage对语言状态做持久化
 

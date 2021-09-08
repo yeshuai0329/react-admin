@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import Personal from '../components/Personal/Personal'
 import style from 'layouts/LayoutHeader/LayoutHeader.module.less'
 import classNames from 'classnames/bind'
-import { ToggleLang } from 'components/LangMessage/LangMessage'
+import { ToggleLang } from 'components/ToggleLang/ToggleLang'
 
 const cx = classNames.bind(style)
 

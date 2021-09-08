@@ -6,7 +6,7 @@ import style from './EntryScreen.module.less'
 import classNames from 'classnames/bind'
 import { ITab } from './type'
 import { Card, Space } from 'antd'
-import { ToggleLang } from 'components/LangMessage/LangMessage'
+import { ToggleLang } from 'components/ToggleLang/ToggleLang'
 import { init } from 'locales'
 
 const cx = classNames.bind(style)
