@@ -83,7 +83,6 @@ $ yarn start:mock
 - axios  -  使用axios网络库，请求数据
 - antd  -  使用antd组件库快速开发
 - mock  -  使用mock 模拟数据开发
-- loadable  -  使用loadable 切割代码
 
 ...
 ## 五、功能
@@ -114,3 +113,6 @@ $ yarn start:mock
 
 - 文件完整度校验
  - 采用MD5对上传文件计算MD5,与后台交互校验文件完整性
+
+## 六、性能
+- 代码分割

@@ -6,6 +6,7 @@ import AuthRoute from 'components/AuthRoute/AuthRoute'
 import { userDynamicRouters } from 'routers/userDynamicRouters'
 import Copyright from 'components/Copyright/Copyright'
 import NotFind from 'pages/NotFind/NotFind'
+import LoadingComponent from 'components/LoadingComponent/LoadingComponent'
 
 const cx = classNames.bind(style)
 
@@ -20,17 +21,19 @@ const LayoutContent: React.FC = (): ReactElement => {
   return (
     <div className={cx('LayoutContent')}>
       <div className={cx('LayoutContent-route')}>
-        <Switch>
-          {
-            routerList && routerList.map((router: any) => {
-              return (
-                <AuthRoute key={router.path} {...router} exact/>
-              )
-            })
-          }
-          <Redirect from={'/'} to={'/home'} exact/>
-          <AuthRoute path={'*'} component={NotFind} />
-        </Switch>
+        <React.Suspense fallback={<LoadingComponent/>}>
+          <Switch>
+            {
+              routerList && routerList.map((router: any) => {
+                return (
+                  <AuthRoute key={router.path} {...router} exact/>
+                )
+              })
+            }
+            <Redirect from={'/'} to={'/home'} exact/>
+            <AuthRoute path={'*'} component={NotFind} />
+          </Switch>
+        </React.Suspense>
       </div>
       <div className={cx('LayoutContent-Copyright')}>
         <Copyright />

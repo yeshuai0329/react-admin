@@ -1,61 +1,31 @@
 
-import React from 'react'
-import { Spin } from 'antd'
-import Loadable from 'react-loadable'
-
-const LoadingComponent = () => {
-  return (
-    <Spin
-      size='large'
-      style={{
-        width: '100%',
-        height: '600px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}
-    />
-  )
-}
+import {
+  Home,
+  Analysis,
+  Monitor,
+  Rolesmanage,
+  Accountsmanage,
+  Menusmanage,
+  Systemconfig
+} from './AsyncComponent'
 /**
  * @description: 本地所有路由信息映射
  */
 const allAuthRouter:{[key:string]: any} = {
   // 首页
-  home: Loadable({
-    loader: () => import(/* webpackChunkName: "Home" */'pages/Home/Home'),
-    loading: LoadingComponent
-  }),
+  home: Home,
   // 分析页
-  analysis: Loadable({
-    loader: () => import(/* webpackChunkName: "Analysis" */'pages/Dashbord/Analysis/Analysis'),
-    loading: LoadingComponent
-  }),
+  analysis: Analysis,
   // 监控页面
-  monitor: Loadable({
-    loader: () => import(/* webpackChunkName: "Monitor" */'pages/Dashbord/Monitor/Monitor'),
-    loading: LoadingComponent
-  }),
+  monitor: Monitor,
   // 角色管理
-  rolesmanage: Loadable({
-    loader: () => import(/* webpackChunkName: "RolesManage" */'pages/AuthManage/RolesManage/RolesManage'),
-    loading: LoadingComponent
-  }),
+  rolesmanage: Rolesmanage,
   // 账户管理
-  accountsmanage: Loadable({
-    loader: () => import(/* webpackChunkName: "AccountsManage" */'pages/AuthManage/AccountsManage/AccountsManage'),
-    loading: LoadingComponent
-  }),
+  accountsmanage: Accountsmanage,
   // 菜单管理
-  menusmanage: Loadable({
-    loader: () => import(/* webpackChunkName: "MenusManage" */'pages/AuthManage/MenusManage/MenusManage'),
-    loading: LoadingComponent
-  }),
+  menusmanage: Menusmanage,
   // 系统配置
-  systemconfig: Loadable({
-    loader: () => import(/* webpackChunkName: "MenusManage" */'pages/System/SystemConfig/SystemConfig'),
-    loading: LoadingComponent
-  })
+  systemconfig: Systemconfig
 }
 
 /**
@@ -85,10 +55,10 @@ export const userDynamicRouters = (rightRouters: any) => {
  */
 export const filterAuthRoutes = (authMenu: any[]): any => {
   const newArr = authMenu.filter((menu: any) => menu.auth)
-  return newArr.map((item: any) => {
+  newArr.forEach((item: any) => {
     if (item.children && item.children.length) {
       item.children = filterAuthRoutes(item.children)
     }
-    return item
   })
+  return newArr
 }
