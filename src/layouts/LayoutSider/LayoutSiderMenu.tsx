@@ -1,20 +1,16 @@
 import React, { ReactElement } from 'react'
 import CustomMenu from 'components/CustomMenu/CustomMenu'
-import { connect, DispatchProp } from 'react-redux'
-import { TConfig } from 'typings/config'
+import { useSelector } from 'react-redux'
+import { RootState } from 'typings/store'
 
-interface IProps {
-  reduxConfig: TConfig
-}
-
-const LayoutSiderMenu: React.FC<IProps> = (props): ReactElement => {
-  const { reduxConfig } = props
-  const list = JSON.parse(localStorage.getItem('authMenu') || '[]')
+const LayoutSiderMenu: React.FC = (): ReactElement => {
+  const reduxConfig = useSelector((state: RootState) => state.config)
+  const authMenu = JSON.parse(localStorage.getItem('authMenu') || '[]')
 
   return (
     <CustomMenu
       MenuIshHasLogo={reduxConfig.siderMenuIshHasLogo}
-      menuList={list}
+      menuList={authMenu}
       mode='inline'
       theme={reduxConfig.siderMenuTheme}
       style={{
@@ -23,15 +19,5 @@ const LayoutSiderMenu: React.FC<IProps> = (props): ReactElement => {
     />
   )
 }
-const mapStateToProps = ({ config }: {config: TConfig}) => {
-  return {
-    reduxConfig: config
-  }
-}
 
-const mapDispatchToProps = (dispatch: DispatchProp) => {
-  return {
-
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(LayoutSiderMenu)
+export default LayoutSiderMenu

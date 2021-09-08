@@ -3,20 +3,16 @@ import { Layout } from 'antd'
 import LayoutHeader from 'layouts/LayoutHeader/LayoutHeader'
 import LayoutContent from 'layouts/LayoutContent/LayoutContent'
 import LayoutSiderMenu from 'layouts/LayoutSider/LayoutSiderMenu'
-import { connect, DispatchProp } from 'react-redux'
+import { useSelector } from 'react-redux'
 import style from './App.module.less'
 import classNames from 'classnames/bind'
-import { TConfig } from 'typings/config'
-
+import { RootState } from 'typings/store'
 const cx = classNames.bind(style)
 const { Header, Sider, Content } = Layout
 
-interface IAppProps {
-  reduxConfig: TConfig
-}
+const App = (): ReactElement => {
+  const reduxConfig = useSelector((state: RootState) => state.config)
 
-const App = (props: IAppProps): ReactElement => {
-  const { reduxConfig } = props
   return (
     <Layout className={cx('layout')}>
       {/* Sider */}
@@ -52,16 +48,4 @@ const App = (props: IAppProps): ReactElement => {
   )
 }
 
-const mapStateToProps = ({ config }: {config: TConfig}) => {
-  return {
-    reduxConfig: config
-  }
-}
-
-const mapDispatchToProps = (dispatch: DispatchProp) => {
-  return {
-
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App

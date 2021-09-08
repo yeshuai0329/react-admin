@@ -3,8 +3,8 @@ import { Avatar, Dropdown, Space, Menu } from 'antd'
 import { UserOutlined, SettingOutlined, LogoutOutlined } from '@ant-design/icons'
 import style from 'layouts/LayoutHeader/LayoutHeader.module.less'
 import classNames from 'classnames/bind'
-import { LangMessage } from 'components/LangMessage/LangMessage'
 import { useLogout } from 'pages/EntryScreen/service/EntryScreenHoooks'
+import { init } from 'locales'
 
 const cx = classNames.bind(style)
 
@@ -22,11 +22,11 @@ const Personal: React.FC = (): ReactElement => {
 
   const menu = (
     <Menu>
-      <Menu.Item key='1' icon={<UserOutlined />} ><LangMessage id='' defaultText={'个人中心'}/></Menu.Item>
-      <Menu.Item key='2'icon={<SettingOutlined />} ><LangMessage id='' defaultText={'个人设置'}/></Menu.Item>
+      <Menu.Item key='1' icon={<UserOutlined />} >{init('个人中心')}</Menu.Item>
+      <Menu.Item key='2'icon={<SettingOutlined />} >{init('个人设置')}</Menu.Item>
       <Menu.Divider/>
       <Menu.Item key='3' icon={<LogoutOutlined />} onClick={logout}>
-        <LangMessage id='' defaultText={'退出登录'}/>
+        {init('退出登录')}
       </Menu.Item>
     </Menu>
   )

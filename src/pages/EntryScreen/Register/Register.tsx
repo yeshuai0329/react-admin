@@ -2,13 +2,11 @@ import React from 'react'
 import { Form, Input, Button, Space, Statistic } from 'antd'
 import { TabletOutlined, MailOutlined } from '@ant-design/icons'
 import QueueAnim from 'rc-queue-anim'
+import { init } from 'locales'
 
 const { Countdown } = Statistic
-interface IProps {
-  reduxLang: any
-}
-const Register: React.FC<IProps> = (props) => {
-  const { reduxLang } = props
+
+const Register: React.FC = () => {
   const deadline = Date.now() + 1000 * 60
   // 获取验证码按钮点击以后置灰/显示倒计时状态
   const [pCodeButtonDisabled, setPCodeButtonDisabled] = React.useState(false)
@@ -35,7 +33,7 @@ const Register: React.FC<IProps> = (props) => {
             <Input
               prefix={<TabletOutlined
               style={{ color: '#1890ff' }} />}
-              placeholder={reduxLang['pages.inputstyle.phonenumplaceholder']}
+              placeholder={init('pages.inputstyle.phonenumplaceholder')}
               size='large'
             />
           </Form.Item>
@@ -48,7 +46,7 @@ const Register: React.FC<IProps> = (props) => {
             <Space>
               <Input
                 prefix={<MailOutlined style={{ color: '#1890ff' }} />}
-                placeholder={reduxLang['pages.inputstyle.vcodeplaceholder']}
+                placeholder={init('pages.inputstyle.vcodeplaceholder')}
                 size='large'
               />
               <Button
@@ -69,7 +67,7 @@ const Register: React.FC<IProps> = (props) => {
                           fontSize: '16px'
                         }}
                       />
-                    : reduxLang['pages.entryscreen.getvcode']
+                    : init('pages.entryscreen.getvcode')
                 }
               </Button>
             </Space>
@@ -78,7 +76,7 @@ const Register: React.FC<IProps> = (props) => {
         <div key='c'>
           <Form.Item>
             <Button type="primary" htmlType="submit" block size='large'>
-              {reduxLang['pages.entryscreen.register']}
+              {init('pages.entryscreen.register')}
             </Button>
           </Form.Item>
         </div>

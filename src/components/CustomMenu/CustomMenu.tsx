@@ -3,11 +3,12 @@ import { Menu } from 'antd'
 import * as Icon from '@ant-design/icons'
 import { NavLink } from 'react-router-dom'
 import { useLocation } from 'react-router'
-import { LangMessage } from 'components/LangMessage/LangMessage'
 import CustomLogo from 'components/CustomLogo/CustomLogo'
+import { init } from 'locales'
 
 const { SubMenu } = Menu
 type PropsMenu = React.ComponentProps<typeof Menu>
+
 interface IProps extends PropsMenu {
   menuList: any[],
   siderMenuIshHasLogo?: boolean,
@@ -21,12 +22,11 @@ interface IProps extends PropsMenu {
  */
 const CustomMenu: React.FC<IProps> = (props) => {
   const { menuList, siderMenuIshHasLogo, MenuIshHasLogo, mode, ...remainProps } = props
-
   const localtion = useLocation()
   const [selectedKeys, setSelectedKeys] = React.useState<string[]>([])
   const [openKeys, setOpenKeys] = React.useState<string[]>([])
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     setSelectedKeys([localtion.pathname])
     setOpenKeys(findAllParent(menuList, localtion.pathname))
   }, [localtion])
@@ -36,31 +36,18 @@ const CustomMenu: React.FC<IProps> = (props) => {
  * @param {*}
  * @return {*}
  */
-  const findAllParent = (menuList: any, path: string) => {
-    // 返回数据集合
-    let temp: string[] = []
-    const recursion = (menuList: any, path: string) => {
-      if (menuList.length === 0) {
-        return temp
-      }
-      for (var i = 0, length = menuList.length; i < length; i++) {
-        var node = menuList[i]
-        if (node.path === path) {
-          if (node.Ppath) {
-            temp.unshift(node.Ppath)
-            recursion(menuList, node.Ppath)
-          }
-          break
-        } else {
-          if (node.children && node.children.length) {
-            recursion(node.children, path)
-          }
-        }
-      }
-      return temp
+  const findAllParent = (menuList: any, path: string, allParentPaths: any = []) => {
+    if (!menuList || !menuList.length) {
+      return null
     }
-    temp = recursion(menuList, path)
-    return temp
+    for (const node of menuList) {
+      if (node.path === path) {
+        return allParentPaths
+      }
+      const find: any = findAllParent(node.children, path, [...allParentPaths, node.path])
+      if (find) return find
+    }
+    return null
   }
 
   /**
@@ -74,7 +61,7 @@ const CustomMenu: React.FC<IProps> = (props) => {
         return (
           <SubMenu
             key={menu.path}
-            title={<LangMessage id={menu.menuNameId} defaultText={menu.menuDefaultName}/>}
+            title={init(menu.menuNameId)}
             icon={iconfont}
           >
             {
@@ -88,7 +75,7 @@ const CustomMenu: React.FC<IProps> = (props) => {
               key={menu.path}
               icon={iconfont}
             >
-              <NavLink to={menu.path} >{<LangMessage id={menu.menuNameId} defaultText={menu.menuDefaultName}/>}</NavLink>
+              <NavLink to={menu.path} >{init(menu.menuNameId)}</NavLink>
             </Menu.Item>
         )
       }
@@ -107,6 +94,7 @@ const CustomMenu: React.FC<IProps> = (props) => {
   const onOpenChange = (openKeys: any) => {
     setOpenKeys(openKeys)
   }
+
   return (
       <Menu
         openKeys={openKeys}

@@ -7,6 +7,7 @@ import App from './pages/App'
 import EntryScreen from 'pages/EntryScreen/EntryScreen'
 import { Redirect, Route, Switch } from 'react-router-dom'
 import Cookies from 'js-cookie'
+import 'locales'
 
 ReactDOM.render(
   <AppProviders>

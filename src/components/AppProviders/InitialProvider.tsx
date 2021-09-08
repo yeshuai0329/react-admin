@@ -2,7 +2,6 @@ import React, { Fragment, ReactElement, useEffect, useState } from 'react'
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import config from 'config/config'
-import { Spin } from 'antd'
 import { SET_LANG } from 'store/actionTypes/configActionType'
 
 interface IProps {
@@ -32,13 +31,9 @@ const InitialProvider: React.FC<IProps> = (props): ReactElement => {
           ? <div
               style={{
                 width: '100%',
-                height: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center'
+                height: '100%'
               }}
             >
-              <Spin size='large' spinning={spinning} tip='Loading...'/>
             </div>
           : props.children
       }

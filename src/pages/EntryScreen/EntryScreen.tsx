@@ -6,16 +6,12 @@ import style from './EntryScreen.module.less'
 import classNames from 'classnames/bind'
 import { ITab } from './type'
 import { Card, Space } from 'antd'
-import { ToggleLang, LangMessage } from 'components/LangMessage/LangMessage'
-import { connect } from 'react-redux'
+import { ToggleLang } from 'components/LangMessage/LangMessage'
+import { init } from 'locales'
 
 const cx = classNames.bind(style)
 
-interface IProps {
-  reduxLang?: any
-}
-const EntryScreen: FC<IProps> = (props) => {
-  const { reduxLang } = props
+const EntryScreen: FC = () => {
   // Card 组件 当前选中的tab的key
   const [currentKey, setCurrentKey] = useState('login')
 
@@ -24,13 +20,13 @@ const EntryScreen: FC<IProps> = (props) => {
     {
       key: 'login',
       tab: <span className={cx('EntryScreen-card__loginTitle')}>
-             <LangMessage id='pages.entryscreen.login' defaultText='登录'/>
+             {init('pages.entryscreen.login')}
            </span>
     },
     {
       key: 'register',
       tab: <span className={cx('EntryScreen-card__registerTitle')}>
-             <LangMessage id='pages.entryscreen.register' defaultText='注册'/>
+             {init('pages.entryscreen.register')}
            </span>
     }
   ]
@@ -45,7 +41,7 @@ const EntryScreen: FC<IProps> = (props) => {
       <div className={cx('EntryScreen-content')}>
         <div className={cx('EntryScreen-content__header')}>
           <h1>R-Boot</h1>
-          <p><LangMessage id='pages.entryscreen.h2' defaultText='React中后台解决方案脚手架'/></p>
+          <p>{init('pages.entryscreen.h2')}</p>
         </div>
         <Card
           tabList={tabList}
@@ -63,14 +59,14 @@ const EntryScreen: FC<IProps> = (props) => {
         >
           {
             currentKey === 'login'
-              ? <Login reduxLang={reduxLang}/>
-              : <Register reduxLang={reduxLang}/>
+              ? <Login/>
+              : <Register/>
           }
         </Card>
         <div className={cx('EntryScreen-content__otherLogin')}>
           <Space size={'middle'}>
             <i style={{ fontSize: '16px' }}>
-              <LangMessage id='pages.entryscreen.otherloginmethods' defaultText='其他登录方式 :' />
+             {init('pages.entryscreen.otherloginmethods')}
             </i>
             <span><AlipayOutlined /></span>
             <span><GithubOutlined /></span>
@@ -86,10 +82,4 @@ const EntryScreen: FC<IProps> = (props) => {
   )
 }
 
-const mapStateToProps = ({ lang }: {lang: any}) => {
-  return {
-    reduxLang: lang
-  }
-}
-
-export default connect(mapStateToProps, null)(EntryScreen)
+export default EntryScreen

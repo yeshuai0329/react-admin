@@ -1,14 +1,11 @@
-import React, { Dispatch } from 'react'
+import React from 'react'
 import { Form, Input, Button } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import QueueAnim from 'rc-queue-anim'
 import { useLogin } from 'pages/EntryScreen/service/EntryScreenHoooks'
-import { connect } from 'react-redux'
-interface IProps {
-  reduxLang: any
-}
-const Login: React.FC<IProps> = (props) => {
-  const { reduxLang } = props
+import { init } from 'locales'
+
+const Login: React.FC = () => {
   /**
    * @description: 中后台登录服务
    * @param {*}
@@ -31,7 +28,7 @@ const Login: React.FC<IProps> = (props) => {
           >
             <Input
               prefix={<UserOutlined style={{ color: '#1890ff' }}/>}
-              placeholder={reduxLang['pages.inputstyle.usernameplaceholder']}
+              placeholder={init('pages.inputstyle.usernameplaceholder')}
               size='large'
             />
           </Form.Item>
@@ -44,7 +41,7 @@ const Login: React.FC<IProps> = (props) => {
             <Input.Password
               prefix={<LockOutlined style={{ color: '#1890ff' }}/>}
               type="password"
-              placeholder={reduxLang['pages.inputstyle.passwordplaceholder']}
+              placeholder={init('pages.inputstyle.usernameplaceholder')}
               size='large'
             />
           </Form.Item>
@@ -52,7 +49,7 @@ const Login: React.FC<IProps> = (props) => {
         <div key='c'>
           <Form.Item>
             <Button type="primary" htmlType="submit" block size='large'>
-              {reduxLang['pages.entryscreen.login']}
+              {init('pages.entryscreen.login')}
             </Button>
           </Form.Item>
         </div>
@@ -60,14 +57,5 @@ const Login: React.FC<IProps> = (props) => {
     </Form>
   )
 }
-const mapDispatchToProps = (dispatch: Dispatch<{type: string, payload: any}>) => {
-  return {
-    reduxSetUserInfo: () => {
-      dispatch({
-        type: '',
-        payload: ''
-      })
-    }
-  }
-}
-export default connect(null, mapDispatchToProps)(Login)
+
+export default Login

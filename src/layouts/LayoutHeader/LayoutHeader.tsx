@@ -1,22 +1,22 @@
-import React, { Dispatch, ReactElement } from 'react'
-import { connect } from 'react-redux'
+import React, { ReactElement } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons'
 import style from 'layouts/LayoutHeader/LayoutHeader.module.less'
 import classNames from 'classnames/bind'
-import { TConfig } from 'typings/config'
 import HeaderRight from './HeaderRight/HeaderRight'
 import BreadCrumbPro from 'components/BreadCrumbPro/BreadCrumbPro'
 import { SET_COLLAPSED } from 'store/actionTypes/configActionType'
+import { RootState } from 'typings/store'
 
 const cx = classNames.bind(style)
 
-interface ILayoutHeaderProps {
-  reduxConfig: TConfig,
-  reduxSetConfig: (type: string, payload: string | boolean) => void
-}
+const LayoutHeader = (): ReactElement => {
+  const reduxConfig = useSelector((state: RootState) => state.config)
+  const dispatch = useDispatch()
 
-const LayoutHeader = (props: ILayoutHeaderProps): ReactElement => {
-  const { reduxConfig, reduxSetConfig } = props
+  const reduxSetConfig = (type: string, payload: string | boolean) => {
+    dispatch({ type, payload })
+  }
 
   return (
     <div className={cx('layoutHeader')}>
@@ -46,21 +46,4 @@ const LayoutHeader = (props: ILayoutHeaderProps): ReactElement => {
   )
 }
 
-const mapStateToProps = ({ config }: {config: TConfig}) => {
-  return {
-    reduxConfig: config
-  }
-}
-
-const mapDispatchToProps = (dispatch: Dispatch<{type: string, payload: string | boolean}>) => {
-  return {
-    reduxSetConfig: (type: string, payload: string | boolean) => {
-      dispatch({
-        type,
-        payload
-      })
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(LayoutHeader)
+export default LayoutHeader

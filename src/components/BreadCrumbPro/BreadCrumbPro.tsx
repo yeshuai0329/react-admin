@@ -2,8 +2,8 @@ import React, { ReactElement } from 'react'
 import { Breadcrumb, Space } from 'antd'
 import * as Icon from '@ant-design/icons'
 import { BreadcrumbItem } from 'typings/breadcrumbItem'
-import { LangMessage } from 'components/LangMessage/LangMessage'
 import { NavLink, useLocation } from 'react-router-dom'
+import { init } from 'locales'
 
 type BreadcrumbProps = React.ComponentProps<typeof Breadcrumb>
 
@@ -50,14 +50,14 @@ const BreadCrumbPro: React.FC<BreadcrumbProps> = (props): ReactElement => {
                       <NavLink to={item.path}>
                         <Space>
                           {iconfont}
-                          <LangMessage id={item.menuNameId} defaultText={item.menuDefaultName}/>
+                          {init(item.menuNameId)}
                         </Space>
                       </NavLink>
                     )
                   : (
                       <Space>
                         {iconfont}
-                        <LangMessage id={item.menuNameId} defaultText={item.menuDefaultName}/>
+                        {init(item.menuNameId)}
                       </Space>
                     )
               }

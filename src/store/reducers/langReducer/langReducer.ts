@@ -1,7 +1,4 @@
-interface IAction {
-  type: string;
-  payload?: any;
-}
+import { IAction } from "typings/store"
 
 const defaultState: {[key:string]: string} = {}
 
