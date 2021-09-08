@@ -11,6 +11,8 @@
 │   └── index.html           # 入口html文件
 ├── src
 │   ├── api                  # 后台接口服务
+│   │   └── images                 # 全局图片资源
+
 │   ├── assets               # 本地静态资源
 │   │   └── images                 # 全局图片资源
 │   ├── components           # 业务通用组件

@@ -30,7 +30,6 @@ export const useLogin = () => {
    */
   const loginFetch = async (values: ILogin) => {
     const { data } = await loginApi(values)
-    console.log(`data`, data)
     // 存储过滤好的权限路由信息
     if (data.code === 200) {
       localStorage.setItem('userInfo', JSON.stringify(data.data))

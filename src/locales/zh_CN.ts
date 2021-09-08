@@ -1,9 +1,15 @@
-import EntryScreen from './zh_CN/EntryScreen'
-import InputStyle from './zh_CN/InputStyle'
-import Menus from './zh_CN/Menu'
+import common from './zh_CN/common'
+import entryScreen from './zh_CN/entryScreen'
+import errorCode from './zh_CN/errorCode'
+import inputStyle from './zh_CN/inputStyle'
+import menus from './zh_CN/menus'
+import rightCode from './zh_CN/rightCode'
 
 export default {
-  ...EntryScreen,
-  ...InputStyle,
-  ...Menus
+  ...common,
+  ...entryScreen,
+  ...inputStyle,
+  ...menus,
+  ...errorCode,
+  ...rightCode
 }

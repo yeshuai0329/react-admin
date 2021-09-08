@@ -13,7 +13,6 @@ export const useQueryDataList = (params: any, paging: any, action: (params: any)
   const [pageTotal, setPageTotal] = useState()
 
   useEffect(() => {
-    console.log(`请求请求`)
     setQueryLoading(true)
     action({ ...params, ...paging })
       .then(res => {

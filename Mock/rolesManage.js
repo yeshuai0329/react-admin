@@ -72,14 +72,12 @@ module.exports = [
     type: 'post',
     response: config => {
       const paramsData = config.body
-      console.log(`paramsData`, paramsData)
       const mockList = List.filter(item => {
         if (item.accountsOrder === paramsData.accountsOrder) {
           item.accountStatus = paramsData.accountStatus
         }
         return item.accountsOrder === paramsData.accountsOrder
       })
-      console.log(`mockList`, mockList)
       if (mockList.length === 0) {
         return {
           code: 1001,
