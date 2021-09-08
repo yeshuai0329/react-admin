@@ -1,4 +1,5 @@
 
+import { IRouter } from 'typings/router'
 import {
   Home,
   Analysis,
@@ -31,8 +32,8 @@ const allAuthRouter:{[key:string]: any} = {
 /**
  * 动态路由映射函数
  */
-export const userDynamicRouters = (rightRouters: any) => {
-  const userRouters: any = []
+export const userDynamicRouters = (rightRouters: IRouter[]) => {
+  const userRouters: IRouter[] = []
   const recursionMap = (arr: any) => {
     arr.forEach((item: any) => {
       if (item.children && item.children.length) {
@@ -53,8 +54,8 @@ export const userDynamicRouters = (rightRouters: any) => {
  * @description: 权限路由,根据请求回来的路由,过滤有权限的路由
  * @return {*}
  */
-export const filterAuthRoutes = (authMenu: any[]): any => {
-  const newArr = authMenu.filter((menu: any) => menu.auth)
+export const filterAuthRoutes = (authMenu: IRouter[]) => {
+  const newArr: IRouter[] = authMenu.filter((menu: any) => menu.auth)
   newArr.forEach((item: any) => {
     if (item.children && item.children.length) {
       item.children = filterAuthRoutes(item.children)

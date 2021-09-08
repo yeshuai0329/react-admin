@@ -7,11 +7,12 @@ import { userDynamicRouters } from 'routers/userDynamicRouters'
 import Copyright from 'components/Copyright/Copyright'
 import NotFind from 'pages/NotFind/NotFind'
 import LoadingComponent from 'components/LoadingComponent/LoadingComponent'
+import { IRouter } from 'typings/router'
 
 const cx = classNames.bind(style)
 
 const LayoutContent: React.FC = (): ReactElement => {
-  const [routerList, setRouterList] = useState([])
+  const [routerList, setRouterList] = useState<IRouter[]>([])
 
   useEffect(() => {
     const routers = JSON.parse(localStorage.getItem('authMenu') || '[]')
