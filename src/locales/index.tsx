@@ -8,7 +8,7 @@ const localesMap: {[key: string]: string} = {
 const currentLocale = localStorage.getItem('currentLocale') || config.locale
 
 const lang = require(`${localesMap[currentLocale]}`).default
-
 export const init = (id: string) => {
+  console.log(`lang`, lang)
   return lang[id] || id
 }

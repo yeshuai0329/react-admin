@@ -1,8 +1,9 @@
 
 import { message } from 'antd'
 import axios, { AxiosInstance } from 'axios'
-import { errorCode } from './errorCode'
+import { init } from 'locales'
 
+console.log(`init`, init)
 const instance: AxiosInstance = axios.create({
   timeout: 30000, // 超时时间
   withCredentials: true
@@ -21,7 +22,7 @@ instance.interceptors.response.use((response) => {
   // 统一拦截错误码
   if (response.status === 200 && response.data) {
     if (response.data.code !== 200) {
-      message.error(errorCode[response.data.code])
+      message.error(init(response.data.code))
       return response
     }
     return response

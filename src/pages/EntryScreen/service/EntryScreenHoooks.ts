@@ -3,7 +3,7 @@ import { loginApi, getAuthInfoApi } from 'api/EntryScreenApi/EntryScreenApi'
 import Cookies from 'js-cookie'
 import { useHistory } from 'react-router'
 import { filterAuthRoutes } from 'routers/userDynamicRouters'
-import { rightCode } from 'api/rightCode'
+import { init } from 'locales'
 
 export interface ILogin {
   username: string,
@@ -34,7 +34,7 @@ export const useLogin = () => {
     if (data.code === 200) {
       localStorage.setItem('userInfo', JSON.stringify(data.data))
       Cookies.set('R-Boot-token', data.data.token)
-      message.success(rightCode.loginSuccess)
+      message.success(init('loginSuccess'))
       return true
     }
     return false
