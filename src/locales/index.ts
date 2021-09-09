@@ -1,15 +1,18 @@
 import config from "config/config"
 
-// @ts-ignore
-const ctx = require.context('./', false, /(?<!index)\.[tj]s/)
 // 查找本地语言配置
 const currentLocale = localStorage.getItem('currentLocale') || config.locale
-// 匹配语言
-const filterKey = ctx.keys().find((item: string) => item.indexOf(currentLocale) !== -1) ||
-  ctx.keys().find((item: string) => item.indexOf('zh_CN') !== -1)
 
-const lang = ctx(filterKey).default
-console.log(`lang`, lang)
+// @ts-ignore
+const ctx = require.context(`./`, true, /(?<!index)\.[tj]s/)
+// 过滤文件
+const ctxFilterKeys = ctx.keys().filter((item: string) => item.indexOf(currentLocale || 'zh_CN') !== -1)
+// 语言
+const lang = ctxFilterKeys.reduce((total: any, path: string) => {
+  const requireContext = ctx(path).default
+  return { ...total, ...requireContext }
+}, {})
+// 调用语言的方法
 export const init = (id: string) => {
   return lang[id] || id
 }

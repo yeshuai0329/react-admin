@@ -23,7 +23,7 @@
 │   │   └── Copyright              # footer
 │   │   └── CustomLogo             # logo
 │   │   └── CustomMenu             # 自定义菜单
-│   │   └── LangMessage            # 全局国际化语言组件
+│   │   └── ToggleLang             # 全局国际化语言组件
 │   ├── config               # 全局配置文件
 │   │   └── config.ts              # 全局配置文件
 │   ├── layouts              # 通用布局
@@ -57,6 +57,7 @@
 ├── README.md                # 项目介绍文件README
 └── tsconfig.json            # ts配置文件
 ```
+
 ## 三、启动项目
 1.  首先下载项目依赖
 ```
@@ -96,17 +97,20 @@ $ yarn start:mock
     - auth===false,则用户对该路由不具有可视权限,并且不会渲染此菜单和该路由;
 
 - 按钮权限
-
+  - 基于用户具有可视权限菜单, 设计AuthButton组件,对新建、编辑、删除、导出等按钮做颗粒度控制
   - 基于Antd Button设计AuthButton组件，实现颗粒度按钮权限控制。
-    - 增加 auth 属性, 用户菜单权限数组包含 auth 属性对应的值,则显示此按钮
-    - 增加 customtype 属性, 增加Antd Button 按钮的样式  sucess|warning|error|info
+  - 增加 auth 属性, 用户菜单权限数组包含 auth 属性对应的值,则显示此按钮
+  - 增加 customtype 属性, 增加Antd Button 按钮的样式  sucess|warning|error|info
 
 - 单向的数据流
+  - 使用redux做全局共享状态管理器
+  - 使用react-redux便捷操作redux
 
 - 语言国际化
-  - 设计语言国际化模块。
-  - 设计ToggleLang组件，做全局国际化语言切换。
-  - 利用localStorage对语言状态做持久化
+  - 依据需求设计语言国际化模块。
+  - 设计ToggleLang组件，做全局国际化语言切换,利用localStorage对语言状态做持久化。
+  - 利用require.context() 工程化自动化读取国际化语言模块文件,解放🙌🏻
+  - 
 
 - 统一错误码拦截
   - 在axios拦截器中拦截错误码,提示错误信息,优化工作效率

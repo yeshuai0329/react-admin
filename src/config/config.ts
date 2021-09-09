@@ -2,7 +2,7 @@ import { TConfig } from 'typings/config'
 
 const config: TConfig = {
   // 默认国际化语言配置
-  locale: 'zh_CN',
+  locale: 'en_US',
   // |||||||||||||||||||||||||||
   // |||||| 侧边栏菜单相关||||||||
   // |||||||||||||||||||||||||||
