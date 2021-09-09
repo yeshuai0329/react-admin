@@ -2,6 +2,7 @@ import { useState, Key } from 'react'
 import { ColumnsType, ExpandableConfig, TableRowSelection } from 'antd/lib/table/interface'
 import moment from 'moment'
 import { scrollIntoView } from 'utils/public'
+import { init } from 'locales'
 
 /**
  * @description 表格选择行配置项
@@ -93,14 +94,14 @@ export const useCommonColumns = <T>() => {
 
   const commonColumns: ColumnsType<T> = [
     {
-      title: '创建时间',
+      title: init('page.table.columns.createTime'),
       dataIndex: 'createTime',
       align: 'center',
       width: 200,
       render: renderTime
     },
     {
-      title: '更新时间',
+      title: init('page.table.columns.updateTime'),
       dataIndex: 'updateTime',
       align: 'center',
       width: 200,

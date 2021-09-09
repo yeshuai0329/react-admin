@@ -68,7 +68,7 @@ const AccountsManage: React.FC = (): ReactElement => {
     return [
       {
         name: 'accountsOrder',
-        label: init('page.searchForm.orderId'),
+        label: init('page.table.columns.orderId'),
         initialValue: '',
         render: (
           <InputNumber
@@ -81,19 +81,19 @@ const AccountsManage: React.FC = (): ReactElement => {
       },
       {
         name: 'loginAccount',
-        label: init('page.searchForm.loginAccount'),
+        label: init('page.table.columns.loginAccount'),
         initialValue: '',
         placeholder: init('page.searchForm.loginAccountPlaceholder')
       },
       {
         name: 'name',
-        label: init('page.searchForm.name'),
+        label: init('page.table.columns.name'),
         initialValue: '',
         placeholder: init('page.searchForm.namePlaceholder')
       },
       {
         name: 'department',
-        label: init('page.searchForm.department'),
+        label: init('page.table.columns.department'),
         initialValue: '',
         render: (
           <Select options={departmentMap} />
@@ -102,7 +102,7 @@ const AccountsManage: React.FC = (): ReactElement => {
       },
       {
         name: 'accountStatus',
-        label: init('page.searchForm.accountStatus'),
+        label: init('page.table.columns.accountStatus'),
         initialValue: '',
         render: (
           <Select options={accountStatusMap}/>

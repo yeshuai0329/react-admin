@@ -16,9 +16,8 @@ export default {
   'page.common.total': 'total',
   'page.common.items': 'items',
   'page.common.all': 'All',
-  'page.common.administrativeDepartment': 'Admin Depart',
-  'page.common.financeDepartment': 'Finance Depart',
-  'page.common.R&Ddepartment': 'R&D Depart',
-  'page.common.salesDepartment': 'Sales Depart',
-  'page.common.publicDepartment': 'Public Depart'
+  'page.common.displayColumn': 'Display column',
+  'page.common.selectAll': 'Select all',
+  'page.common.reverseSelect': 'Reverse select',
+  'page.common.unselectAll': 'Unselect all'
 }

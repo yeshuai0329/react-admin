@@ -143,8 +143,15 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
     Modal.confirm({
       icon: <ExclamationCircleOutlined />,
       content: (
-        <Fragment>{`确定${val ? '启用' : '禁用'} ${record.loginAccount} 账号 ?`}</Fragment>
+        <Fragment>
+          {init(`page.table.columns.${val ? 'confirmEnable' : 'confirmDisable'}`)}
+          {`  ${record.loginAccount}  `}
+          {init(`page.table.columns.account`)}
+          ?
+        </Fragment>
       ),
+      okText: init('page.common.ok'),
+      cancelText: init('page.common.cancel'),
       onOk: () => {
         enAbleOrBindAccount(val, record)
       }
@@ -199,7 +206,7 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
     <AdvancedTable
       loading={tableLoading}
       bordered
-      title={() => <h2>账号列表</h2>}
+      title={() => <h2>{init('page.table.columns.accountsList')}</h2>}
       canConfig={true}
       authActions={authActions}
       columns={columns}

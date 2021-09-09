@@ -16,9 +16,9 @@ export default {
   'page.common.total': '总共',
   'page.common.items': '条',
   'page.common.all': '全部',
-  'page.common.administrativeDepartment': '行政部门',
-  'page.common.financeDepartment': '财务部门',
-  'page.common.R&Ddepartment': '研发部门',
-  'page.common.salesDepartment': '销售部门',
-  'page.common.publicDepartment': '公关部门'
+  'page.common.displayColumn': '展示列',
+  'page.common.selectAll': '全选',
+  'page.common.reverseSelect': '返选',
+  'page.common.unselectAll': '取消全选'
+
 }
