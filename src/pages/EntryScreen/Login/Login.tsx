@@ -28,7 +28,7 @@ const Login: React.FC = () => {
           >
             <Input
               prefix={<UserOutlined style={{ color: '#1890ff' }}/>}
-              placeholder={init('pages.inputstyle.usernameplaceholder')}
+              placeholder={init('page.inputstyle.usernameplaceholder')}
               size='large'
             />
           </Form.Item>
@@ -41,7 +41,7 @@ const Login: React.FC = () => {
             <Input.Password
               prefix={<LockOutlined style={{ color: '#1890ff' }}/>}
               type="password"
-              placeholder={init('pages.inputstyle.usernameplaceholder')}
+              placeholder={init('page.inputstyle.usernameplaceholder')}
               size='large'
             />
           </Form.Item>
@@ -49,7 +49,7 @@ const Login: React.FC = () => {
         <div key='c'>
           <Form.Item>
             <Button type="primary" htmlType="submit" block size='large'>
-              {init('pages.login.login')}
+              {init('page.login.login')}
             </Button>
           </Form.Item>
         </div>

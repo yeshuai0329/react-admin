@@ -9,7 +9,7 @@ const filterKey = ctx.keys().find((item: string) => item.indexOf(currentLocale) 
   ctx.keys().find((item: string) => item.indexOf('zh_CN') !== -1)
 
 const lang = ctx(filterKey).default
-
+console.log(`lang`, lang)
 export const init = (id: string) => {
   return lang[id] || id
 }

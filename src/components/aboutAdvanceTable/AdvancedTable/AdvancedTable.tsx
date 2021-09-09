@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react'
 import { Space, Table, TableProps as AntdTableProps } from 'antd'
 import ColumnsConfig from './components/ColumnsConfig/ColumnsConfig'
 import AuthButtonGroup, { AuthAction } from 'components/aboutAuthButton/AuthButtonGroup'
+import { init } from 'locales'
 
 export interface IPickColumn {
   label: string,
@@ -52,7 +53,7 @@ const AdvancedTable = <RecordType extends object = any>(props: IAdvancedTablePro
           showQuickJumper: true,
           current: paging.pageNo,
           total: pageTotal,
-          showTotal: (total) => `共 ${total} 条`,
+          showTotal: (total) => `${init('page.common.total')} ${total} ${init('page.common.items')}`,
           position: ['bottomCenter'],
           onChange: changePage
         }}

@@ -33,7 +33,7 @@ const Register: React.FC = () => {
             <Input
               prefix={<TabletOutlined
               style={{ color: '#1890ff' }} />}
-              placeholder={init('pages.inputstyle.phonenumplaceholder')}
+              placeholder={init('page.inputstyle.phonenumplaceholder')}
               size='large'
             />
           </Form.Item>
@@ -46,7 +46,7 @@ const Register: React.FC = () => {
             <Space>
               <Input
                 prefix={<MailOutlined style={{ color: '#1890ff' }} />}
-                placeholder={init('pages.inputstyle.vcodeplaceholder')}
+                placeholder={init('page.inputstyle.vcodeplaceholder')}
                 size='large'
               />
               <Button
@@ -67,7 +67,7 @@ const Register: React.FC = () => {
                           fontSize: '16px'
                         }}
                       />
-                    : init('pages.login.getvcode')
+                    : init('page.login.getvcode')
                 }
               </Button>
             </Space>
@@ -76,7 +76,7 @@ const Register: React.FC = () => {
         <div key='c'>
           <Form.Item>
             <Button type="primary" htmlType="submit" block size='large'>
-              {init('pages.login.register')}
+              {init('page.login.register')}
             </Button>
           </Form.Item>
         </div>

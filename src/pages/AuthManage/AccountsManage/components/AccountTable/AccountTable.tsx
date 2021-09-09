@@ -17,6 +17,7 @@ import {
   ExclamationCircleOutlined
 } from '@ant-design/icons'
 import { accountDeleteApi, changeAccountStatusApi } from 'api/AccountsManage/AccountsManage'
+import { init } from 'locales'
 
 const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
   const {
@@ -53,7 +54,7 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
   // 表格操作按钮配置项
   const authActions: AuthAction[] = useMemo(() => [
     {
-      name: '新建',
+      name: init('page.common.newCreate'),
       auth: 'ACCOUNT_ADD',
       customtype: 'default',
       icon: <PlusOutlined />,
@@ -62,7 +63,7 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
       }
     },
     {
-      name: '删除',
+      name: init('page.common.delete'),
       auth: 'ACCOUNT_DEL',
       customtype: 'danger',
       icon: <DeleteOutlined />,
@@ -72,7 +73,7 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
       }
     },
     {
-      name: '编辑',
+      name: init('page.common.edit'),
       auth: 'ACCOUNT_EDIT',
       customtype: 'warning',
       icon: <EditOutlined />,
@@ -82,7 +83,7 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
       }
     },
     {
-      name: '导出',
+      name: init('page.common.export'),
       auth: 'ACCOUNT_EXPORT',
       customtype: 'info',
       icon: <VerticalAlignBottomOutlined />,
@@ -113,7 +114,7 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
           auth='ROLES_EDIT'
           onClick={() => { toggleModalVisibleMethod(true, titleMap[2], record) }}
         >
-          <EditOutlined />编辑
+          <EditOutlined />{init('page.common.edit')}
         </AuthButton>
         <AuthButton
           danger
@@ -121,7 +122,7 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
           auth='ROLES_DEL'
           onClick={() => { deleteTableRow([record]) }}
         >
-          <DeleteOutlined />删除
+          <DeleteOutlined />{init('page.common.delete')}
         </AuthButton>
       </Fragment>
     )

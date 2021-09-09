@@ -46,7 +46,7 @@ module.exports = [
             authMenu: [
               {
                 menuDefaultName: "首页",
-                menuNameId: "pages.menu.home",
+                menuNameId: "page.menu.home",
                 menuId: 1,
                 menuPId: "",
                 menuType: 2,
@@ -58,7 +58,7 @@ module.exports = [
               },
               {
                 menuDefaultName: "DashBoard",
-                menuNameId: "pages.menu.dashboard",
+                menuNameId: "page.menu.dashboard",
                 menuId: 2,
                 menuPId: "",
                 menuType: 1,
@@ -70,7 +70,7 @@ module.exports = [
                 children: [
                   {
                     menuDefaultName: "分析页",
-                    menuNameId: "pages.menu.dashboard.analysis",
+                    menuNameId: "page.menu.dashboard.analysis",
                     menuId: 3,
                     menuPId: 2,
                     menuType: 2,
@@ -82,7 +82,7 @@ module.exports = [
                   },
                   {
                     menuDefaultName: "监控页",
-                    menuNameId: "pages.menu.dashboard.monitor",
+                    menuNameId: "page.menu.dashboard.monitor",
                     menuId: 4,
                     menuPId: 2,
                     menuType: 2,
@@ -96,7 +96,7 @@ module.exports = [
               },
               {
                 menuDefaultName: "权限管理",
-                menuNameId: "pages.menu.auth",
+                menuNameId: "page.menu.auth",
                 menuId: 5,
                 menuPId: "",
                 menuType: 1,
@@ -108,7 +108,7 @@ module.exports = [
                 children: [
                   {
                     menuDefaultName: "角色管理",
-                    menuNameId: "pages.menu.auth.rolesmanage",
+                    menuNameId: "page.menu.auth.rolesmanage",
                     menuId: 6,
                     menuPId: 5,
                     menuType: 2,
@@ -120,7 +120,7 @@ module.exports = [
                   },
                   {
                     menuDefaultName: "账号管理",
-                    menuNameId: "pages.menu.auth.accountsmanage",
+                    menuNameId: "page.menu.auth.accountsmanage",
                     menuId: 7,
                     menuPId: 5,
                     menuType: 2,
@@ -132,7 +132,7 @@ module.exports = [
                   },
                   {
                     menuDefaultName: "菜单管理",
-                    menuNameId: "pages.menu.auth.menusmanage",
+                    menuNameId: "page.menu.auth.menusmanage",
                     menuId: 8,
                     menuPId: 5,
                     menuType: 2,
@@ -146,7 +146,7 @@ module.exports = [
               },
               {
                 menuDefaultName: "系统管理",
-                menuNameId: "pages.menu.system",
+                menuNameId: "page.menu.system",
                 menuId: 9,
                 menuPId: "",
                 menuType: 1,
@@ -158,7 +158,7 @@ module.exports = [
                 children: [
                   {
                     menuDefaultName: "系统配置",
-                    menuNameId: "pages.menu.system.systemconfig",
+                    menuNameId: "page.menu.system.systemconfig",
                     menuId: 10,
                     menuPId: 9,
                     menuType: 2,

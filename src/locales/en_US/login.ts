@@ -1,11 +1,11 @@
 export default {
-  'pages.login.login': 'Login',
-  'pages.login.register': 'Register',
-  'pages.login.h2': 'React middle and back office solution',
-  'pages.login.getvcode': 'Get VCode',
-  'pages.login.otherloginmethods': 'Other Login Methods :',
-  'pages.login.usernameplaceholder': 'username: admin',
-  'pages.login.passwordplaceholder': 'password: admin',
-  'pages.login.phonenumplaceholder': 'Please input mobile phone number',
-  'pages.login.vcodeplaceholder': 'Please enter the verification code'
+  'page.login.login': 'Login',
+  'page.login.register': 'Register',
+  'page.login.h2': 'React middle and back office solution',
+  'page.login.getvcode': 'Get VCode',
+  'page.login.otherloginmethods': 'Other Login Methods :',
+  'page.login.usernameplaceholder': 'username: admin',
+  'page.login.passwordplaceholder': 'password: admin',
+  'page.login.phonenumplaceholder': 'Please input mobile phone number',
+  'page.login.vcodeplaceholder': 'Please enter the verification code'
 }

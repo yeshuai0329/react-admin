@@ -1,6 +1,4 @@
 import React, { ReactElement } from 'react'
-import zhCN from 'antd/lib/locale/zh_CN'
-import { ConfigProvider } from 'antd'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from 'store/store'
@@ -14,14 +12,12 @@ if (process.env.REACT_APP_ENV === 'mock') {
 }
 
 const AppProviders: React.FC = (props): ReactElement => {
-  useSetDocumentTitle(init('pages.common.docTitle'))
+  useSetDocumentTitle(init('page.common.docTitle'))
   return (
     <Provider store={store}>
-      <ConfigProvider locale={zhCN}>
-        <BrowserRouter>
-          {props.children}
-        </BrowserRouter>
-      </ConfigProvider>
+      <BrowserRouter>
+        {props.children}
+      </BrowserRouter>
     </Provider>
 
   )

@@ -1,6 +1,7 @@
 import React, { forwardRef, memo, useImperativeHandle, useState } from 'react'
 import { Button, Col, Form, Input, Row, Space } from 'antd'
 import { SearchOutlined, ReloadOutlined, UpOutlined } from '@ant-design/icons'
+import { init } from 'locales'
 
 export interface SearchFormItem {
   name: string,
@@ -93,18 +94,18 @@ const AdvancedSearch = forwardRef(function fnRef(props: AdvancedSearchProps, ref
         <Col span={6} style={{ textAlign: 'right', height: '56px', position: 'absolute', bottom: 0, right: 0 }}>
           <Space >
               <Button type="primary" htmlType="submit">
-                <SearchOutlined />查询
+                <SearchOutlined />{init('page.common.query')}
               </Button>
               <Button htmlType="reset" onClick={reset}>
-                <ReloadOutlined />重置
+                <ReloadOutlined />{init('page.common.reset')}
               </Button>
               {
                 formList && formList.length > 4
                   ? <Button type='link' onClick={toggle}>
                       {
                         isOpen
-                          ? '收起'
-                          : '展开'
+                          ? init('page.common.putaway')
+                          : init('page.common.open')
                       }
                       <UpOutlined rotate={isOpen ? 180 : 0} />
                     </Button>

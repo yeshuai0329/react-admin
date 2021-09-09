@@ -12,6 +12,7 @@ import {
   departmentMap,
   accountStatusMap
 } from 'pages/AuthManage/AccountsManage/service/constantParams'
+import { init } from 'locales'
 
 const AccountsManage: React.FC = (): ReactElement => {
   const [modalTitle, setModalTitle] = useState<string>(titleMap[FIRST_TYPE]) // 新建或者编辑的模态框的标题
@@ -67,39 +68,44 @@ const AccountsManage: React.FC = (): ReactElement => {
     return [
       {
         name: 'accountsOrder',
-        label: '编号',
+        label: init('page.searchForm.orderId'),
         initialValue: '',
         render: (
-          <InputNumber style={{ width: '100%' }} min={0} placeholder="请输入账号编号" precision={0}/>
+          <InputNumber
+            style={{ width: '100%' }}
+            min={0}
+            placeholder={init('page.searchForm.orderIdPlaceholder')}
+            precision={0}
+          />
         )
       },
       {
         name: 'loginAccount',
-        label: '登录账号',
+        label: init('page.searchForm.loginAccount'),
         initialValue: '',
-        placeholder: "请输入登录账号"
+        placeholder: init('page.searchForm.loginAccountPlaceholder')
       },
       {
         name: 'name',
-        label: '姓名',
+        label: init('page.searchForm.name'),
         initialValue: '',
-        placeholder: "请输入姓名"
+        placeholder: init('page.searchForm.namePlaceholder')
       },
       {
         name: 'department',
-        label: '所属部门',
+        label: init('page.searchForm.department'),
         initialValue: '',
         render: (
-          <Select options={departmentMap}></Select>
+          <Select options={departmentMap} />
         )
 
       },
       {
         name: 'accountStatus',
-        label: '账号状态',
+        label: init('page.searchForm.accountStatus'),
         initialValue: '',
         render: (
-          <Select options={accountStatusMap}></Select>
+          <Select options={accountStatusMap}/>
         )
       }
     ]
