@@ -20,13 +20,13 @@ const EntryScreen: FC = () => {
     {
       key: 'login',
       tab: <span className={cx('EntryScreen-card__loginTitle')}>
-             {init('pages.entryscreen.login')}
+             {init('pages.login.login')}
            </span>
     },
     {
       key: 'register',
       tab: <span className={cx('EntryScreen-card__registerTitle')}>
-             {init('pages.entryscreen.register')}
+             {init('pages.login.register')}
            </span>
     }
   ]
@@ -41,7 +41,7 @@ const EntryScreen: FC = () => {
       <div className={cx('EntryScreen-content')}>
         <div className={cx('EntryScreen-content__header')}>
           <h1>R-Boot</h1>
-          <p>{init('pages.entryscreen.h2')}</p>
+          <p>{init('pages.login.h2')}</p>
         </div>
         <Card
           tabList={tabList}
@@ -66,7 +66,7 @@ const EntryScreen: FC = () => {
         <div className={cx('EntryScreen-content__otherLogin')}>
           <Space size={'middle'}>
             <i style={{ fontSize: '16px' }}>
-             {init('pages.entryscreen.otherloginmethods')}
+             {init('pages.login.otherloginmethods')}
             </i>
             <span><AlipayOutlined /></span>
             <span><GithubOutlined /></span>

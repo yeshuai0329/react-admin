@@ -1,3 +1,4 @@
+// 登录页
 export default {
   'pages.menu.home': 'Home',
   'pages.menu.dashboard': 'DashBoard',

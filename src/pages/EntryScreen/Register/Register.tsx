@@ -67,7 +67,7 @@ const Register: React.FC = () => {
                           fontSize: '16px'
                         }}
                       />
-                    : init('pages.entryscreen.getvcode')
+                    : init('pages.login.getvcode')
                 }
               </Button>
             </Space>
@@ -76,7 +76,7 @@ const Register: React.FC = () => {
         <div key='c'>
           <Form.Item>
             <Button type="primary" htmlType="submit" block size='large'>
-              {init('pages.entryscreen.register')}
+              {init('pages.login.register')}
             </Button>
           </Form.Item>
         </div>

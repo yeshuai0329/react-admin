@@ -49,7 +49,7 @@ const Login: React.FC = () => {
         <div key='c'>
           <Form.Item>
             <Button type="primary" htmlType="submit" block size='large'>
-              {init('pages.entryscreen.login')}
+              {init('pages.login.login')}
             </Button>
           </Form.Item>
         </div>

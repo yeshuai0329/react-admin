@@ -1,3 +1,4 @@
+// 错误码
 export default {
   200: 'Successfull',
   100: 'The account or password is wrong, please contact the administrator!',
