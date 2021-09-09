@@ -3,7 +3,6 @@ import { message } from 'antd'
 import axios, { AxiosInstance } from 'axios'
 import { init } from 'locales'
 
-console.log(`init`, init)
 const instance: AxiosInstance = axios.create({
   timeout: 30000, // 超时时间
   withCredentials: true

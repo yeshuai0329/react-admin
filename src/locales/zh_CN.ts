@@ -1,15 +1,7 @@
-import common from './zh_CN/common'
-import entryScreen from './zh_CN/entryScreen'
-import errorCode from './zh_CN/errorCode'
-import inputStyle from './zh_CN/inputStyle'
-import menus from './zh_CN/menus'
-import rightCode from './zh_CN/rightCode'
+// @ts-ignore
+const ctx = require.context('./zh_CN', false, /\.ts/)
 
-export default {
-  ...common,
-  ...entryScreen,
-  ...inputStyle,
-  ...menus,
-  ...errorCode,
-  ...rightCode
-}
+export default ctx.keys().reduce((total: any, path: string) => {
+  const requireContext = ctx(path).default
+  return { ...total, ...requireContext }
+}, {})
