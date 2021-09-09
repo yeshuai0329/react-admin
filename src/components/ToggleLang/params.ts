@@ -18,6 +18,6 @@ export interface ILangMap {
   value: string
 }
 export const LangMap: ILangMap[] = [
-  { icon: '🇨🇳', nameId: '', defaultName: '简体中文', value: 'zh_CN' },
-  { icon: '🇬🇧', nameId: '', defaultName: 'English', value: 'en_US' }
+  { icon: '🇨🇳', nameId: 'page.header.simplifiedChinese', defaultName: '简体中文', value: 'zh_CN' },
+  { icon: '🇬🇧', nameId: 'page.header.english', defaultName: 'English', value: 'en_US' }
 ]

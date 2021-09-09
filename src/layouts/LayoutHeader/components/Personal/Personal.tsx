@@ -22,11 +22,11 @@ const Personal: React.FC = (): ReactElement => {
 
   const menu = (
     <Menu>
-      <Menu.Item key='1' icon={<UserOutlined />} >{init('个人中心')}</Menu.Item>
-      <Menu.Item key='2'icon={<SettingOutlined />} >{init('个人设置')}</Menu.Item>
+      <Menu.Item key='1' icon={<UserOutlined />} >{init('page.header.personCenter')}</Menu.Item>
+      <Menu.Item key='2'icon={<SettingOutlined />} >{init('page.header.personConfig')}</Menu.Item>
       <Menu.Divider/>
       <Menu.Item key='3' icon={<LogoutOutlined />} onClick={logout}>
-        {init('退出登录')}
+        {init('page.header.logOut')}
       </Menu.Item>
     </Menu>
   )

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { LangMap, ILangMap } from './params'
 import { SET_LANG } from 'store/actionTypes/configActionType'
 import { RootState } from 'typings/store'
+import { init } from 'locales'
 
 /**
  * @description: ToggleLang 组件
@@ -48,7 +49,7 @@ export const ToggleLang = (props: any) => {
             >
               <Space>
                 {`${item.icon}`}
-                {`${item.defaultName}`}
+                {init(item.nameId)}
               </Space>
             </Menu.Item>
           )
