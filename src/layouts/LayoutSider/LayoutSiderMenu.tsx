@@ -13,9 +13,7 @@ const LayoutSiderMenu: React.FC = (): ReactElement => {
       menuList={authMenu}
       mode='inline'
       theme={reduxConfig.siderMenuTheme}
-      style={{
-        height: '100%'
-      }}
+      style={{ height: '100vh' }}
     />
   )
 }

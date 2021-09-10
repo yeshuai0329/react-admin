@@ -1,6 +1,6 @@
 
-import { message } from 'antd'
 import axios, { AxiosInstance } from 'axios'
+import { message } from 'antd'
 import { init } from 'locales'
 
 const instance: AxiosInstance = axios.create({

@@ -9,7 +9,8 @@ import {
   SET_TOP_MENU_IS_HAS,
   SET_TOP_MENU_IS_HAS_LOGO,
   SET_TOP_MENU_THEME,
-  SET_BREADCRUMB_IS_HAS
+  SET_BREADCRUMB_IS_HAS,
+  SET_AUTO_SHOW_SIDER
 } from 'store/actionTypes/configActionType'
 
 // redux默认的配置
@@ -18,6 +19,8 @@ const defaultConfig = {
   locale: 'zh_CN',
   // 是否有侧边菜单
   siderMenuIsHas: true,
+  // 改变宽度的时候,是否自动隐藏侧边菜单
+  autoHoldSiderIsShow: true,
   // 侧边菜单的颜色
   siderMenuTheme: 'dark',
   // 侧边菜单的是否收起
@@ -55,6 +58,12 @@ export default (state = defaultState, { type, payload }: IAction) => {
   // 是否有侧边菜单
   if (type === SET_SIDER_MENU_IS_HAS) {
     newState.siderMenuIsHas = payload
+    localStorage.setItem('userCurrentConfig', JSON.stringify(newState))
+    return newState
+  }
+  // 改变宽度的时候,是否自动隐藏侧边菜单
+  if (type === SET_AUTO_SHOW_SIDER) {
+    newState.autoHoldSiderIsShow = payload
     localStorage.setItem('userCurrentConfig', JSON.stringify(newState))
     return newState
   }

@@ -1,102 +1,22 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
+import { Grid, Tag } from 'antd'
 
-const Home: React.FC = (): ReactElement => {
+const { useBreakpoint } = Grid
+
+function UseBreakpointDemo() {
+  const screens = useBreakpoint()
   return (
-    <div>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-        <h2>sdasd</h2>
-    </div>
+    <>
+      Current break point:{' '}
+      {Object.entries(screens)
+        .filter(screen => !!screen[1])
+        .map(screen => (
+          <Tag color="blue" key={screen[0]}>
+            {screen[0]}
+          </Tag>
+        ))}
+    </>
   )
 }
 
-export default Home
+export default UseBreakpointDemo

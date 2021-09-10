@@ -22,7 +22,7 @@ const LayoutHeader = (): ReactElement => {
     <div className={cx('layoutHeader')}>
       {/* 展开收缩侧边栏菜单按钮 */}
       {
-        reduxConfig.siderMenuIsHas
+        reduxConfig.siderMenuIsHas && reduxConfig.autoHoldSiderIsShow
           ? <div onClick={() => { reduxSetConfig(SET_COLLAPSED, !reduxConfig.siderMenuIsCollapsed) }}>
             {
               reduxConfig.siderMenuIsCollapsed

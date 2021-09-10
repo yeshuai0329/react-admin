@@ -8,6 +8,8 @@ export interface TConfig extends obj{
   locale: TLocale,
   // 是否有侧边菜单
   siderMenuIsHas?: boolean,
+  // 改变宽度的时候,是否自动显示/隐藏侧边菜单
+  autoHoldSiderIsShow?: boolean,
   // 侧边菜单的颜色
   siderMenuTheme?: TTheme,
   // 侧边菜单的是否收起

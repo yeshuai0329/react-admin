@@ -1,35 +1,57 @@
-import React, { ReactElement } from 'react'
-import { Layout } from 'antd'
+import React, { ReactElement, useEffect, Fragment } from 'react'
+import { Grid, Layout } from 'antd'
 import LayoutHeader from 'layouts/LayoutHeader/LayoutHeader'
 import LayoutContent from 'layouts/LayoutContent/LayoutContent'
 import LayoutSiderMenu from 'layouts/LayoutSider/LayoutSiderMenu'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import style from './App.module.less'
 import classNames from 'classnames/bind'
 import { RootState } from 'typings/store'
+import { SET_COLLAPSED, SET_AUTO_SHOW_SIDER } from 'store/actionTypes/configActionType'
+
 const cx = classNames.bind(style)
+const { useBreakpoint } = Grid
 const { Header, Sider, Content } = Layout
 
 const App = (): ReactElement => {
   const reduxConfig = useSelector((state: RootState) => state.config)
+  const dispatch = useDispatch()
+  const screens = useBreakpoint()
+  const reduxSetSiderMenuIsCollapsed = (type: string, payload: string | boolean) => {
+    dispatch({ type, payload })
+  }
+
+  const reduxSetAutoShowSider = (type: string, payload: string | boolean) => {
+    dispatch({ type, payload })
+  }
+
+  useEffect(() => {
+    reduxSetAutoShowSider(SET_AUTO_SHOW_SIDER, screens.sm as boolean)
+  }, [screens])
 
   return (
-    <Layout className={cx('layout')}>
+    <Layout className={cx('layout')} hasSider>
       {/* Sider */}
       {
         reduxConfig.siderMenuIsHas
-          ? <Sider
-              trigger={null}
-              breakpoint='lg'
-              collapsible
-              collapsedWidth={80}
-              collapsed={reduxConfig.siderMenuIsCollapsed}
-              style={{
-                background: '#f0f2f5'
-              }}
-            >
-              <LayoutSiderMenu/>
-            </Sider>
+          ? <Fragment>
+              {
+                reduxConfig.autoHoldSiderIsShow
+                  ? <Sider
+                      trigger={null}
+                      breakpoint='xl'
+                      collapsible
+                      collapsedWidth={60}
+                      collapsed={reduxConfig.siderMenuIsCollapsed}
+                      onCollapse={() => {
+                        reduxSetSiderMenuIsCollapsed(SET_COLLAPSED, !reduxConfig.siderMenuIsCollapsed)
+                      }}
+                    >
+                      <LayoutSiderMenu/>
+                    </Sider>
+                  : null
+              }
+            </Fragment>
           : null
       }
       {/* 右侧 */}
