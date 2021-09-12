@@ -33,7 +33,7 @@ const Register: React.FC = () => {
             <Input
               prefix={<TabletOutlined
               style={{ color: '#1890ff' }} />}
-              placeholder={init('page.inputstyle.phonenumplaceholder')}
+              placeholder={init('page.login.phonenumplaceholder')}
               size='large'
             />
           </Form.Item>
@@ -46,7 +46,7 @@ const Register: React.FC = () => {
             <Space>
               <Input
                 prefix={<MailOutlined style={{ color: '#1890ff' }} />}
-                placeholder={init('page.inputstyle.vcodeplaceholder')}
+                placeholder={init('page.login.vcodeplaceholder')}
                 size='large'
               />
               <Button

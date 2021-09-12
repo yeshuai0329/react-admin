@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, Fragment } from 'react'
+import React, { ReactElement, useEffect, Fragment, useState } from 'react'
 import { Grid, Layout } from 'antd'
 import LayoutHeader from 'layouts/LayoutHeader/LayoutHeader'
 import LayoutContent from 'layouts/LayoutContent/LayoutContent'
@@ -14,6 +14,8 @@ const { useBreakpoint } = Grid
 const { Header, Sider, Content } = Layout
 
 const App = (): ReactElement => {
+  // 避免页面闪烁
+  const [domOnload, setDomOnload] = useState<any>()
   const reduxConfig = useSelector((state: RootState) => state.config)
   const dispatch = useDispatch()
   const screens = useBreakpoint()
@@ -29,8 +31,15 @@ const App = (): ReactElement => {
     reduxSetAutoShowSider(SET_AUTO_SHOW_SIDER, screens.sm as boolean)
   }, [screens])
 
+  // 避免页面闪烁
+  useEffect(() => {
+    window.onload = () => {
+      setDomOnload(true)
+    }
+  }, [])
+
   return (
-    <Layout className={cx('layout')} hasSider>
+    <Layout className={cx('layout')} style={{ display: domOnload || 'none' }}>
       {/* Sider */}
       {
         reduxConfig.siderMenuIsHas

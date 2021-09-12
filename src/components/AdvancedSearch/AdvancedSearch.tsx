@@ -61,7 +61,7 @@ const AdvancedSearch = forwardRef(function fnRef(props: AdvancedSearchProps, ref
           formList && formList.map((item: any, index:number) => {
             if (index < count) {
               return (
-                <Col key={index} span={6}>
+                <Col key={index} xs={24} sm={12} lg={6} xl={6} >
                   <Form.Item
                     initialValue={item.initialValue}
                     label={item.label}
@@ -87,11 +87,14 @@ const AdvancedSearch = forwardRef(function fnRef(props: AdvancedSearchProps, ref
           })
         }
         {
-          count % 4 === 0
-            ? <Col span={6} style={{ height: '56px' }}></Col>
+          count % 2 === 0
+            ? <Col xs={24} sm={12} lg={6} xl={6} style={{ height: '56px' }}></Col>
             : null
         }
-        <Col span={6} style={{ textAlign: 'right', height: '56px', position: 'absolute', bottom: 0, right: 0 }}>
+        <Col
+          xs={24} sm={12} lg={6} xl={6}
+          // style={{ textAlign: 'right', height: '56px', position: 'absolute', bottom: 0, right: 0 }}
+        >
           <Space >
               <Button type="primary" htmlType="submit">
                 <SearchOutlined />{init('page.common.query')}

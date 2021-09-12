@@ -2,14 +2,14 @@ import { TConfig } from 'typings/config'
 
 const config: TConfig = {
   // 默认国际化语言配置
-  locale: 'en_US',
+  locale: 'zh_CN',
   // |||||||||||||||||||||||||||
   // |||||| 侧边栏菜单相关||||||||
   // |||||||||||||||||||||||||||
   // 是否有侧边菜单
   siderMenuIsHas: true,
   // 改变宽度的时候,是否自动显示/隐藏侧边菜单
-  autoHoldSiderIsShow: true,
+  autoHoldSiderIsShow: false,
   // 侧边菜单的颜色
   siderMenuTheme: 'dark',
   // 侧边菜单的是否收起

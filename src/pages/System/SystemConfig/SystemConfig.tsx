@@ -17,11 +17,6 @@ const SystemConfig: React.FC<IProps> = (props): ReactElement => {
     <Row
       gutter={[16, 16]}
     >
-      <Col span={24}>
-        <Card title='视觉风格' bordered={false}>
-
-        </Card>
-      </Col>
       <Col span={12}>
         <Card title='侧边菜单设置' style={{ minHeight: 400 }}>
           <SiderMenuConfig

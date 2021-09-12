@@ -17,20 +17,17 @@ export const useAccountColumns = (options: IOptions) : ColumnsType<AccountRecord
       title: init('page.table.columns.orderId'),
       dataIndex: 'accountsOrder',
       align: 'center',
-      width: 100,
       fixed: 'left'
     },
     {
       title: init('page.table.columns.name'),
       dataIndex: 'name',
-      align: 'center',
-      width: 120
+      align: 'center'
     },
     {
       title: init('page.table.columns.phoneNum'),
       dataIndex: 'phoneNumber',
       align: 'center',
-      width: 200,
       render: function renderPhoneNumber(value:string) {
         return value.substring(0, 3) + "****" + value.substr(value.length - 4)
       }
@@ -40,7 +37,6 @@ export const useAccountColumns = (options: IOptions) : ColumnsType<AccountRecord
       dataIndex: 'belongToRoles',
       align: 'center',
       ellipsis: true,
-      width: 200,
       render: function (value:string) {
         return departmentMap.find(item => item.value === value)?.label
       }
@@ -49,7 +45,6 @@ export const useAccountColumns = (options: IOptions) : ColumnsType<AccountRecord
       title: init('page.table.columns.department'),
       dataIndex: 'department',
       align: 'center',
-      width: 200,
       render: function (value:string) {
         return departmentMap.find(item => item.value === value)?.label
       }
@@ -58,27 +53,23 @@ export const useAccountColumns = (options: IOptions) : ColumnsType<AccountRecord
       title: init('page.table.columns.accountStatus'),
       dataIndex: 'accountsStatus',
       align: 'center',
-      width: 200,
       render: options.accountsStatusRender
     },
     {
       title: init('page.table.columns.loginAccount'),
       dataIndex: 'loginAccount',
-      align: 'center',
-      width: 200
+      align: 'center'
     },
     {
       title: init('page.table.columns.password'),
       dataIndex: 'accountPassword',
-      align: 'center',
-      width: 200
+      align: 'center'
     },
     ...commonColumns,
     {
       title: init('page.table.columns.operation'),
       dataIndex: 'operation',
       align: 'center',
-      width: 200,
       fixed: 'right',
       render: options.operationRender
     }

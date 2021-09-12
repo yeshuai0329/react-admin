@@ -28,7 +28,7 @@ const Login: React.FC = () => {
           >
             <Input
               prefix={<UserOutlined style={{ color: '#1890ff' }}/>}
-              placeholder={init('page.inputstyle.usernameplaceholder')}
+              placeholder={init('page.login.usernameplaceholder')}
               size='large'
             />
           </Form.Item>
@@ -41,7 +41,7 @@ const Login: React.FC = () => {
             <Input.Password
               prefix={<LockOutlined style={{ color: '#1890ff' }}/>}
               type="password"
-              placeholder={init('page.inputstyle.usernameplaceholder')}
+              placeholder={init('page.login.usernameplaceholder')}
               size='large'
             />
           </Form.Item>
