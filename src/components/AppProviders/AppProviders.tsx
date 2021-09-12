@@ -6,6 +6,7 @@ import store from 'store/store'
 import { useAntdLocale, useSetDocumentTitle } from 'publicHooks'
 import { init } from 'locales'
 import config from "config/config"
+import InitProviders from './InitProviders'
 
 // 数据mock
 if (process.env.REACT_APP_ENV === 'mock') {
@@ -14,13 +15,18 @@ if (process.env.REACT_APP_ENV === 'mock') {
 }
 
 const AppProviders: React.FC = (props): ReactElement => {
+  // 设置title
   useSetDocumentTitle(init('page.common.docTitle'))
+  // 设置antd 语言
   const antdLocale = useAntdLocale(config.locale)
+
   return (
     <Provider store={store}>
       <ConfigProvider locale={antdLocale}>
         <BrowserRouter>
-          {props.children}
+          <InitProviders>
+            {props.children}
+          </InitProviders>
         </BrowserRouter>
       </ConfigProvider>
     </Provider>
