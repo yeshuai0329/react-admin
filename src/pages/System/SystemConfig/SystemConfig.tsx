@@ -1,18 +1,21 @@
-import React, { Dispatch, ReactElement } from 'react'
-
+import React, { ReactElement } from 'react'
 import { Row, Col, Card } from 'antd'
-import { connect } from 'react-redux'
-import { TConfig } from 'typings/config'
+import { useDispatch, useSelector } from 'react-redux'
 import SiderMenuConfig from './components/SiderMenuConfig/SiderMenuConfig'
 import TopMenuConfig from './components/TopMenuConfig/TopMenuConfig'
+import { RootState } from 'typings/store'
 
-interface IProps {
-  reduxConfig: TConfig,
-  reduxSetConfig: (type: string, payload: string | boolean) => void
-}
+const SystemConfig: React.FC = (): ReactElement => {
+  const reduxConfig = useSelector((state: RootState) => state.config)
+  const dispatch = useDispatch()
 
-const SystemConfig: React.FC<IProps> = (props): ReactElement => {
-  const { reduxConfig, reduxSetConfig } = props
+  const reduxSetConfig = (type: string, payload: string | boolean) => {
+    dispatch({
+      type,
+      payload
+    })
+  }
+
   return (
     <Row
       gutter={[16, 16]}
@@ -37,21 +40,4 @@ const SystemConfig: React.FC<IProps> = (props): ReactElement => {
   )
 }
 
-const mapStateToProps = ({ config }: {config: TConfig}) => {
-  return {
-    reduxConfig: config
-  }
-}
-
-const mapDispatchToProps = (dispatch: Dispatch<{type: string, payload: string | boolean}>) => {
-  return {
-    reduxSetConfig: (type: string, payload: string | boolean) => {
-      dispatch({
-        type,
-        payload
-      })
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SystemConfig)
+export default SystemConfig
