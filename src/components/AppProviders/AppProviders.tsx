@@ -10,7 +10,7 @@ import InitProviders from './InitProviders'
 
 // 数据mock
 if (process.env.REACT_APP_ENV === 'mock') {
-  const { mockXHR } = require('../../../Mock')
+  const { mockXHR } = require('../../Mock')
   mockXHR()
 }
 
