@@ -1,4 +1,4 @@
-import React, { ReactElement, useMemo, useState, Fragment, useEffect } from 'react'
+import React, { ReactElement, useMemo, useState, useEffect } from 'react'
 import AdvancedSearch, { SearchFormItem } from 'components/AdvancedSearch/AdvancedSearch'
 import AccountTable from './components/AccountTable/AccountTable'
 import AccountModal from './components/AccountModal/AccountModal'
@@ -121,7 +121,7 @@ const AccountsManage: React.FC = (): ReactElement => {
   }
 
   return (
-    <Fragment>
+    <div style={{ background: '#fff', padding: 16 }}>
       <AdvancedSearch
         formList={formList}
         onSearch={onSearch}
@@ -143,7 +143,7 @@ const AccountsManage: React.FC = (): ReactElement => {
         detail={rowList}
         onCancel={() => { toggleModalVisibleMethod(false) }}
       />
-    </Fragment>
+    </div>
   )
 }
 

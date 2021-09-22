@@ -8,11 +8,14 @@ import Copyright from 'components/Copyright/Copyright'
 import NotFind from 'pages/NotFind/NotFind'
 import LoadingComponent from 'components/LoadingComponent/LoadingComponent'
 import { IRouter } from 'typings/router'
+import { useSelector } from 'react-redux'
+import { RootState } from 'typings/store'
 
 const cx = classNames.bind(style)
 
 const LayoutContent: React.FC = (): ReactElement => {
   const [routerList, setRouterList] = useState<IRouter[]>([])
+  const reduxConfig = useSelector((state:RootState) => state.config)
 
   useEffect(() => {
     const routers = JSON.parse(localStorage.getItem('authMenu') || '[]')
@@ -21,24 +24,26 @@ const LayoutContent: React.FC = (): ReactElement => {
 
   return (
     <div className={cx('LayoutContent')}>
-      <div className={cx('LayoutContent-route')}>
-        <React.Suspense fallback={<LoadingComponent/>}>
-          <Switch>
-            {
-              routerList && routerList.map((router: any) => {
-                return (
-                  <AuthRoute key={router.path} {...router} exact/>
-                )
-              })
-            }
-            <Redirect from={'/'} to={'/home'} exact/>
-            <AuthRoute path={'*'} component={NotFind} />
-          </Switch>
-        </React.Suspense>
-      </div>
-      <div className={cx('LayoutContent-Copyright')}>
-        <Copyright />
-      </div>
+      <React.Suspense fallback={<LoadingComponent/>}>
+        <Switch>
+          {
+            routerList && routerList.map((router: any) => {
+              return (
+                <AuthRoute key={router.path} {...router} exact/>
+              )
+            })
+          }
+          <Redirect from={'/'} to={'/home'} exact/>
+          <AuthRoute path={'*'} component={NotFind} />
+        </Switch>
+      </React.Suspense>
+      {
+        reduxConfig.isHasCopyright
+          ? <div className={cx('LayoutContent-Copyright')}>
+              <Copyright />
+            </div>
+          : null
+      }
     </div>
   )
 }

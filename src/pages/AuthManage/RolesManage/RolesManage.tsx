@@ -69,11 +69,13 @@ const RolesManage: React.FC = (): ReactElement => {
     }
   }
   return (
-    <AdvancedTablePro
-      serchFormOptions={serchFormOptions}
-      advancedTableOptions={advanceTableOptions}
-      advancedModalOptions={advancedModalOptions}
-    />
+    <div style={{ background: '#fff', padding: 16 }}>
+      <AdvancedTablePro
+        serchFormOptions={serchFormOptions}
+        advancedTableOptions={advanceTableOptions}
+        advancedModalOptions={advancedModalOptions}
+      />
+    </div>
   )
 }
 

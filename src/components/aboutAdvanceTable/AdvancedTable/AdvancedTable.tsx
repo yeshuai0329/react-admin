@@ -45,7 +45,7 @@ const AdvancedTable = <RecordType extends object = any>(props: IAdvancedTablePro
       </Space>
       {}
       <Table
-        size='small'
+        size='middle'
         columns={pickColumns}
         scroll={{ x: 'max-content' }}
         pagination={{

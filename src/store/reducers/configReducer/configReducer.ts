@@ -34,7 +34,9 @@ const defaultConfig = {
   // 顶部菜单是否有logo
   topMenuIsHasLogo: false,
   // 是否有顶部面包屑
-  breadCrumbIsHas: true
+  breadCrumbIsHas: true,
+  // 是否默认有备案号
+  isHasCopyright: true
 }
 
 const userCurrentConfig = JSON.parse(localStorage.getItem('userCurrentConfig') || '{}')

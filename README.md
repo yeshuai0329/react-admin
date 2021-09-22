@@ -5,7 +5,6 @@
 
 ## 二、目录结构
 ```html
-├── Mock           #模拟后台请求的mock服务器
 ├── public
 │   └── favicon.png          # Favicon
 │   └── index.html           # 入口html文件
@@ -28,6 +27,7 @@
 │   │   └── config.ts              # 全局配置文件
 │   ├── layouts              # 通用布局
 │   ├── locales              # 国际化资源
+│   ├── Mock                 #模拟后台请求的mock服务器
 │   ├── pages                # 业务页面入口和常用模板
 │   │   └── EntryScreen             # 登录注册界面
 │   ├── publicHooks          # 公共的hooks
