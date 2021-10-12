@@ -29,7 +29,7 @@ export const useAccountColumns = (options: IOptions) : ColumnsType<AccountRecord
       dataIndex: 'phoneNumber',
       align: 'center',
       render: function renderPhoneNumber(value:string) {
-        return value.substring(0, 3) + "****" + value.substr(value.length - 4)
+        return value.substring(0, 3) + '****' + value.substr(value.length - 4)
       }
     },
     {

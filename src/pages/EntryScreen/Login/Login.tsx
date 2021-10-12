@@ -14,41 +14,41 @@ const Login: React.FC = () => {
   const { onFinish } = useLogin()
 
   return (
-     <Form
+    <Form
       name="normal_login"
-      className={"login-form"}
+      className={'login-form'}
       initialValues={{ username: 'admin', password: 'admin' }}
       onFinish={onFinish}
     >
       <QueueAnim type="left">
-        <div key='a'>
+        <div key="a">
           <Form.Item
             name="username"
             rules={[{ required: true, message: 'Please input your Username!' }]}
           >
             <Input
-              prefix={<UserOutlined style={{ color: '#1890ff' }}/>}
+              prefix={<UserOutlined style={{ color: '#1890ff' }} />}
               placeholder={init('page.login.usernameplaceholder')}
-              size='large'
+              size="large"
             />
           </Form.Item>
         </div>
-        <div key='b'>
+        <div key="b">
           <Form.Item
             name="password"
             rules={[{ required: true, message: 'Please input your Password!' }]}
           >
             <Input.Password
-              prefix={<LockOutlined style={{ color: '#1890ff' }}/>}
+              prefix={<LockOutlined style={{ color: '#1890ff' }} />}
               type="password"
               placeholder={init('page.login.usernameplaceholder')}
-              size='large'
+              size="large"
             />
           </Form.Item>
         </div>
-        <div key='c'>
+        <div key="c">
           <Form.Item>
-            <Button type="primary" htmlType="submit" block size='large'>
+            <Button type="primary" htmlType="submit" block size="large">
               {init('page.login.login')}
             </Button>
           </Form.Item>

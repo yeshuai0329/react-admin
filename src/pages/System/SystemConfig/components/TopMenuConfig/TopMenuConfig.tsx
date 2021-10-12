@@ -1,6 +1,5 @@
-
 import React from 'react'
-import { ISiderMenuConfig } from "typings/systemConfig"
+import { ISiderMenuConfig } from 'typings/systemConfig'
 import {
   SET_TOP_MENU_IS_HAS,
   SET_TOP_MENU_IS_HAS_LOGO,
@@ -10,10 +9,10 @@ import { Row, Col, Switch } from 'antd'
 import { TConfig } from 'typings/config'
 
 interface IProps {
-  reduxConfig: TConfig,
+  reduxConfig: TConfig
   reduxSetConfig: (type: string, payload: string | boolean) => void
 }
-const TopMenuConfig: React.FC<IProps> = (props) => {
+const TopMenuConfig: React.FC<IProps> = props => {
   const { reduxConfig, reduxSetConfig } = props
 
   const SiderMenuConfigs: ISiderMenuConfig[] = [
@@ -52,11 +51,9 @@ const TopMenuConfig: React.FC<IProps> = (props) => {
   ]
 
   return (
-    <Row
-      gutter={[16, 16]}
-    >
-      {
-        SiderMenuConfigs && SiderMenuConfigs.map((row: ISiderMenuConfig, index: number) => {
+    <Row gutter={[16, 16]}>
+      {SiderMenuConfigs &&
+        SiderMenuConfigs.map((row: ISiderMenuConfig, index: number) => {
           return (
             <Col
               key={index}
@@ -68,18 +65,21 @@ const TopMenuConfig: React.FC<IProps> = (props) => {
               }}
             >
               {row.label}
-              {
-                row.render
-                  ? row.render()
-                  : <Switch
-                      checked={reduxConfig[row.value]}
-                      onChange={() => { reduxSetConfig(row.type, !reduxConfig[row.value]) }}
-                    />
-              }
+              {row.render
+                ? (
+                    row.render()
+                  )
+                : (
+                <Switch
+                  checked={reduxConfig[row.value]}
+                  onChange={() => {
+                    reduxSetConfig(row.type, !reduxConfig[row.value])
+                  }}
+                />
+                  )}
             </Col>
           )
-        })
-      }
+        })}
     </Row>
   )
 }

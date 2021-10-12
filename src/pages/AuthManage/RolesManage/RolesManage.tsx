@@ -1,15 +1,15 @@
-import React, { ReactElement } from "react"
-import { Input } from "antd"
-import { RolesRecord, titleMap } from "typings/rolesManage.d"
-import AdvancedTablePro from "components/aboutAdvanceTable/AdvancedTablePro/AdvancedTablePro"
-import { IAdvancedTableProps } from "components/aboutAdvanceTable/AdvancedTable/AdvancedTable"
-import { usePaging, useRowSelection } from "publicHooks/tableHooks/tableHooks"
-import { rolesQueryApi } from "api/rolesManage/rolesManage"
-import { IAdvancedModalProps } from "components/AdvancedModal/AdvancedModal"
-import { useAboutRolesTable } from "./service/aboutTable"
-import { useSearchFormOptions } from "./service/aboutSearchForm"
-import { useDialog } from "publicHooks/modalHooks/modalHooks"
-import { useQueryDataList } from "publicHooks/apiHooks/apiHooks"
+import React, { ReactElement } from 'react'
+import { Input } from 'antd'
+import { RolesRecord, titleMap } from 'typings/rolesManage.d'
+import AdvancedTablePro from 'components/aboutAdvanceTable/AdvancedTablePro/AdvancedTablePro'
+import { IAdvancedTableProps } from 'components/aboutAdvanceTable/AdvancedTable/AdvancedTable'
+import { usePaging, useRowSelection } from 'publicHooks/tableHooks/tableHooks'
+import { rolesQueryApi } from 'api/rolesManage/rolesManage'
+import { IAdvancedModalProps } from 'components/AdvancedModal/AdvancedModal'
+import { useAboutRolesTable } from './service/aboutTable'
+import { useSearchFormOptions } from './service/aboutSearchForm'
+import { useDialog } from 'publicHooks/modalHooks/modalHooks'
+import { useQueryDataList } from 'publicHooks/apiHooks/apiHooks'
 
 const RolesManage: React.FC = (): ReactElement => {
   const {
@@ -25,7 +25,7 @@ const RolesManage: React.FC = (): ReactElement => {
   } = useDialog<RolesRecord>()
   const { checkedRowKeys, checkedRows, rowSelection } = useRowSelection<
     RolesRecord
-  >("rolesOrder")
+  >('rolesOrder')
 
   // ----------- 高级搜索相关
   const { serchFormOptions, searchData } = useSearchFormOptions({ changePage })
@@ -75,8 +75,8 @@ const RolesManage: React.FC = (): ReactElement => {
     formOptions: {
       modalFormList: [
         {
-          name: "userName",
-          label: "用户名",
+          name: 'userName',
+          label: '用户名',
           render: <Input />
         }
       ]
@@ -84,7 +84,7 @@ const RolesManage: React.FC = (): ReactElement => {
   }
 
   return (
-    <div style={{ background: "#fff", padding: 16 }}>
+    <div style={{ background: '#fff', padding: 16 }}>
       <AdvancedTablePro
         serchFormOptions={serchFormOptions}
         advancedTableOptions={advanceTableOptions}

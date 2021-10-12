@@ -1,12 +1,12 @@
-import React, { ReactElement } from "react"
-import { Col, Row } from "antd"
-import ConsumptionRanking from "./components/ConsumptionRanking"
-import DistributionMap from "./components/DistributionMap"
-import TrendChart from "./components/TrendChart"
+import React, { ReactElement } from 'react'
+import { Col, Row } from 'antd'
+import ConsumptionRanking from './components/ConsumptionRanking'
+import DistributionMap from './components/DistributionMap'
+import TrendChart from './components/TrendChart'
 
 const Analysis: React.FC = (): ReactElement => {
   return (
-    <Row gutter={[24, 24]}>
+    <Row gutter={[24, 24]} style={{ marginBottom: 16 }}>
       {/* 趋势图 */}
       <Col xs={24} sm={24} lg={24} xl={10}>
         <TrendChart />

@@ -1,4 +1,4 @@
-import { init } from "locales"
+import { init } from 'locales'
 
 // 账号管理Table
 export const titleMap: {[key:string]: string} = {

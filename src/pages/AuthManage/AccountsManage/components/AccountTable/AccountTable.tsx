@@ -89,7 +89,7 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
       icon: <VerticalAlignBottomOutlined />,
       disabled: checkedRowKeys.length === 0 && checkedRows.length === 0,
       onClick: () => {
-        console.log(`obj`, 444444444444444)
+        console.log('obj', 444444444444444)
       }
     }
   ], [checkedRowKeys, checkedRows])
@@ -146,7 +146,7 @@ const AccountTable: React.FC<IAccountTable> = (props): ReactElement => {
         <Fragment>
           {init(`page.table.columns.${val ? 'confirmEnable' : 'confirmDisable'}`)}
           {`  ${record.loginAccount}  `}
-          {init(`page.table.columns.account`)}
+          {init('page.table.columns.account')}
           ?
         </Fragment>
       ),

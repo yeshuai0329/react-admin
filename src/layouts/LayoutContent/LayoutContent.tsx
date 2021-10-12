@@ -15,7 +15,7 @@ const cx = classNames.bind(style)
 
 const LayoutContent: React.FC = (): ReactElement => {
   const [routerList, setRouterList] = useState<IRouter[]>([])
-  const reduxConfig = useSelector((state:RootState) => state.config)
+  const reduxConfig = useSelector((state: RootState) => state.config)
 
   useEffect(() => {
     const routers = JSON.parse(localStorage.getItem('authMenu') || '[]')
@@ -24,26 +24,23 @@ const LayoutContent: React.FC = (): ReactElement => {
 
   return (
     <div className={cx('LayoutContent')}>
-      <React.Suspense fallback={<LoadingComponent/>}>
+      <React.Suspense fallback={<LoadingComponent />}>
         <Switch>
-          {
-            routerList && routerList.map((router: any) => {
-              return (
-                <AuthRoute key={router.path} {...router} exact/>
-              )
-            })
-          }
-          <Redirect from={'/'} to={'/home'} exact/>
+          {routerList &&
+            routerList.map((router: any) => {
+              return <AuthRoute key={router.path} {...router} exact />
+            })}
+          <Redirect from={'/'} to={'/home'} exact />
           <AuthRoute path={'*'} component={NotFind} />
         </Switch>
       </React.Suspense>
-      {
-        reduxConfig.isHasCopyright
-          ? <div className={cx('LayoutContent-Copyright')}>
-              <Copyright />
-            </div>
-          : null
-      }
+      {reduxConfig.isHasCopyright
+        ? (
+        <div className={cx('LayoutContent-Copyright')}>
+          <Copyright />
+        </div>
+          )
+        : null}
     </div>
   )
 }

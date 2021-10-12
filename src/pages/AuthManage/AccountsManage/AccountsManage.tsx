@@ -1,20 +1,20 @@
-import React, { ReactElement, useMemo, useState, useEffect } from "react"
+import React, { ReactElement, useMemo, useState, useEffect } from 'react'
 import AdvancedSearch, {
   SearchFormItem
-} from "components/AdvancedSearch/AdvancedSearch"
-import AccountTable from "./components/AccountTable/AccountTable"
-import AccountModal from "./components/AccountModal/AccountModal"
-import { AccountRecord } from "typings/accountsManage"
-import { accountQueryApi } from "api/AccountsManage/AccountsManage"
-import { InputNumber, Select } from "antd"
-import { usePaging } from "../../../publicHooks/tableHooks/tableHooks"
-import { FIRST_TYPE } from "utils/globalConstantParams"
+} from 'components/AdvancedSearch/AdvancedSearch'
+import AccountTable from './components/AccountTable/AccountTable'
+import AccountModal from './components/AccountModal/AccountModal'
+import { AccountRecord } from 'typings/accountsManage'
+import { accountQueryApi } from 'api/AccountsManage/AccountsManage'
+import { InputNumber, Select } from 'antd'
+import { usePaging } from '../../../publicHooks/tableHooks/tableHooks'
+import { FIRST_TYPE } from 'utils/globalConstantParams'
 import {
   titleMap,
   departmentMap,
   accountStatusMap
-} from "pages/AuthManage/AccountsManage/service/constantParams"
-import { init } from "locales"
+} from 'pages/AuthManage/AccountsManage/service/constantParams'
+import { init } from 'locales'
 
 const AccountsManage: React.FC = (): ReactElement => {
   const [modalTitle, setModalTitle] = useState<string>(titleMap[FIRST_TYPE]) // 新建或者编辑的模态框的标题
@@ -25,11 +25,11 @@ const AccountsManage: React.FC = (): ReactElement => {
   const [pageTotal, setPageTotal] = useState<number>(0) // 表格页数
   const [tableList, setTableList] = useState<AccountRecord[] | never[]>([]) // 表格数据
   const [searchData, setSearchData] = useState({
-    accountsOrder: "",
-    loginAccount: "",
-    department: "",
-    accountStatus: "",
-    email: ""
+    accountsOrder: '',
+    loginAccount: '',
+    department: '',
+    accountStatus: '',
+    email: ''
   }) // 高级搜索查询参数
 
   /**
@@ -38,9 +38,9 @@ const AccountsManage: React.FC = (): ReactElement => {
   const accountQueryMethod = async () => {
     setTableLoading(true)
     const params = { ...searchData, ...paging }
-    console.log(`params`, params)
+    console.log('params', params)
     const { data } = await accountQueryApi(params)
-    console.log(`data`, data)
+    console.log('data', data)
     if (data.code === 200) {
       setTableList(data.data)
       setPageTotal(data.total)
@@ -76,40 +76,40 @@ const AccountsManage: React.FC = (): ReactElement => {
   const formList: SearchFormItem[] = useMemo(() => {
     return [
       {
-        name: "accountsOrder",
-        label: init("page.table.columns.orderId"),
-        initialValue: "",
+        name: 'accountsOrder',
+        label: init('page.table.columns.orderId'),
+        initialValue: '',
         render: (
           <InputNumber
-            style={{ width: "100%" }}
+            style={{ width: '100%' }}
             min={0}
-            placeholder={init("page.searchForm.orderIdPlaceholder")}
+            placeholder={init('page.searchForm.orderIdPlaceholder')}
             precision={0}
           />
         )
       },
       {
-        name: "loginAccount",
-        label: init("page.table.columns.loginAccount"),
-        initialValue: "",
-        placeholder: init("page.searchForm.loginAccountPlaceholder")
+        name: 'loginAccount',
+        label: init('page.table.columns.loginAccount'),
+        initialValue: '',
+        placeholder: init('page.searchForm.loginAccountPlaceholder')
       },
       {
-        name: "name",
-        label: init("page.table.columns.name"),
-        initialValue: "",
-        placeholder: init("page.searchForm.namePlaceholder")
+        name: 'name',
+        label: init('page.table.columns.name'),
+        initialValue: '',
+        placeholder: init('page.searchForm.namePlaceholder')
       },
       {
-        name: "department",
-        label: init("page.table.columns.department"),
-        initialValue: "",
+        name: 'department',
+        label: init('page.table.columns.department'),
+        initialValue: '',
         render: <Select options={departmentMap} />
       },
       {
-        name: "accountStatus",
-        label: init("page.table.columns.accountStatus"),
-        initialValue: "",
+        name: 'accountStatus',
+        label: init('page.table.columns.accountStatus'),
+        initialValue: '',
         render: <Select options={accountStatusMap} />
       }
     ]
@@ -125,7 +125,7 @@ const AccountsManage: React.FC = (): ReactElement => {
   }
 
   return (
-    <div style={{ background: "#fff", padding: 16 }}>
+    <div style={{ background: '#fff', padding: 16 }}>
       <AdvancedSearch formList={formList} onSearch={onSearch} />
 
       <AccountTable
