@@ -24,5 +24,6 @@ export interface TConfig extends obj{
   topMenuIsHasLogo: boolean,
   // 是否有顶部面包屑
   breadCrumbIsHas?: boolean,
-
+  // 是否有备案号
+  isHasCopyright: boolean
 }

@@ -1,5 +1,7 @@
-import React, { ReactElement, useMemo, useState, Fragment, useEffect } from 'react'
-import AdvancedSearch, { SearchFormItem } from 'components/AdvancedSearch/AdvancedSearch'
+import React, { ReactElement, useMemo, useState, useEffect } from 'react'
+import AdvancedSearch, {
+  SearchFormItem
+} from 'components/AdvancedSearch/AdvancedSearch'
 import AccountTable from './components/AccountTable/AccountTable'
 import AccountModal from './components/AccountModal/AccountModal'
 import { AccountRecord } from 'typings/accountsManage'
@@ -36,9 +38,9 @@ const AccountsManage: React.FC = (): ReactElement => {
   const accountQueryMethod = async () => {
     setTableLoading(true)
     const params = { ...searchData, ...paging }
-    console.log(`params`, params)
+    console.log('params', params)
     const { data } = await accountQueryApi(params)
-    console.log(`data`, data)
+    console.log('data', data)
     if (data.code === 200) {
       setTableList(data.data)
       setPageTotal(data.total)
@@ -47,9 +49,12 @@ const AccountsManage: React.FC = (): ReactElement => {
   }
 
   // 刷新页面查询表格数据,分页改变的时候,查询表格数据
-  useEffect(() => {
-    accountQueryMethod()
-  }, [paging])
+  useEffect(
+    () => {
+      accountQueryMethod()
+    },
+    [paging]
+  )
 
   /**
    * 新建和编辑打开模态框方法
@@ -57,9 +62,13 @@ const AccountsManage: React.FC = (): ReactElement => {
    * @param title 模态框新建还是编辑
    * @param record 点击新建和编辑的时候可能需要传递的表格行数据
    */
-  const toggleModalVisibleMethod = (visible: boolean, title?: string, record?: AccountRecord) => {
+  const toggleModalVisibleMethod = (
+    visible: boolean,
+    title?: string,
+    record?: AccountRecord
+  ) => {
     setModalVisible(visible)
-    setModalTitle((title as string))
+    setModalTitle(title as string)
     setRowList(record)
   }
 
@@ -95,18 +104,13 @@ const AccountsManage: React.FC = (): ReactElement => {
         name: 'department',
         label: init('page.table.columns.department'),
         initialValue: '',
-        render: (
-          <Select options={departmentMap} />
-        )
-
+        render: <Select options={departmentMap} />
       },
       {
         name: 'accountStatus',
         label: init('page.table.columns.accountStatus'),
         initialValue: '',
-        render: (
-          <Select options={accountStatusMap}/>
-        )
+        render: <Select options={accountStatusMap} />
       }
     ]
   }, [])
@@ -121,11 +125,8 @@ const AccountsManage: React.FC = (): ReactElement => {
   }
 
   return (
-    <Fragment>
-      <AdvancedSearch
-        formList={formList}
-        onSearch={onSearch}
-      />
+    <div style={{ background: '#fff', padding: 16 }}>
+      <AdvancedSearch formList={formList} onSearch={onSearch} />
 
       <AccountTable
         tableLoading={tableLoading}
@@ -141,9 +142,11 @@ const AccountsManage: React.FC = (): ReactElement => {
         title={modalTitle}
         visible={modalVisible}
         detail={rowList}
-        onCancel={() => { toggleModalVisibleMethod(false) }}
+        onCancel={() => {
+          toggleModalVisibleMethod(false)
+        }}
       />
-    </Fragment>
+    </div>
   )
 }
 

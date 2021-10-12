@@ -56,7 +56,7 @@ const AdvancedSearch = forwardRef(function fnRef(props: AdvancedSearchProps, ref
       form={form}
       onFinish={onFinish}
     >
-      <Row gutter={[16, 0]} style={{ position: 'relative' }}>
+      <Row gutter={[16, 0]}>
         {
           formList && formList.map((item: any, index:number) => {
             if (index < count) {

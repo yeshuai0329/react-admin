@@ -1248,6 +1248,16 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@craco/craco@^6.3.0":
+  version "6.3.0"
+  resolved "https://nexus.divtoss.com/repository/npm-loyo-group/@craco/craco/-/craco-6.3.0.tgz#157ff6387dab526390b47b12e890542c7e7c6437"
+  integrity sha1-FX/2OH2rUmOQtHsS6JBULH58ZDc=
+  dependencies:
+    cross-spawn "^7.0.0"
+    lodash "^4.17.15"
+    semver "^7.3.2"
+    webpack-merge "^4.2.2"
+
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"
   resolved "https://nexus.divtoss.com/repository/npm-loyo-group/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
@@ -1897,6 +1907,11 @@
   resolved "https://nexus.divtoss.com/repository/npm-loyo-group/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
 
+"@types/lodash@^4.14.172":
+  version "4.14.173"
+  resolved "https://nexus.divtoss.com/repository/npm-loyo-group/@types/lodash/-/lodash-4.14.173.tgz#9d3b674c67a26cf673756f6aca7b429f237f91ed"
+  integrity sha1-nTtnTGeibPZzdW9qyntCnyN/ke0=
+
 "@types/minimatch@*":
   version "3.0.4"
   resolved "https://nexus.divtoss.com/repository/npm-loyo-group/@types/minimatch/-/minimatch-3.0.4.tgz#f0ec25dbf2f0e4b18647313ac031134ca5b24b21"
@@ -2004,6 +2019,11 @@
   version "0.1.2"
   resolved "https://nexus.divtoss.com/repository/npm-loyo-group/@types/source-list-map/-/source-list-map-0.1.2.tgz#0078836063ffaf17412349bba364087e0ac02ec9"
   integrity sha1-AHiDYGP/rxdBI0m7o2QIfgrALsk=
+
+"@types/spark-md5@^3.0.2":
+  version "3.0.2"
+  resolved "https://nexus.divtoss.com/repository/npm-loyo-group/@types/spark-md5/-/spark-md5-3.0.2.tgz#da2e8a778a20335fc4f40b6471c4b0d86b70da55"
+  integrity sha1-2i6Kd4ogM1/E9AtkccSw2Gtw2lU=
 
 "@types/stack-utils@^2.0.0":
   version "2.0.1"
@@ -3931,6 +3951,14 @@ cosmiconfig@^7.0.0:
     parse-json "^5.0.0"
     path-type "^4.0.0"
     yaml "^1.10.0"
+
+craco-less@^1.20.0:
+  version "1.20.0"
+  resolved "https://nexus.divtoss.com/repository/npm-loyo-group/craco-less/-/craco-less-1.20.0.tgz#7f68679b84c7756f785f9c5ee4e4f795662acad1"
+  integrity sha1-f2hnm4THdW94X5xe5OT3lWYqytE=
+  dependencies:
+    less "^4.1.1"
+    less-loader "^7.3.0"
 
 create-ecdh@^4.0.0:
   version "4.0.4"
@@ -7469,6 +7497,15 @@ less-loader@^5.0.0:
     clone "^2.1.1"
     loader-utils "^1.1.0"
     pify "^4.0.1"
+
+less-loader@^7.3.0:
+  version "7.3.0"
+  resolved "https://nexus.divtoss.com/repository/npm-loyo-group/less-loader/-/less-loader-7.3.0.tgz#f9d6d36d18739d642067a05fb5bd70c8c61317e5"
+  integrity sha1-+dbTbRhznWQgZ6Bftb1wyMYTF+U=
+  dependencies:
+    klona "^2.0.4"
+    loader-utils "^2.0.0"
+    schema-utils "^3.0.0"
 
 less@^3.0.1:
   version "3.13.1"
@@ -11309,6 +11346,11 @@ sourcemap-codec@^1.4.4:
   resolved "https://nexus.divtoss.com/repository/npm-loyo-group/sourcemap-codec/-/sourcemap-codec-1.4.8.tgz#ea804bd94857402e6992d05a38ef1ae35a9ab4c4"
   integrity sha1-6oBL2UhXQC5pktBaOO8a41qatMQ=
 
+spark-md5@^3.0.2:
+  version "3.0.2"
+  resolved "https://nexus.divtoss.com/repository/npm-loyo-group/spark-md5/-/spark-md5-3.0.2.tgz#7952c4a30784347abcee73268e473b9c0167e3fc"
+  integrity sha1-eVLEoweENHq87nMmjkc7nAFn4/w=
+
 spdx-correct@^3.0.0:
   version "3.1.1"
   resolved "https://nexus.divtoss.com/repository/npm-loyo-group/spdx-correct/-/spdx-correct-3.1.1.tgz#dece81ac9c1e6713e5f7d1b6f17d468fa53d89a9"
@@ -12467,6 +12509,13 @@ webpack-manifest-plugin@2.2.0:
     lodash ">=3.5 <5"
     object.entries "^1.1.0"
     tapable "^1.0.0"
+
+webpack-merge@^4.2.2:
+  version "4.2.2"
+  resolved "https://nexus.divtoss.com/repository/npm-loyo-group/webpack-merge/-/webpack-merge-4.2.2.tgz#a27c52ea783d1398afd2087f547d7b9d2f43634d"
+  integrity sha1-onxS6ng9E5iv0gh/VH17nS9DY00=
+  dependencies:
+    lodash "^4.17.15"
 
 webpack-sources@^1.1.0, webpack-sources@^1.3.0, webpack-sources@^1.4.0, webpack-sources@^1.4.1, webpack-sources@^1.4.3:
   version "1.4.3"

@@ -32,6 +32,7 @@ export const useLogin = () => {
     const { data } = await loginApi(values)
     // 存储过滤好的权限路由信息
     if (data.code === 200) {
+      console.log(`data`, data)
       localStorage.setItem('userInfo', JSON.stringify(data.data))
       Cookies.set('R-Boot-token', data.data.token)
       message.success(init('loginSuccess'))

@@ -7,6 +7,7 @@ import HeaderRight from './HeaderRight/HeaderRight'
 import BreadCrumbPro from 'components/BreadCrumbPro/BreadCrumbPro'
 import { SET_COLLAPSED } from 'store/actionTypes/configActionType'
 import { RootState } from 'typings/store'
+import { Space } from 'antd'
 
 const cx = classNames.bind(style)
 
@@ -20,27 +21,29 @@ const LayoutHeader = (): ReactElement => {
 
   return (
     <div className={cx('layoutHeader')}>
-      {/* 展开收缩侧边栏菜单按钮 */}
-      {
-        reduxConfig.siderMenuIsHas && reduxConfig.autoHoldSiderIsShow
-          ? <div onClick={() => { reduxSetConfig(SET_COLLAPSED, !reduxConfig.siderMenuIsCollapsed) }}>
-            {
-              reduxConfig.siderMenuIsCollapsed
-                ? <MenuUnfoldOutlined className={cx('layoutHeader-trigger')}/>
-                : <MenuFoldOutlined className={cx('layoutHeader-trigger')}/>
-            }
-            </div>
-          : null
-      }
+      <Space className={cx('layoutHeader-left')} size='middle'>
+        {/* 展开收缩侧边栏菜单按钮 */}
+        {
+          reduxConfig.siderMenuIsHas && reduxConfig.autoHoldSiderIsShow
+            ? <div onClick={() => { reduxSetConfig(SET_COLLAPSED, !reduxConfig.siderMenuIsCollapsed) }}>
+              {
+                reduxConfig.siderMenuIsCollapsed
+                  ? <MenuUnfoldOutlined className={cx('layoutHeader-left__trigger')}/>
+                  : <MenuFoldOutlined className={cx('layoutHeader-left__trigger')}/>
+              }
+              </div>
+            : null
+        }
 
-      {/* 控制面包屑是否存在 */}
-      {
-        reduxConfig.breadCrumbIsHas
-          ? <BreadCrumbPro
-              className={cx('layoutHeader-breadcrumbPro')}
-            />
-          : null
-      }
+        {/* 控制面包屑是否存在 */}
+        {
+          reduxConfig.breadCrumbIsHas
+            ? <BreadCrumbPro
+                className={cx('layoutHeader-breadcrumbPro')}
+              />
+            : null
+        }
+      </Space>
       <HeaderRight />
     </div>
   )

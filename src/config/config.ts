@@ -29,7 +29,9 @@ const config: TConfig = {
   // ||||||| 顶部面包屑相关 ||||||
   // |||||||||||||||||||||||||||
   // 是否有顶部面包屑
-  breadCrumbIsHas: true
+  breadCrumbIsHas: true,
+  // 是否有备案号
+  isHasCopyright: true
 }
 
 export default config

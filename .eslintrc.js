@@ -32,7 +32,6 @@ module.exports = {
     ],
     'react/prop-types': 0, // 防止在react组件定义中缺少props验证
     'no-new': 0,
-    quotes: 0,
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': 'off'
   }

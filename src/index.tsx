@@ -1,6 +1,7 @@
 import React from 'react'
-import AppProviders from 'components/AppProviders/AppProviders'
 import ReactDOM from 'react-dom'
+import AppProviders from 'components/AppProviders/AppProviders'
+import 'antd/dist/antd.less'
 import './styles/reset.less'
 import './styles/globalAntd.module.less'
 import App from './pages/App'

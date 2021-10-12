@@ -1,19 +1,15 @@
 import React, { ReactElement } from 'react'
 import { Logo } from 'assets/images'
-import { connect, DispatchProp } from 'react-redux'
+import { useSelector } from 'react-redux'
 import Texty from 'rc-texty'
 import style from './CustomLogo.module.less'
 import classNames from 'classnames/bind'
-import { TConfig } from 'typings/config'
+import { RootState } from 'typings/store'
 
 const cx = classNames.bind(style)
 
-interface IProps {
-  reduxConfig: TConfig
-}
-
-const CustomLogo: React.FC<IProps> = (props): ReactElement => {
-  const { reduxConfig } = props
+const CustomLogo: React.FC = (): ReactElement => {
+  const reduxConfig = useSelector((state: RootState) => state.config)
 
   return (
     <div className={cx('menus-logo')}>
@@ -40,16 +36,4 @@ const CustomLogo: React.FC<IProps> = (props): ReactElement => {
   )
 }
 
-const mapStateToProps = ({ config }: {config: TConfig}) => {
-  return {
-    reduxConfig: config
-  }
-}
-
-const mapDispatchToProps = (dispatch: DispatchProp) => {
-  return {
-
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CustomLogo)
+export default CustomLogo

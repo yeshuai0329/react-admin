@@ -1,7 +1,12 @@
 import React, { FC, useState } from 'react'
 import Login from 'pages/EntryScreen/Login/Login'
 import Register from 'pages/EntryScreen/Register/Register'
-import { AlipayOutlined, GithubOutlined, WechatOutlined, QqOutlined } from '@ant-design/icons'
+import {
+  AlipayOutlined,
+  GithubOutlined,
+  WechatOutlined,
+  QqOutlined
+} from '@ant-design/icons'
 import style from './EntryScreen.module.less'
 import classNames from 'classnames/bind'
 import { ITab } from './type'
@@ -19,15 +24,19 @@ const EntryScreen: FC = () => {
   const tabList: ITab[] = [
     {
       key: 'login',
-      tab: <span className={cx('EntryScreen-card__loginTitle')}>
-             {init('page.login.login')}
-           </span>
+      tab: (
+        <span className={cx('EntryScreen-card__loginTitle')}>
+          {init('page.login.login')}
+        </span>
+      )
     },
     {
       key: 'register',
-      tab: <span className={cx('EntryScreen-card__registerTitle')}>
-             {init('page.login.register')}
-           </span>
+      tab: (
+        <span className={cx('EntryScreen-card__registerTitle')}>
+          {init('page.login.register')}
+        </span>
+      )
     }
   ]
 
@@ -57,21 +66,25 @@ const EntryScreen: FC = () => {
           activeTabKey={currentKey}
           onTabChange={onTabChange}
         >
-          {
-            currentKey === 'login'
-              ? <Login/>
-              : <Register/>
-          }
+          {currentKey === 'login' ? <Login /> : <Register />}
         </Card>
         <div className={cx('EntryScreen-content__otherLogin')}>
           <Space size={'middle'}>
             <i style={{ fontSize: '16px' }}>
-             {init('page.login.otherloginmethods')}
+              {init('page.login.otherloginmethods')}
             </i>
-            <span><AlipayOutlined /></span>
-            <span><GithubOutlined /></span>
-            <span><WechatOutlined /></span>
-            <span><QqOutlined /></span>
+            <span>
+              <AlipayOutlined />
+            </span>
+            <span>
+              <GithubOutlined />
+            </span>
+            <span>
+              <WechatOutlined />
+            </span>
+            <span>
+              <QqOutlined />
+            </span>
           </Space>
         </div>
       </div>

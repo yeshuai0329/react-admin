@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import React, { useState } from 'react'
 import { Select } from 'antd'
-import { AdvancedSearchProps } from "components/AdvancedSearch/AdvancedSearch"
+import { AdvancedSearchProps } from 'components/AdvancedSearch/AdvancedSearch'
 import { rolesStatusMap } from './constantParams'
 
 interface IOptions {
@@ -26,10 +26,10 @@ export const useSearchFormOptions = ({ changePage }: IOptions) => {
         name: 'roleStatus',
         label: '角色状态',
         shouldUpdate: true,
-        render: <Select options={rolesStatusMap}/>
+        render: <Select options={rolesStatusMap} />
       }
     ],
-    onSearch: (res) => {
+    onSearch: res => {
       setSearchData(res)
       changePage(1)
     }
