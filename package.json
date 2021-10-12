@@ -17,6 +17,7 @@
     "classnames": "^2.3.1",
     "craco-less": "^1.20.0",
     "dotenv-cli": "^4.0.0",
+    "echarts": "^5.2.1",
     "js-cookie": "^2.2.1",
     "less": "^4.1.1",
     "less-loader": "^5.0.0",
@@ -78,6 +79,8 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-react": "^7.23.2",
-    "mockjs": "^1.1.0"
+    "mockjs": "^1.1.0",
+    "prettier": "^1.9.1",
+    "prettier-eslint": "^10.1.0"
   }
 }
