@@ -1,7 +1,7 @@
-import React, { useEffect } from "react"
-import { Card, Space } from "antd"
-import { PieChartOutlined } from "@ant-design/icons"
-import * as echarts from "echarts"
+import React, { useEffect } from 'react'
+import { Card, Space } from 'antd'
+import { PieChartOutlined } from '@ant-design/icons'
+import * as echarts from 'echarts'
 
 const DistributionMap = () => {
   const distributionMapRef = React.useRef<any>()
@@ -16,7 +16,7 @@ const DistributionMap = () => {
       initEchart()
     }, 1000)
     return () => {
-      window.removeEventListener("resize", addEventResize)
+      window.removeEventListener('resize', addEventResize)
     }
   }, [])
 
@@ -25,31 +25,31 @@ const DistributionMap = () => {
     const option = {
       tooltip: {
         // 触发方式
-        trigger: "item"
+        trigger: 'item'
       },
       series: [
         {
-          type: "pie",
+          type: 'pie',
           data: [
             {
               value: 1410,
-              name: "直接访问"
+              name: '直接访问'
             },
             {
               value: 1234,
-              name: "搜索引擎"
+              name: '搜索引擎'
             },
             {
               value: 1548,
-              name: "联盟广告"
+              name: '联盟广告'
             },
             {
               value: 334,
-              name: "邮件营销"
+              name: '邮件营销'
             },
             {
               value: 234,
-              name: "视频广告"
+              name: '视频广告'
             }
           ]
         }
@@ -58,7 +58,7 @@ const DistributionMap = () => {
     // 绘制图表
     myChart.setOption(option)
 
-    window.addEventListener("resize", addEventResize)
+    window.addEventListener('resize', addEventResize)
   }
   return (
     <Card
@@ -71,7 +71,7 @@ const DistributionMap = () => {
     >
       <div
         ref={distributionMapRef}
-        style={{ width: "100%", height: "300px" }}
+        style={{ width: '100%', height: '300px' }}
       />
     </Card>
   )

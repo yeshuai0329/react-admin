@@ -1,19 +1,13 @@
 import React, { ReactElement, useMemo, useState, useEffect } from 'react'
-import AdvancedSearch, {
-  SearchFormItem
-} from 'components/AdvancedSearch/AdvancedSearch'
+import { InputNumber, Select } from 'antd'
+import AdvancedSearch, { SearchFormItem } from 'components/AdvancedSearch/AdvancedSearch'
 import AccountTable from './components/AccountTable/AccountTable'
 import AccountModal from './components/AccountModal/AccountModal'
 import { AccountRecord } from 'typings/accountsManage'
 import { accountQueryApi } from 'api/AccountsManage/AccountsManage'
-import { InputNumber, Select } from 'antd'
 import { usePaging } from '../../../publicHooks/tableHooks/tableHooks'
 import { FIRST_TYPE } from 'utils/globalConstantParams'
-import {
-  titleMap,
-  departmentMap,
-  accountStatusMap
-} from 'pages/AuthManage/AccountsManage/service/constantParams'
+import { titleMap, departmentMap, accountStatusMap } from 'pages/AuthManage/AccountsManage/service/constantParams'
 import { init } from 'locales'
 
 const AccountsManage: React.FC = (): ReactElement => {
@@ -62,11 +56,7 @@ const AccountsManage: React.FC = (): ReactElement => {
    * @param title 模态框新建还是编辑
    * @param record 点击新建和编辑的时候可能需要传递的表格行数据
    */
-  const toggleModalVisibleMethod = (
-    visible: boolean,
-    title?: string,
-    record?: AccountRecord
-  ) => {
+  const toggleModalVisibleMethod = (visible: boolean, title?: string, record?: AccountRecord) => {
     setModalVisible(visible)
     setModalTitle(title as string)
     setRowList(record)

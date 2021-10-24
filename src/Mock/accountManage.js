@@ -17,7 +17,7 @@ for (let i = 0; i < count; i++) {
 }
 module.exports = [
   {
-    url: `/v1/account/query`,
+    url: '/v1/account/query',
     type: 'get',
     response: config => {
       const {
@@ -70,7 +70,7 @@ module.exports = [
     }
   },
   {
-    url: `/v1/account/del`,
+    url: '/v1/account/del',
     type: 'delete',
     response: config => {
       const paramsData = config.body
@@ -85,7 +85,7 @@ module.exports = [
     }
   },
   {
-    url: `/v1/account/changeAccountStatus`,
+    url: '/v1/account/changeAccountStatus',
     type: 'post',
     response: config => {
       const paramsData = config.body

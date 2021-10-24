@@ -10,8 +10,8 @@ const { SubMenu } = Menu
 type PropsMenu = React.ComponentProps<typeof Menu>
 
 interface IProps extends PropsMenu {
-  menuList: any[],
-  siderMenuIshHasLogo?: boolean,
+  menuList: any[]
+  siderMenuIshHasLogo?: boolean
   MenuIshHasLogo: boolean
 }
 
@@ -20,22 +20,25 @@ interface IProps extends PropsMenu {
  * @param {*} props
  * @return {*}
  */
-const CustomMenu: React.FC<IProps> = (props) => {
+const CustomMenu: React.FC<IProps> = props => {
   const { menuList, siderMenuIshHasLogo, MenuIshHasLogo, mode, ...remainProps } = props
   const localtion = useLocation()
   const [selectedKeys, setSelectedKeys] = React.useState<string[]>([])
   const [openKeys, setOpenKeys] = React.useState<string[]>([])
 
-  React.useLayoutEffect(() => {
-    setSelectedKeys([localtion.pathname])
-    setOpenKeys(findAllParent(menuList, localtion.pathname))
-  }, [localtion])
+  React.useLayoutEffect(
+    () => {
+      setSelectedKeys([localtion.pathname])
+      setOpenKeys(findAllParent(menuList, localtion.pathname))
+    },
+    [localtion]
+  )
 
   /**
- * @description: 查找localtion.pathname的所有父级
- * @param {*}
- * @return {*}
- */
+   * @description: 查找localtion.pathname的所有父级
+   * @param {*}
+   * @return {*}
+   */
   const findAllParent = (menuList: any, path: string, allParentPaths: any = []) => {
     if (!menuList || !menuList.length) {
       return null
@@ -59,24 +62,15 @@ const CustomMenu: React.FC<IProps> = (props) => {
       const iconfont = menu.icon ? React.createElement(Icon[menu.icon]) : ''
       if (menu.children && menu.children.length) {
         return (
-          <SubMenu
-            key={menu.path}
-            title={init(menu.menuNameId)}
-            icon={iconfont}
-          >
-            {
-              createMenu(menu.children)
-            }
+          <SubMenu key={menu.path} title={init(menu.menuNameId)} icon={iconfont}>
+            {createMenu(menu.children)}
           </SubMenu>
         )
       } else {
         return (
-            <Menu.Item
-              key={menu.path}
-              icon={iconfont}
-            >
-              <NavLink to={menu.path} >{init(menu.menuNameId)}</NavLink>
-            </Menu.Item>
+          <Menu.Item key={menu.path} icon={iconfont}>
+            <NavLink to={menu.path}>{init(menu.menuNameId)}</NavLink>
+          </Menu.Item>
         )
       }
     })
@@ -84,7 +78,7 @@ const CustomMenu: React.FC<IProps> = (props) => {
   /**
    * @description: 设置选中高亮的key
    */
-  const onSelect = ({ selectedKeys }:any) => {
+  const onSelect = ({ selectedKeys }: any) => {
     setSelectedKeys(selectedKeys)
   }
 
@@ -96,23 +90,17 @@ const CustomMenu: React.FC<IProps> = (props) => {
   }
 
   return (
-      <Menu
-        openKeys={openKeys}
-        selectedKeys={selectedKeys}
-        onSelect={onSelect}
-        onOpenChange={onOpenChange}
-        mode={mode}
-        {...remainProps}
-      >
-        {
-          MenuIshHasLogo
-            ? <CustomLogo />
-            : null
-        }
-        {
-          createMenu(menuList)
-        }
-      </Menu>
+    <Menu
+      openKeys={openKeys}
+      selectedKeys={selectedKeys}
+      onSelect={onSelect}
+      onOpenChange={onOpenChange}
+      mode={mode}
+      {...remainProps}
+    >
+      {MenuIshHasLogo ? <CustomLogo /> : null}
+      {createMenu(menuList)}
+    </Menu>
   )
 }
 

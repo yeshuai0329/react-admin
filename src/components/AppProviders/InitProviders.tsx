@@ -13,31 +13,30 @@ const InitProviders = (props: any) => {
     }
   }, [])
   return (
-
     <Fragment>
-      {
-        loading
-          ? <div
-              style={{
-                width: "100%",
-                height: "100%",
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center'
-              }}
-            >
-              <LoadingComponent/>
-            </div>
-          : null
-      }
-      <div style={{
-        width: "100%",
-        height: "100%",
-        display: loading && 'none'
-      }}>
-        {
-          props.children
-        }
+      {loading
+        ? (
+        <div
+          style={{
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
+          <LoadingComponent />
+        </div>
+          )
+        : null}
+      <div
+        style={{
+          width: '100%',
+          height: '100%',
+          display: loading && 'none'
+        }}
+      >
+        {props.children}
       </div>
     </Fragment>
   )

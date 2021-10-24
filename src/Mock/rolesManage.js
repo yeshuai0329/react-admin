@@ -14,7 +14,7 @@ for (let i = 0; i < count; i++) {
 
 module.exports = [
   {
-    url: `/v1/roles/query`,
+    url: '/v1/roles/query',
     type: 'get',
     response: config => {
       const {
@@ -53,7 +53,7 @@ module.exports = [
     }
   },
   {
-    url: `/v1/roles/del`,
+    url: '/v1/roles/del',
     type: 'delete',
     response: config => {
       const paramsData = config.body
@@ -68,7 +68,7 @@ module.exports = [
     }
   },
   {
-    url: `/v1/roles/changerolesstatus`,
+    url: '/v1/roles/changerolesstatus',
     type: 'post',
     response: config => {
       const paramsData = config.body

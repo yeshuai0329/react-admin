@@ -45,6 +45,7 @@
     "build:test": "dotenv -e .env.test craco build",
     "build:pre": "dotenv -e .env.pre craco build",
     "build:pro": "dotenv -e .env.pro craco build",
+    "lint-fix": "eslint --fix --ext .js,.ts,.tsx src/",
     "test": "craco test"
   },
   "eslintConfig": {

@@ -16,26 +16,14 @@ const RolesManage: React.FC = (): ReactElement => {
     paging, // 分页数据
     changePage // 改变分页的方法
   } = usePaging() // 分页的自定义hook
-  const {
-    modalVisible,
-    modalType,
-    modalDetail,
-    openModal,
-    closeModal
-  } = useDialog<RolesRecord>()
-  const { checkedRowKeys, checkedRows, rowSelection } = useRowSelection<
-    RolesRecord
-  >('rolesOrder')
+  const { modalVisible, modalType, modalDetail, openModal, closeModal } = useDialog<RolesRecord>()
+  const { checkedRowKeys, checkedRows, rowSelection } = useRowSelection<RolesRecord>('rolesOrder')
 
   // ----------- 高级搜索相关
   const { serchFormOptions, searchData } = useSearchFormOptions({ changePage })
 
   // ----------- 查询数据Api
-  const { queryLoading, tableList, pageTotal } = useQueryDataList(
-    searchData,
-    paging,
-    rolesQueryApi
-  )
+  const { queryLoading, tableList, pageTotal } = useQueryDataList(searchData, paging, rolesQueryApi)
 
   // ----------- 高级表格相关
   const { rolesColumns, authActions } = useAboutRolesTable({

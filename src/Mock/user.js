@@ -10,7 +10,7 @@ for (let i = 0; i < count; i++) {
 
 module.exports = [
   {
-    url: `v1/user/login`,
+    url: 'v1/user/login',
     type: 'post',
     response: config => {
       if (config.body?.username === 'admin' && config.body?.password === 'admin') {
@@ -20,8 +20,9 @@ module.exports = [
             id: '1',
             username: 'admin',
             password: 'admin',
-            Avatar: "https://avatars.githubusercontent.com/u/67174937?s=400&u=40aca279b633a3bdcff7dc99be16357128c9974f&v=4",
-            token: "ABCDEFG"
+            Avatar:
+            'https://avatars.githubusercontent.com/u/67174937?s=400&u=40aca279b633a3bdcff7dc99be16357128c9974f&v=4',
+            token: 'ABCDEFG'
           }
         }
       } else {
@@ -36,7 +37,7 @@ module.exports = [
     }
   },
   {
-    url: `/v1/user/authinfo`,
+    url: '/v1/user/authinfo',
     type: 'post',
     response: config => {
       if (config.body?.token === 'ABCDEFG') {
@@ -45,144 +46,144 @@ module.exports = [
           data: {
             authMenu: [
               {
-                menuDefaultName: "首页",
-                menuNameId: "page.menu.home",
+                menuDefaultName: '首页',
+                menuNameId: 'page.menu.home',
                 menuId: 1,
-                menuPId: "",
+                menuPId: '',
                 menuType: 2,
-                path: "/home",
-                Ppath: "",
-                icon: "HomeOutlined",
+                path: '/home',
+                Ppath: '',
+                icon: 'HomeOutlined',
                 auth: true,
-                component: "home"
+                component: 'home'
               },
               {
-                menuDefaultName: "DashBoard",
-                menuNameId: "page.menu.dashboard",
+                menuDefaultName: 'DashBoard',
+                menuNameId: 'page.menu.dashboard',
                 menuId: 2,
-                menuPId: "",
+                menuPId: '',
                 menuType: 1,
-                path: "/dashboard",
-                Ppath: "",
-                icon: "DashboardOutlined",
+                path: '/dashboard',
+                Ppath: '',
+                icon: 'DashboardOutlined',
                 auth: true,
-                component: "",
+                component: '',
                 children: [
                   {
-                    menuDefaultName: "分析页",
-                    menuNameId: "page.menu.dashboard.analysis",
+                    menuDefaultName: '分析页',
+                    menuNameId: 'page.menu.dashboard.analysis',
                     menuId: 3,
                     menuPId: 2,
                     menuType: 2,
-                    path: "/dashboard/analysis",
-                    Ppath: "/dashboard",
-                    icon: "PieChartOutlined",
+                    path: '/dashboard/analysis',
+                    Ppath: '/dashboard',
+                    icon: 'PieChartOutlined',
                     auth: true,
-                    component: "analysis"
+                    component: 'analysis'
                   },
                   {
-                    menuDefaultName: "监控页",
-                    menuNameId: "page.menu.dashboard.monitor",
+                    menuDefaultName: '监控页',
+                    menuNameId: 'page.menu.dashboard.monitor',
                     menuId: 4,
                     menuPId: 2,
                     menuType: 2,
-                    path: "/dashboard/monitor",
-                    Ppath: "/dashboard",
-                    icon: "DesktopOutlined",
+                    path: '/dashboard/monitor',
+                    Ppath: '/dashboard',
+                    icon: 'DesktopOutlined',
                     auth: true,
-                    component: "monitor"
+                    component: 'monitor'
                   }
                 ]
               },
               {
-                menuDefaultName: "权限管理",
-                menuNameId: "page.menu.auth",
+                menuDefaultName: '权限管理',
+                menuNameId: 'page.menu.auth',
                 menuId: 5,
-                menuPId: "",
+                menuPId: '',
                 menuType: 1,
-                path: "/auth",
-                Ppath: "",
-                icon: "FolderOpenFilled",
+                path: '/auth',
+                Ppath: '',
+                icon: 'FolderOpenFilled',
                 auth: true,
-                component: "",
+                component: '',
                 children: [
                   {
-                    menuDefaultName: "角色管理",
-                    menuNameId: "page.menu.auth.rolesmanage",
+                    menuDefaultName: '角色管理',
+                    menuNameId: 'page.menu.auth.rolesmanage',
                     menuId: 6,
                     menuPId: 5,
                     menuType: 2,
-                    path: "/auth/rolesmanage",
-                    Ppath: "/auth",
-                    icon: "UsergroupAddOutlined",
+                    path: '/auth/rolesmanage',
+                    Ppath: '/auth',
+                    icon: 'UsergroupAddOutlined',
                     auth: true,
-                    component: "rolesmanage"
+                    component: 'rolesmanage'
                   },
                   {
-                    menuDefaultName: "账号管理",
-                    menuNameId: "page.menu.auth.accountsmanage",
+                    menuDefaultName: '账号管理',
+                    menuNameId: 'page.menu.auth.accountsmanage',
                     menuId: 7,
                     menuPId: 5,
                     menuType: 2,
-                    path: "/auth/accountsmanage",
-                    Ppath: "/auth",
-                    icon: "AccountBookOutlined",
+                    path: '/auth/accountsmanage',
+                    Ppath: '/auth',
+                    icon: 'AccountBookOutlined',
                     auth: true,
-                    component: "accountsmanage"
+                    component: 'accountsmanage'
                   },
                   {
-                    menuDefaultName: "菜单管理",
-                    menuNameId: "page.menu.auth.menusmanage",
+                    menuDefaultName: '菜单管理',
+                    menuNameId: 'page.menu.auth.menusmanage',
                     menuId: 8,
                     menuPId: 5,
                     menuType: 2,
-                    path: "/auth/menusmanage",
-                    Ppath: "/auth",
-                    icon: "MenuOutlined",
+                    path: '/auth/menusmanage',
+                    Ppath: '/auth',
+                    icon: 'MenuOutlined',
                     auth: true,
-                    component: "menusmanage"
+                    component: 'menusmanage'
                   }
                 ]
               },
               {
-                menuDefaultName: "系统管理",
-                menuNameId: "page.menu.system",
+                menuDefaultName: '系统管理',
+                menuNameId: 'page.menu.system',
                 menuId: 9,
-                menuPId: "",
+                menuPId: '',
                 menuType: 1,
-                path: "/system",
-                Ppath: "",
-                icon: "SettingFilled",
+                path: '/system',
+                Ppath: '',
+                icon: 'SettingFilled',
                 auth: true,
-                component: "",
+                component: '',
                 children: [
                   {
-                    menuDefaultName: "系统配置",
-                    menuNameId: "page.menu.system.systemconfig",
+                    menuDefaultName: '系统配置',
+                    menuNameId: 'page.menu.system.systemconfig',
                     menuId: 10,
                     menuPId: 9,
                     menuType: 2,
-                    path: "/system/systemconfig",
-                    Ppath: "/system",
-                    icon: "LayoutFilled",
+                    path: '/system/systemconfig',
+                    Ppath: '/system',
+                    icon: 'LayoutFilled',
                     auth: true,
-                    component: "systemconfig"
+                    component: 'systemconfig'
                   }
                 ]
               }
             ],
             authButton: [
-              { id: '11', authName: "HOME_ADD" },
-              { id: '12', authName: "HOME_EDIT" },
-              { id: '13', authName: "HOME_DEL" },
-              { id: '21', authName: "ROLES_ADD" },
-              { id: '22', authName: "ROLES_EDIT" },
-              { id: '23', authName: "ROLES_DEL" },
-              { id: '24', authName: "ROLES_EXPORT" },
-              { id: '31', authName: "ACCOUNT_ADD" },
-              { id: '32', authName: "ACCOUNT_EDIT" },
-              { id: '33', authName: "ACCOUNT_DEL" },
-              { id: '34', authName: "ACCOUNT_EXPORT" }
+              { id: '11', authName: 'HOME_ADD' },
+              { id: '12', authName: 'HOME_EDIT' },
+              { id: '13', authName: 'HOME_DEL' },
+              { id: '21', authName: 'ROLES_ADD' },
+              { id: '22', authName: 'ROLES_EDIT' },
+              { id: '23', authName: 'ROLES_DEL' },
+              { id: '24', authName: 'ROLES_EXPORT' },
+              { id: '31', authName: 'ACCOUNT_ADD' },
+              { id: '32', authName: 'ACCOUNT_EDIT' },
+              { id: '33', authName: 'ACCOUNT_DEL' },
+              { id: '34', authName: 'ACCOUNT_EXPORT' }
             ]
           }
         }

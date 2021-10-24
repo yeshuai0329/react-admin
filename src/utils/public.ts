@@ -193,7 +193,7 @@ export const minToMaxRandom = (min:number, max: number) => {
  * @returns
  */
 export const colorRandomTo16 = () => {
-  var str = "#"
+  var str = '#'
   for (var i = 1; i <= 6; i++) {
     str += minToMaxRandom(0, 15).toString(16)
   }
@@ -213,7 +213,7 @@ export const getDistance = (dom: any) => {
     totalTop += dom.offsetTop
     // 下一次的dom节点就是本次dom节点的最近的有定位的父元素
     dom = dom.offsetParent
-  } while (dom.nodeName !== "BODY")
+  } while (dom.nodeName !== 'BODY')
 
   return {
     left: totalLeft,
