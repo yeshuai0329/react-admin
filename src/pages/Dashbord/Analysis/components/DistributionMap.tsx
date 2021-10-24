@@ -14,7 +14,7 @@ const DistributionMap = () => {
   useEffect(() => {
     setTimeout(() => {
       initEchart()
-    }, 1000)
+    }, 300)
     return () => {
       window.removeEventListener('resize', addEventResize)
     }
@@ -69,10 +69,7 @@ const DistributionMap = () => {
       }
       hoverable
     >
-      <div
-        ref={distributionMapRef}
-        style={{ width: '100%', height: '300px' }}
-      />
+      <div ref={distributionMapRef} style={{ width: '100%', height: '300px' }} />
     </Card>
   )
 }
