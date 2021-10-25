@@ -5,16 +5,16 @@ import AuthButtonGroup, { AuthAction } from 'components/aboutAuthButton/AuthButt
 import { init } from 'locales'
 
 export interface IPickColumn {
-  label: string,
+  label: string
   value: string
 }
 
-export interface IAdvancedTableProps<RecordType> extends AntdTableProps<RecordType>{
-  alert?: React.ReactElement,
-  paging: {pageNo: number, pageSize: number | undefined}
-  pageTotal?: number,
+export interface IAdvancedTableProps<RecordType> extends AntdTableProps<RecordType> {
+  alert?: React.ReactElement
+  paging: { pageNo: number; pageSize: number | undefined }
+  pageTotal?: number
   authActions?: AuthAction[] // 权限按钮
-  canConfig?: boolean, // 改变列选项的配置icon是否显示
+  canConfig?: boolean // 改变列选项的配置icon是否显示
   changePage?: (page: number, pageSize?: number | undefined) => void
 }
 
@@ -24,36 +24,31 @@ const AdvancedTable = <RecordType extends object = any>(props: IAdvancedTablePro
   const [pickColumns, setPickColumns] = React.useState(columns)
 
   const changePickColumns = (pickList: string[]) => {
-    const result = columns && columns.filter((item) => {
-      return pickList.includes((item.title as string))
-    })
+    const result =
+      columns &&
+      columns.filter(item => {
+        return pickList.includes(item.title as string)
+      })
     setPickColumns(result)
   }
 
   return (
-    <Space direction='vertical' style={{ width: '100%', marginTop: '16px' }}>
+    <Space direction="vertical" style={{ width: '100%', marginTop: '16px' }}>
       <Space>
-        <AuthButtonGroup authActions={authActions}/>
-        {
-          canConfig
-            ? <ColumnsConfig
-                columns={columns}
-                changePickColumns={changePickColumns}
-              />
-            : null
-        }
+        <AuthButtonGroup authActions={authActions} />
+        {canConfig ? <ColumnsConfig columns={columns} changePickColumns={changePickColumns} /> : null}
       </Space>
       {}
       <Table
-        size='middle'
+        size="middle"
         columns={pickColumns}
-        scroll={{ x: 'max-content', y: '80%' }}
+        scroll={{ x: 'max-content' }}
         pagination={{
           showSizeChanger: true,
           showQuickJumper: true,
           current: paging.pageNo,
           total: pageTotal,
-          showTotal: (total) => `${init('page.common.total')} ${total} ${init('page.common.items')}`,
+          showTotal: total => `${init('page.common.total')} ${total} ${init('page.common.items')}`,
           position: ['bottomCenter'],
           onChange: changePage
         }}
